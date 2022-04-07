@@ -1,0 +1,15 @@
+# This file is used to ignore files which are generated
+# —--------------------------------------------------------------------------
+
+# Binaries
+# —------
+*.exe
+
+# Temporary
+# —------
+*.md.bak
+*.DS_Store
+meet2guide/*.DS_Store
+meet2guide/meet2guide/*.DS_Store
+meet2guide/meet2guide.xcodeproj/xcuserdata
+meet2guide/meet2guide.xcodeproj/project.xcworkspace/xcuserdata
