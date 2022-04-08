@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE842FFF2800015500775255 /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = CE842FFE2800015500775255 /* PinLayout */; };
+		CE84300B2800A11500775255 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE84300A2800A11500775255 /* MainViewController.swift */; };
+		CE84300D2800AB3100775255 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CE84300C2800AB3100775255 /* logo.png */; };
+		CE84300F2800AFDD00775255 /* shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = CE84300E2800AFDD00775255 /* shadow.png */; };
 		CECE356A27FEEF3F004B64DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE356927FEEF3F004B64DC /* AppDelegate.swift */; };
 		CECE356C27FEEF3F004B64DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE356B27FEEF3F004B64DC /* SceneDelegate.swift */; };
 		CECE356E27FEEF3F004B64DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE356D27FEEF3F004B64DC /* ViewController.swift */; };
@@ -36,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE84300A2800A11500775255 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = MainView/MainViewController.swift; sourceTree = "<group>"; };
+		CE84300C2800AB3100775255 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = Assets.xcassets/logo.png; sourceTree = "<group>"; };
+		CE84300E2800AFDD00775255 /* shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shadow.png; path = Assets.xcassets/shadow.png; sourceTree = "<group>"; };
 		CECE356627FEEF3F004B64DC /* meet2guide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meet2guide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECE356927FEEF3F004B64DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CECE356B27FEEF3F004B64DC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE842FFF2800015500775255 /* PinLayout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +107,9 @@
 		CECE356827FEEF3F004B64DC /* meet2guide */ = {
 			isa = PBXGroup;
 			children = (
+				CE84300E2800AFDD00775255 /* shadow.png */,
+				CE84300C2800AB3100775255 /* logo.png */,
+				CE84300A2800A11500775255 /* MainViewController.swift */,
 				CECE356927FEEF3F004B64DC /* AppDelegate.swift */,
 				CECE356B27FEEF3F004B64DC /* SceneDelegate.swift */,
 				CECE356D27FEEF3F004B64DC /* ViewController.swift */,
@@ -143,6 +154,9 @@
 			dependencies = (
 			);
 			name = meet2guide;
+			packageProductDependencies = (
+				CE842FFE2800015500775255 /* PinLayout */,
+			);
 			productName = meet2guide;
 			productReference = CECE356627FEEF3F004B64DC /* meet2guide.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +229,9 @@
 				Base,
 			);
 			mainGroup = CECE355D27FEEF3F004B64DC;
+			packageReferences = (
+				CE842FFD2800015500775255 /* XCRemoteSwiftPackageReference "PinLayout" */,
+			);
 			productRefGroup = CECE356727FEEF3F004B64DC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -231,8 +248,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE84300F2800AFDD00775255 /* shadow.png in Resources */,
 				CECE357927FEEF43004B64DC /* LaunchScreen.storyboard in Resources */,
 				CECE357627FEEF43004B64DC /* Assets.xcassets in Resources */,
+				CE84300D2800AB3100775255 /* logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +280,7 @@
 				CECE356A27FEEF3F004B64DC /* AppDelegate.swift in Sources */,
 				CECE357427FEEF3F004B64DC /* meet2guide.xcdatamodeld in Sources */,
 				CECE356C27FEEF3F004B64DC /* SceneDelegate.swift in Sources */,
+				CE84300B2800A11500775255 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,6 +608,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CE842FFD2800015500775255 /* XCRemoteSwiftPackageReference "PinLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/layoutBox/PinLayout";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CE842FFE2800015500775255 /* PinLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE842FFD2800015500775255 /* XCRemoteSwiftPackageReference "PinLayout" */;
+			productName = PinLayout;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		CECE357227FEEF3F004B64DC /* meet2guide.xcdatamodeld */ = {
