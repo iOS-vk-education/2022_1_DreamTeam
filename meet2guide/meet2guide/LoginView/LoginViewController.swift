@@ -9,71 +9,72 @@ import Foundation
 import UIKit
 import PinLayout
 
-class MainViewController: UIViewController {
-    private let TextInLabble: String = "Найдите лучшие экскурсии рядом с вами"
-    private let TitleLable: UILabel = UILabel()
-    private let LogIn: UIButton = UIButton()
-    private let Registration: UIButton = UIButton()
-    private let ImageLogo: UIImage? = UIImage(named: "logo")
-    private let ImageViewLogo: UIImageView = UIImageView();
-    private let ImageShadow: UIImage? = UIImage(named: "shadow")
-    private let ImageViewShadow: UIImageView = UIImageView();
+class LoginViewController: UIViewController {
+    private let colorBlueCustom: UIColor = UIColor(red: 0.205, green: 0.369, blue: 0.792, alpha: 1)
+    private let textInLabble: String = "Найдите лучшие экскурсии рядом с вами"
+    private let titleLable: UILabel = UILabel()
+    private let logIn: UIButton = UIButton()
+    private let registration: UIButton = UIButton()
+    private let imageLogo: UIImage? = UIImage(named: "logo")
+    private let imageViewLogo: UIImageView = UIImageView();
+    private let imageShadow: UIImage? = UIImage(named: "shadow")
+    private let imageViewShadow: UIImageView = UIImageView();
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        TitleLable.text = TextInLabble
-        TitleLable.numberOfLines = 0
-        TitleLable.textAlignment = .center
-        TitleLable.textColor = UIColor(red: 0.205, green: 0.369, blue: 0.792, alpha: 1)
-        TitleLable.font = UIFont(name: "Avenir", size: 32)
+        titleLable.text = textInLabble
+        titleLable.numberOfLines = 0
+        titleLable.textAlignment = .center
+        titleLable.textColor = colorBlueCustom
+        titleLable.font = UIFont(name: "Avenir", size: 32)
 
-        configButton(LogIn, "Вход", .white, UIColor(red: 0.205, green: 0.369, blue: 0.792, alpha: 1))
-        configButton(Registration, "Регистрация", UIColor(red: 0.205, green: 0.369, blue: 0.792, alpha: 1), .white)
+        configButton(logIn, "Вход", .white, colorBlueCustom)
+        configButton(registration, "Регистрация", colorBlueCustom, .white)
         
-        ImageViewLogo.contentMode = .scaleAspectFill
-        ImageViewLogo.transform = CGAffineTransform.identity.rotated(by: -90)
-        ImageViewLogo.image = ImageLogo
+        imageViewLogo.contentMode = .scaleAspectFill
+        imageViewLogo.transform = CGAffineTransform.identity.rotated(by: -90)
+        imageViewLogo.image = imageLogo
         
-        ImageViewShadow.image = ImageShadow
+        imageViewShadow.image = imageShadow
         
-        view.addSubview(TitleLable)
-        view.addSubview(ImageViewShadow)
-        view.addSubview(ImageViewLogo)
+        view.addSubview(titleLable)
+        view.addSubview(imageViewShadow)
+        view.addSubview(imageViewLogo)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        TitleLable.pin
+        titleLable.pin
             .top(view.safeAreaInsets.top + 40)
             .left(5%)
             .right(5%)
             .sizeToFit(.width)
         
-        ImageViewLogo.pin
-            .below(of: TitleLable)
+        imageViewLogo.pin
+            .below(of: titleLable)
             .marginTop(6%)
             .hCenter(10%)
             .width(60%)
             .height(40%)
         
-        ImageViewShadow.pin
-            .below(of: ImageViewLogo)
+        imageViewShadow.pin
+            .below(of: imageViewLogo)
             .marginTop(-10)
             .hCenter()
             .width(60%)
             .height(10%)
         
-        LogIn.pin
+        logIn.pin
             .bottom(view.safeAreaInsets.bottom + 20)
             .left(5%)
             .sizeToFit(.width)
             .width(40%)
             .height(10%)
         
-        Registration.pin
+        registration.pin
             .bottom(view.safeAreaInsets.bottom + 20)
             .right(5%)
             .sizeToFit(.width)
@@ -90,7 +91,7 @@ class MainViewController: UIViewController {
         button.titleLabel?.font =  UIFont(name: "Avenir", size: 14)
         button.layer.cornerRadius = 5
         button.layer.borderWidth = 2.0
-        button.layer.borderColor = (UIColor(red: 0.205, green: 0.369, blue: 0.792, alpha: 1)).cgColor
+        button.layer.borderColor = (colorBlueCustom).cgColor
 
         button.layer.shadowColor = UIColor.darkGray.cgColor
         button.layer.shadowOffset = CGSize(width: 0, height: 2)
@@ -100,5 +101,4 @@ class MainViewController: UIViewController {
         button.layer.masksToBounds = false
         view.addSubview(button)
     }
-
 }

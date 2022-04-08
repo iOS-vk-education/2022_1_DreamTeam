@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		CE842FFF2800015500775255 /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = CE842FFE2800015500775255 /* PinLayout */; };
-		CE84300B2800A11500775255 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE84300A2800A11500775255 /* MainViewController.swift */; };
 		CE84300D2800AB3100775255 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CE84300C2800AB3100775255 /* logo.png */; };
 		CE84300F2800AFDD00775255 /* shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = CE84300E2800AFDD00775255 /* shadow.png */; };
+		CE8430132800C96C00775255 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8430122800C96C00775255 /* LoginViewController.swift */; };
 		CECE356A27FEEF3F004B64DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE356927FEEF3F004B64DC /* AppDelegate.swift */; };
 		CECE356C27FEEF3F004B64DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE356B27FEEF3F004B64DC /* SceneDelegate.swift */; };
 		CECE356E27FEEF3F004B64DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE356D27FEEF3F004B64DC /* ViewController.swift */; };
@@ -40,9 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CE84300A2800A11500775255 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = MainView/MainViewController.swift; sourceTree = "<group>"; };
 		CE84300C2800AB3100775255 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = Assets.xcassets/logo.png; sourceTree = "<group>"; };
 		CE84300E2800AFDD00775255 /* shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shadow.png; path = Assets.xcassets/shadow.png; sourceTree = "<group>"; };
+		CE8430122800C96C00775255 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = LoginView/LoginViewController.swift; sourceTree = "<group>"; };
 		CECE356627FEEF3F004B64DC /* meet2guide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meet2guide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECE356927FEEF3F004B64DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CECE356B27FEEF3F004B64DC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -107,9 +107,9 @@
 		CECE356827FEEF3F004B64DC /* meet2guide */ = {
 			isa = PBXGroup;
 			children = (
+				CE8430122800C96C00775255 /* LoginViewController.swift */,
 				CE84300E2800AFDD00775255 /* shadow.png */,
 				CE84300C2800AB3100775255 /* logo.png */,
-				CE84300A2800A11500775255 /* MainViewController.swift */,
 				CECE356927FEEF3F004B64DC /* AppDelegate.swift */,
 				CECE356B27FEEF3F004B64DC /* SceneDelegate.swift */,
 				CECE356D27FEEF3F004B64DC /* ViewController.swift */,
@@ -279,8 +279,8 @@
 				CECE356E27FEEF3F004B64DC /* ViewController.swift in Sources */,
 				CECE356A27FEEF3F004B64DC /* AppDelegate.swift in Sources */,
 				CECE357427FEEF3F004B64DC /* meet2guide.xcdatamodeld in Sources */,
+				CE8430132800C96C00775255 /* LoginViewController.swift in Sources */,
 				CECE356C27FEEF3F004B64DC /* SceneDelegate.swift in Sources */,
-				CE84300B2800A11500775255 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
