@@ -20,6 +20,7 @@
 		CECE358427FEEF44004B64DC /* meet2guideTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE358327FEEF44004B64DC /* meet2guideTests.swift */; };
 		CECE358E27FEEF44004B64DC /* meet2guideUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE358D27FEEF44004B64DC /* meet2guideUITests.swift */; };
 		CECE359027FEEF44004B64DC /* meet2guideUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE358F27FEEF44004B64DC /* meet2guideUITestsLaunchTests.swift */; };
+		CEEEBC152802CC9E00110BFE /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEEBC142802CC9E00110BFE /* RegistrationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		CECE358927FEEF44004B64DC /* meet2guideUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = meet2guideUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECE358D27FEEF44004B64DC /* meet2guideUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meet2guideUITests.swift; sourceTree = "<group>"; };
 		CECE358F27FEEF44004B64DC /* meet2guideUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meet2guideUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CEEEBC142802CC9E00110BFE /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegistrationViewController.swift; path = RegistrationView/RegistrationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 		CECE356827FEEF3F004B64DC /* meet2guide */ = {
 			isa = PBXGroup;
 			children = (
+				CEEEBC142802CC9E00110BFE /* RegistrationViewController.swift */,
 				CE8430182800CCEB00775255 /* LoginViewController.swift */,
 				CE8430152800CCE000775255 /* logo.png */,
 				CE8430142800CCE000775255 /* shadow.png */,
@@ -276,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEEEBC152802CC9E00110BFE /* RegistrationViewController.swift in Sources */,
 				CECE356E27FEEF3F004B64DC /* ViewController.swift in Sources */,
 				CECE356A27FEEF3F004B64DC /* AppDelegate.swift in Sources */,
 				CECE357427FEEF3F004B64DC /* meet2guide.xcdatamodeld in Sources */,
