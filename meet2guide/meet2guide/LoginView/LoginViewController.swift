@@ -11,8 +11,8 @@ import PinLayout
 
 class LoginViewController: UIViewController {
     private let colorBlueCustom: UIColor = UIColor(red: 0.205, green: 0.369, blue: 0.792, alpha: 1)
-    private let textInLabble: String = "Найдите лучшие экскурсии рядом с вами"
-    private let titleLable: UILabel = UILabel()
+    private let textInLabel: String = "Найдите лучшие экскурсии рядом с вами"
+    private let titleLabel: UILabel = UILabel()
     private let logIn: UIButton = UIButton()
     private let registration: UIButton = UIButton()
     private let imageLogo: UIImage? = UIImage(named: "logo")
@@ -24,48 +24,32 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        titleLable.text = textInLabble
-        titleLable.numberOfLines = 0
-        titleLable.textAlignment = .center
-        titleLable.textColor = colorBlueCustom
-        titleLable.font = UIFont(name: "Avenir", size: 32)
-
-        configButton(logIn, "Вход", .white, colorBlueCustom)
-        configButton(registration, "Регистрация", colorBlueCustom, .white)
+        titleLabel.text = textInLabel
+        titleLabel.numberOfLines = 0
+        titleLabel.textAlignment = .center
+        titleLabel.textColor = colorBlueCustom
+        titleLabel.font = UIFont(name: "Avenir", size: 32)
         
         imageViewLogo.contentMode = .scaleAspectFill
-        imageViewLogo.transform = CGAffineTransform.identity.rotated(by: -90)
         imageViewLogo.image = imageLogo
         
         imageViewShadow.image = imageShadow
         
-        view.addSubview(titleLable)
         view.addSubview(imageViewShadow)
         view.addSubview(imageViewLogo)
+        view.addSubview(titleLabel)
+        configButton(logIn, "Вход", .white, colorBlueCustom)
+        configButton(registration, "Регистрация", colorBlueCustom, .white)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        titleLable.pin
+        titleLabel.pin
             .top(view.safeAreaInsets.top + 40)
             .left(5%)
             .right(5%)
             .sizeToFit(.width)
-        
-        imageViewLogo.pin
-            .below(of: titleLable)
-            .marginTop(6%)
-            .hCenter(10%)
-            .width(60%)
-            .height(40%)
-        
-        imageViewShadow.pin
-            .below(of: imageViewLogo)
-            .marginTop(-10)
-            .hCenter()
-            .width(60%)
-            .height(10%)
         
         logIn.pin
             .bottom(view.safeAreaInsets.bottom + 20)
@@ -81,6 +65,17 @@ class LoginViewController: UIViewController {
             .width(40%)
             .height(10%)
         
+        imageViewLogo.pin
+            .verticallyBetween(titleLabel, and: logIn).marginVertical(10%)
+            .hCenter()
+            .aspectRatio()
+
+        imageViewShadow.pin
+            .below(of: imageViewLogo)
+            .marginTop(-4%)
+            .hCenter()
+            .width(of: imageViewLogo)
+            .aspectRatio(3)
     }
     
     func configButton (_ button: UIButton, _ name: String, _ backGrColor: UIColor, _ textColor: UIColor){
