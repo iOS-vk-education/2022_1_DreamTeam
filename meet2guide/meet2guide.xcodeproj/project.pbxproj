@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3135981ED0128EA9D5C76590 /* Pods_meet2guide_meet2guideUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EC677D16E38F6021F439EF9 /* Pods_meet2guide_meet2guideUITests.framework */; };
+		8D2093EEE5AB2A6E189309C1 /* Pods_meet2guide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684DF54CF04EA7FD4E8A86F1 /* Pods_meet2guide.framework */; };
 		CE8430162800CCE000775255 /* shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8430142800CCE000775255 /* shadow.png */; };
 		CE8430172800CCE000775255 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8430152800CCE000775255 /* logo.png */; };
 		CE8430192800CCEB00775255 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8430182800CCEB00775255 /* LoginViewController.swift */; };
 		CE84301C2800CD2400775255 /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = CE84301B2800CD2400775255 /* PinLayout */; };
+		CE92CC4728080AED00803928 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92CC4628080AED00803928 /* MapViewController.swift */; };
 		CECE356A27FEEF3F004B64DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE356927FEEF3F004B64DC /* AppDelegate.swift */; };
 		CECE356C27FEEF3F004B64DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE356B27FEEF3F004B64DC /* SceneDelegate.swift */; };
 		CECE356E27FEEF3F004B64DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE356D27FEEF3F004B64DC /* ViewController.swift */; };
@@ -21,6 +24,7 @@
 		CECE358E27FEEF44004B64DC /* meet2guideUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE358D27FEEF44004B64DC /* meet2guideUITests.swift */; };
 		CECE359027FEEF44004B64DC /* meet2guideUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE358F27FEEF44004B64DC /* meet2guideUITestsLaunchTests.swift */; };
 		CEEEBC152802CC9E00110BFE /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEEBC142802CC9E00110BFE /* RegistrationViewController.swift */; };
+		DD9E09CC17677B19419F112B /* Pods_meet2guideTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD37CC10CDDA641D8F550A3 /* Pods_meet2guideTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,9 +45,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1FD37CC10CDDA641D8F550A3 /* Pods_meet2guideTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_meet2guideTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		505C309590F55C1B3F17BADC /* Pods-meet2guideTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meet2guideTests.debug.xcconfig"; path = "Target Support Files/Pods-meet2guideTests/Pods-meet2guideTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5EC677D16E38F6021F439EF9 /* Pods_meet2guide_meet2guideUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_meet2guide_meet2guideUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		684DF54CF04EA7FD4E8A86F1 /* Pods_meet2guide.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_meet2guide.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8076D611E3DFA968BD01BF18 /* Pods-meet2guide-meet2guideUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meet2guide-meet2guideUITests.release.xcconfig"; path = "Target Support Files/Pods-meet2guide-meet2guideUITests/Pods-meet2guide-meet2guideUITests.release.xcconfig"; sourceTree = "<group>"; };
+		834709DC2F2E83E6B27B54AB /* Pods-meet2guide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meet2guide.debug.xcconfig"; path = "Target Support Files/Pods-meet2guide/Pods-meet2guide.debug.xcconfig"; sourceTree = "<group>"; };
+		8D2CCF311EE8B05A4F37C182 /* Pods-meet2guide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meet2guide.release.xcconfig"; path = "Target Support Files/Pods-meet2guide/Pods-meet2guide.release.xcconfig"; sourceTree = "<group>"; };
+		AD156684B65565EF5C7E1627 /* Pods-meet2guide-meet2guideUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meet2guide-meet2guideUITests.debug.xcconfig"; path = "Target Support Files/Pods-meet2guide-meet2guideUITests/Pods-meet2guide-meet2guideUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B3C9A1F24160576C7FA9EC68 /* Pods-meet2guideTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meet2guideTests.release.xcconfig"; path = "Target Support Files/Pods-meet2guideTests/Pods-meet2guideTests.release.xcconfig"; sourceTree = "<group>"; };
 		CE8430142800CCE000775255 /* shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shadow.png; path = Assets.xcassets/shadow.png; sourceTree = "<group>"; };
 		CE8430152800CCE000775255 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = Assets.xcassets/logo.png; sourceTree = "<group>"; };
 		CE8430182800CCEB00775255 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = LoginView/LoginViewController.swift; sourceTree = "<group>"; };
+		CE92CC4628080AED00803928 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = MapView/MapViewController.swift; sourceTree = "<group>"; };
 		CECE356627FEEF3F004B64DC /* meet2guide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meet2guide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECE356927FEEF3F004B64DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CECE356B27FEEF3F004B64DC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +80,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE84301C2800CD2400775255 /* PinLayout in Frameworks */,
+				8D2093EEE5AB2A6E189309C1 /* Pods_meet2guide.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD9E09CC17677B19419F112B /* Pods_meet2guideTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,12 +96,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3135981ED0128EA9D5C76590 /* Pods_meet2guide_meet2guideUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B76F6CAF953A7D6EE0959B68 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				684DF54CF04EA7FD4E8A86F1 /* Pods_meet2guide.framework */,
+				5EC677D16E38F6021F439EF9 /* Pods_meet2guide_meet2guideUITests.framework */,
+				1FD37CC10CDDA641D8F550A3 /* Pods_meet2guideTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CECE355D27FEEF3F004B64DC = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +120,8 @@
 				CECE358227FEEF44004B64DC /* meet2guideTests */,
 				CECE358C27FEEF44004B64DC /* meet2guideUITests */,
 				CECE356727FEEF3F004B64DC /* Products */,
+				FADAF6B2756B1972502EE690 /* Pods */,
+				B76F6CAF953A7D6EE0959B68 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +138,7 @@
 		CECE356827FEEF3F004B64DC /* meet2guide */ = {
 			isa = PBXGroup;
 			children = (
+				CE92CC4628080AED00803928 /* MapViewController.swift */,
 				CEEEBC142802CC9E00110BFE /* RegistrationViewController.swift */,
 				CE8430182800CCEB00775255 /* LoginViewController.swift */,
 				CE8430152800CCE000775255 /* logo.png */,
@@ -141,6 +171,19 @@
 			path = meet2guideUITests;
 			sourceTree = "<group>";
 		};
+		FADAF6B2756B1972502EE690 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				834709DC2F2E83E6B27B54AB /* Pods-meet2guide.debug.xcconfig */,
+				8D2CCF311EE8B05A4F37C182 /* Pods-meet2guide.release.xcconfig */,
+				AD156684B65565EF5C7E1627 /* Pods-meet2guide-meet2guideUITests.debug.xcconfig */,
+				8076D611E3DFA968BD01BF18 /* Pods-meet2guide-meet2guideUITests.release.xcconfig */,
+				505C309590F55C1B3F17BADC /* Pods-meet2guideTests.debug.xcconfig */,
+				B3C9A1F24160576C7FA9EC68 /* Pods-meet2guideTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -148,9 +191,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CECE359327FEEF44004B64DC /* Build configuration list for PBXNativeTarget "meet2guide" */;
 			buildPhases = (
+				BE814FB5812E2ACDAFE169DC /* [CP] Check Pods Manifest.lock */,
 				CECE356227FEEF3F004B64DC /* Sources */,
 				CECE356327FEEF3F004B64DC /* Frameworks */,
 				CECE356427FEEF3F004B64DC /* Resources */,
+				A654985E671BC1B9C68EB9FB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -168,6 +213,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CECE359627FEEF44004B64DC /* Build configuration list for PBXNativeTarget "meet2guideTests" */;
 			buildPhases = (
+				AA655C1E18AF80566854A20D /* [CP] Check Pods Manifest.lock */,
 				CECE357B27FEEF44004B64DC /* Sources */,
 				CECE357C27FEEF44004B64DC /* Frameworks */,
 				CECE357D27FEEF44004B64DC /* Resources */,
@@ -186,9 +232,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CECE359927FEEF44004B64DC /* Build configuration list for PBXNativeTarget "meet2guideUITests" */;
 			buildPhases = (
+				F35A8DF46114DD36C72CB8DA /* [CP] Check Pods Manifest.lock */,
 				CECE358527FEEF44004B64DC /* Sources */,
 				CECE358627FEEF44004B64DC /* Frameworks */,
 				CECE358727FEEF44004B64DC /* Resources */,
+				9331491E41D2AA5884561E1F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -274,6 +322,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		9331491E41D2AA5884561E1F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-meet2guide-meet2guideUITests/Pods-meet2guide-meet2guideUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-meet2guide-meet2guideUITests/Pods-meet2guide-meet2guideUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-meet2guide-meet2guideUITests/Pods-meet2guide-meet2guideUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A654985E671BC1B9C68EB9FB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-meet2guide/Pods-meet2guide-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-meet2guide/Pods-meet2guide-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-meet2guide/Pods-meet2guide-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AA655C1E18AF80566854A20D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-meet2guideTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BE814FB5812E2ACDAFE169DC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-meet2guide-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F35A8DF46114DD36C72CB8DA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-meet2guide-meet2guideUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CECE356227FEEF3F004B64DC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -285,6 +436,7 @@
 				CECE357427FEEF3F004B64DC /* meet2guide.xcdatamodeld in Sources */,
 				CE8430192800CCEB00775255 /* LoginViewController.swift in Sources */,
 				CECE356C27FEEF3F004B64DC /* SceneDelegate.swift in Sources */,
+				CE92CC4728080AED00803928 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +602,7 @@
 		};
 		CECE359427FEEF44004B64DC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 834709DC2F2E83E6B27B54AB /* Pods-meet2guide.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -476,6 +629,7 @@
 		};
 		CECE359527FEEF44004B64DC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D2CCF311EE8B05A4F37C182 /* Pods-meet2guide.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -502,6 +656,7 @@
 		};
 		CECE359727FEEF44004B64DC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 505C309590F55C1B3F17BADC /* Pods-meet2guideTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -521,6 +676,7 @@
 		};
 		CECE359827FEEF44004B64DC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3C9A1F24160576C7FA9EC68 /* Pods-meet2guideTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -540,6 +696,7 @@
 		};
 		CECE359A27FEEF44004B64DC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD156684B65565EF5C7E1627 /* Pods-meet2guide-meet2guideUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -557,6 +714,7 @@
 		};
 		CECE359B27FEEF44004B64DC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8076D611E3DFA968BD01BF18 /* Pods-meet2guide-meet2guideUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
