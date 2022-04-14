@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE2E836928082CBC00CBF2BA /* GosistTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2E836828082CBB00CBF2BA /* GosistTourViewController.swift */; };
 		3135981ED0128EA9D5C76590 /* Pods_meet2guide_meet2guideUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EC677D16E38F6021F439EF9 /* Pods_meet2guide_meet2guideUITests.framework */; };
 		8D2093EEE5AB2A6E189309C1 /* Pods_meet2guide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684DF54CF04EA7FD4E8A86F1 /* Pods_meet2guide.framework */; };
 		CE8430162800CCE000775255 /* shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8430142800CCE000775255 /* shadow.png */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE2E836828082CBB00CBF2BA /* GosistTourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GosistTourViewController.swift; path = GosistTour/GosistTourViewController.swift; sourceTree = "<group>"; };
 		1FD37CC10CDDA641D8F550A3 /* Pods_meet2guideTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_meet2guideTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		505C309590F55C1B3F17BADC /* Pods-meet2guideTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meet2guideTests.debug.xcconfig"; path = "Target Support Files/Pods-meet2guideTests/Pods-meet2guideTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5EC677D16E38F6021F439EF9 /* Pods_meet2guide_meet2guideUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_meet2guide_meet2guideUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,6 +140,7 @@
 		CECE356827FEEF3F004B64DC /* meet2guide */ = {
 			isa = PBXGroup;
 			children = (
+				CE2E836828082CBB00CBF2BA /* GosistTourViewController.swift */,
 				CE92CC4628080AED00803928 /* MapViewController.swift */,
 				CEEEBC142802CC9E00110BFE /* RegistrationViewController.swift */,
 				CE8430182800CCEB00775255 /* LoginViewController.swift */,
@@ -434,6 +437,7 @@
 				CECE356E27FEEF3F004B64DC /* ViewController.swift in Sources */,
 				CECE356A27FEEF3F004B64DC /* AppDelegate.swift in Sources */,
 				CECE357427FEEF3F004B64DC /* meet2guide.xcdatamodeld in Sources */,
+				CE2E836928082CBC00CBF2BA /* GosistTourViewController.swift in Sources */,
 				CE8430192800CCEB00775255 /* LoginViewController.swift in Sources */,
 				CECE356C27FEEF3F004B64DC /* SceneDelegate.swift in Sources */,
 				CE92CC4728080AED00803928 /* MapViewController.swift in Sources */,
