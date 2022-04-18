@@ -15,6 +15,7 @@
 		CE8430192800CCEB00775255 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8430182800CCEB00775255 /* LoginViewController.swift */; };
 		CE84301C2800CD2400775255 /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = CE84301B2800CD2400775255 /* PinLayout */; };
 		CE92CC4728080AED00803928 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92CC4628080AED00803928 /* MapViewController.swift */; };
+		CEB083112809F31B009FE4A1 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB083102809F31A009FE4A1 /* LoginPresenter.swift */; };
 		CECE356A27FEEF3F004B64DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE356927FEEF3F004B64DC /* AppDelegate.swift */; };
 		CECE356C27FEEF3F004B64DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE356B27FEEF3F004B64DC /* SceneDelegate.swift */; };
 		CECE356E27FEEF3F004B64DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE356D27FEEF3F004B64DC /* ViewController.swift */; };
@@ -60,6 +61,7 @@
 		CE8430152800CCE000775255 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = Assets.xcassets/logo.png; sourceTree = "<group>"; };
 		CE8430182800CCEB00775255 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = LoginView/LoginViewController.swift; sourceTree = "<group>"; };
 		CE92CC4628080AED00803928 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = MapView/MapViewController.swift; sourceTree = "<group>"; };
+		CEB083102809F31A009FE4A1 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginPresenter.swift; path = LoginView/LoginPresenter.swift; sourceTree = "<group>"; };
 		CECE356627FEEF3F004B64DC /* meet2guide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meet2guide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECE356927FEEF3F004B64DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CECE356B27FEEF3F004B64DC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				CECE357727FEEF43004B64DC /* LaunchScreen.storyboard */,
 				CECE357A27FEEF43004B64DC /* Info.plist */,
 				CECE357227FEEF3F004B64DC /* meet2guide.xcdatamodeld */,
+				CEB083102809F31A009FE4A1 /* LoginPresenter.swift */,
 			);
 			path = meet2guide;
 			sourceTree = "<group>";
@@ -440,6 +443,7 @@
 				CE2E836928082CBC00CBF2BA /* GosistTourViewController.swift in Sources */,
 				CE8430192800CCEB00775255 /* LoginViewController.swift in Sources */,
 				CECE356C27FEEF3F004B64DC /* SceneDelegate.swift in Sources */,
+				CEB083112809F31B009FE4A1 /* LoginPresenter.swift in Sources */,
 				CE92CC4728080AED00803928 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

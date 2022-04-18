@@ -9,6 +9,10 @@ import Foundation
 import UIKit
 import PinLayout
 
+protocol LoginViewControllerProtocol: AnyObject {
+    func open(_ titleView: String)
+}
+
 class LoginViewController: UIViewController {
     private let colorBlueCustom: UIColor = UIColor(red: 0.205, green: 0.369, blue: 0.792, alpha: 1)
     private let textInLabel: String = "Найдите лучшие экскурсии рядом с вами"
@@ -16,10 +20,19 @@ class LoginViewController: UIViewController {
     private let logIn: UIButton = UIButton()
     private let registration: UIButton = UIButton()
     private let imageLogo: UIImage? = UIImage(named: "logo")
-    private let imageViewLogo: UIImageView = UIImageView();
+    private let imageViewLogo: UIImageView = UIImageView()
     private let imageShadow: UIImage? = UIImage(named: "shadow")
-    private let imageViewShadow: UIImageView = UIImageView();
+    private let imageViewShadow: UIImageView = UIImageView()
+    private var loginPresenter: LoginPresenterProtocol?
 
+    @objc func loginButtonAction() {
+        loginPresenter?.didLoginButtonTapped()
+    }
+    
+    @objc func registrationButtonAction() {
+        loginPresenter?.didRegistrationButtonTapped()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -38,15 +51,16 @@ class LoginViewController: UIViewController {
         view.addSubview(imageViewShadow)
         view.addSubview(imageViewLogo)
         view.addSubview(titleLabel)
-        configButton(logIn, "Вход", .white, colorBlueCustom)
-        configButton(registration, "Регистрация", colorBlueCustom, .white)
+        configButton(logIn, "Вход", .white, colorBlueCustom, #selector(loginButtonAction))
+        configButton(registration, "Регистрация", colorBlueCustom, .white, #selector(registrationButtonAction))
+        loginPresenter = LoginPresenter(view: self)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-
+    
         titleLabel.pin
-            .top(view.safeAreaInsets.top + 40)
+            .top(view.safeAreaInsets.top)
             .left(5%)
             .right(5%)
             .sizeToFit(.width)
@@ -78,7 +92,7 @@ class LoginViewController: UIViewController {
             .aspectRatio(3)
     }
     
-    func configButton (_ button: UIButton, _ name: String, _ backGrColor: UIColor, _ textColor: UIColor){
+    func configButton (_ button: UIButton, _ name: String, _ backGrColor: UIColor, _ textColor: UIColor, _ funcAction: Selector){
         button.setTitle(name, for: .normal)
         button.backgroundColor = backGrColor
         button.setTitleColor(textColor, for: .normal)
@@ -94,6 +108,15 @@ class LoginViewController: UIViewController {
         button.layer.shadowOpacity = 1
         button.clipsToBounds = true
         button.layer.masksToBounds = false
+        button.addTarget(self, action: funcAction, for: .touchUpInside)
         view.addSubview(button)
+    }
+}
+
+extension LoginViewController: LoginViewControllerProtocol {
+    func open(_ titleView: String){
+        let registrationView = RegistrationViewController()
+        registrationView.configTitle(with: titleView)
+        self.navigationController?.pushViewController(registrationView, animated: true)
     }
 }
