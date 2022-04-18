@@ -6,8 +6,13 @@ struct UserConfig {
     var textIn: String?
 }
 
+protocol InfoUserView: AnyObject {
+    func reloadData(with user: User)
+}
 
-class InfoUserViewController: UIViewController {
+
+class InfoUserViewController: UIViewController, InfoUserView {
+    var output: InfoUserPresenterProtocol?
     
     private let label: UILabel = UILabel()
     
@@ -18,6 +23,7 @@ class InfoUserViewController: UIViewController {
     private var tableViewUserConfiguration: UITableView = UITableView()
     
     private var userConfiguration: [UserConfig] = [UserConfig(title: "Имя", textIn: "Иван"), UserConfig(title: "Фамилия", textIn: "Иванов"), UserConfig(title: "Телефон", textIn: "8 (800) 555-35-35"), UserConfig(title: "Почта", textIn: "pochta@bmstu.student.ru")]
+    
     
     private let titleView = "Информация"
     
@@ -37,6 +43,7 @@ class InfoUserViewController: UIViewController {
         setUpTableViewUserConfiguration()
         
         setUpSaveButton()
+        output?.didLoadView()
     }
     
     private func setUpLabel() {
@@ -94,6 +101,13 @@ class InfoUserViewController: UIViewController {
     private func clickedSaveButton() {
     }
     
+    func reloadData(with user: User) {
+        userConfiguration[0].textIn = user.name
+        userConfiguration[1].textIn = user.surname
+        userConfiguration[2].textIn = user.phone
+        userConfiguration[3].textIn = user.email
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -101,7 +115,8 @@ class InfoUserViewController: UIViewController {
         
         label
             .pin
-            .top(view.safeAreaInsets.top + 40)
+            .top(0)
+            .margin(20)
             .hCenter()
             .sizeToFit()
         
@@ -143,8 +158,6 @@ extension InfoUserViewController: UITableViewDelegate, UITableViewDataSource {
         cell?.configure(with: userConfiguration[indexPath.row])
         
         cell?.selectionStyle = UITableViewCell.SelectionStyle.none
-        
-        //cell?.isUserInteractionEnabled = false
         
         return cell ?? .init()
     }

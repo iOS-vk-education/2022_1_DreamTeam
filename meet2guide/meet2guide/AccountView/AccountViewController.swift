@@ -6,9 +6,15 @@ struct Function {
     let image: UIImage?
 }
 
-class AccountViewController: UIViewController {
-    
-    private let scroll: UIScrollView = UIScrollView()
+
+
+protocol AccountView: AnyObject {
+    func reloadData(with user: User)
+    func openInfoUser()
+}
+
+class AccountViewController: UIViewController, AccountView {
+    var output: AccountPresenterProtocol?
     
     private var functionsTableView: UITableView = UITableView()
     
@@ -40,16 +46,13 @@ class AccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(scroll)
-        scroll.contentSize = CGSize(width: (self.view.window?.frame.width ?? 310), height: 840)
-        
         setUpUserAvatar()
         
         setUpUserName()
         
         setUpUserLocation()
         
-        scroll.addSubview(ratingView)
+        view.addSubview(ratingView)
         
         setUpStar()
         
@@ -60,6 +63,7 @@ class AccountViewController: UIViewController {
         functionsTableView.separatorStyle = .none
         
         setUpMenu()
+        output?.didLoadView()
         
     }
     
@@ -68,7 +72,7 @@ class AccountViewController: UIViewController {
         userAvatar.layer.cornerRadius = 65
         userAvatar.clipsToBounds = true
         
-        scroll.addSubview(userAvatar)
+        view.addSubview(userAvatar)
     }
     
     private func setUpUserName() {
@@ -77,7 +81,7 @@ class AccountViewController: UIViewController {
         userNameLabel.font = UIFont(name: "Montserrat-Regular", size: 26)
         userNameLabel.textAlignment = .center
         
-        scroll.addSubview(userNameLabel)
+        view.addSubview(userNameLabel)
     }
     
     private func setUpUserLocation() {
@@ -86,7 +90,7 @@ class AccountViewController: UIViewController {
         userLocationLabel.font = UIFont(name: "Montserrat-Bold", size: 16)
         userLocationLabel.textAlignment = .center
         
-        scroll.addSubview(userLocationLabel)
+        view.addSubview(userLocationLabel)
     }
     
     private func setUpStar() {
@@ -110,7 +114,7 @@ class AccountViewController: UIViewController {
         functionsTableView.dataSource = self
         functionsTableView.register(AccountCell.self, forCellReuseIdentifier: "AccountCell")
         
-        scroll.addSubview(functionsTableView)
+        view.addSubview(functionsTableView)
     }
     
     private func setUpMenu() {
@@ -130,11 +134,22 @@ class AccountViewController: UIViewController {
         view.addSubview(tabBar)
     }
     
+    func reloadData(with user: User) {
+        userNameLabel.text = user.name + " " + user.surname
+        userAvatar.image = user.image
+        ratingLabel.text = String(user.rating)
+    }
+    
+    func openInfoUser() {
+        let infoUserViewController = InfoUserAssembler.make()
+        let navigationController = UINavigationController(rootViewController: infoUserViewController)
+        present(navigationController, animated: true, completion: nil)
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         view.backgroundColor = .systemBackground
-        scroll.pin.width(self.view.window?.frame.width ?? 600).height(self.view.window?.frame.height ?? 600).left(0).top(0)
         userAvatar.pin
             .top(view.safeAreaInsets.top + 60)
             .height(128)
@@ -168,7 +183,7 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AccountCell", for: indexPath) as? AccountCell
         
-        cell?.configure(with: functions[indexPath.row])
+        cell?.configure(with: (functions[indexPath.row]))
         
         return cell ?? .init()
     }
@@ -180,5 +195,8 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         100
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        output?.didRowSelect(indexPath: indexPath)
+    }
 }
-
