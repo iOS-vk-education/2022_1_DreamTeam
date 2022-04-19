@@ -1,0 +1,23 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'meet2guide' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Облегчённая библиотека, содержит только карту, слой пробок, 
+  # LocationManager, UserLocationLayer и возможность скачивать оффлайн карты (только в платной версии).
+  pod 'YandexMapsMobile', '4.0.0-lite'
+
+  # Pods for meet2guide
+
+  target 'meet2guideTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'meet2guideUITests' do
+    # Pods for testing
+  end
+
+end

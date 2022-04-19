@@ -56,3 +56,7 @@ WebSocket - протокол для чатов
 # Ссылка на макеты:
 
 * [**Макеты**](https://www.figma.com/file/O3Z7elDGJtDZdVe0DSDtZo/ProjectDreamTeam?node-id=0%3A1)
+
+# Лицензии:
+
+* [**Яндекс карты**](https://yandex.ru/legal/maps_termsofuse)

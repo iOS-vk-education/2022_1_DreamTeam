@@ -13,3 +13,8 @@ meet2guide/*.DS_Store
 meet2guide/meet2guide/*.DS_Store
 meet2guide/meet2guide.xcodeproj/xcuserdata
 meet2guide/meet2guide.xcodeproj/project.xcworkspace/xcuserdata
+meet2guide/meet2guide.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
+meet2guide/Pods
+meet2guide/Pods/
+meet2guide/Pods/*
+meet2guide/Podfile.lock
