@@ -7,11 +7,12 @@ class MainTabBarController: UITabBarController, MainTabBar {
     var output: MainTabBarPresenterProtocol?
     
     override func viewDidLoad() {
+        tabBar.backgroundColor = .systemBackground
         let accountView = AccountAssembler.make()
         let accountPage = UINavigationController(rootViewController: accountView)
         
-        let accountView2 = AccountAssembler.make()
-        let accountPage2 = UINavigationController(rootViewController: accountView2)
+        let mapView = MapAssembler.make()
+        let mapPage = UINavigationController(rootViewController: mapView)
         
         let accountView3 = AccountAssembler.make()
         let accountPage3 = UINavigationController(rootViewController: accountView3)
@@ -19,7 +20,7 @@ class MainTabBarController: UITabBarController, MainTabBar {
         let accountView4 = AccountAssembler.make()
         let accountPage4 = UINavigationController(rootViewController: accountView4)
         
-        setViewControllers([accountPage2, accountPage3, accountPage4, accountPage], animated: true)
+        setViewControllers([mapPage, accountPage3, accountPage4, accountPage], animated: true)
         
         self.tabBar.items?[0].image = UIImage(systemName: "map")
         self.tabBar.items?[1].image = UIImage(systemName: "list.bullet")

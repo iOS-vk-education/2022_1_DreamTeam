@@ -13,7 +13,6 @@
 		CE8430162800CCE000775255 /* shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8430142800CCE000775255 /* shadow.png */; };
 		CE8430172800CCE000775255 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8430152800CCE000775255 /* logo.png */; };
 		CE8430192800CCEB00775255 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8430182800CCEB00775255 /* LoginViewController.swift */; };
-		CE84301C2800CD2400775255 /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = CE84301B2800CD2400775255 /* PinLayout */; };
 		CE92CC4728080AED00803928 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92CC4628080AED00803928 /* MapViewController.swift */; };
 		CECE356A27FEEF3F004B64DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE356927FEEF3F004B64DC /* AppDelegate.swift */; };
 		CECE356C27FEEF3F004B64DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE356B27FEEF3F004B64DC /* SceneDelegate.swift */; };
@@ -29,6 +28,9 @@
 		F422628E280FE5540041C2FA /* MainTabBarConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F422628D280FE5540041C2FA /* MainTabBarConroller.swift */; };
 		F4226290280FE6840041C2FA /* MainTabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F422628F280FE6840041C2FA /* MainTabBarPresenter.swift */; };
 		F4226292280FE6FF0041C2FA /* MainTabBarMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4226291280FE6FF0041C2FA /* MainTabBarMake.swift */; };
+		F42262A2281003E50041C2FA /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = F42262A1281003E50041C2FA /* PinLayout */; };
+		F42262A7281006140041C2FA /* MapMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42262A42810060B0041C2FA /* MapMake.swift */; };
+		F42262A8281006140041C2FA /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42262A52810060B0041C2FA /* MapPresenter.swift */; };
 		F47F843E280DCFF800C51C0E /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F47F843B280DCFF800C51C0E /* Montserrat-Bold.ttf */; };
 		F47F843F280DCFF800C51C0E /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F47F843C280DCFF800C51C0E /* Montserrat-Medium.ttf */; };
 		F47F8440280DCFF800C51C0E /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F47F843D280DCFF800C51C0E /* Montserrat-Regular.ttf */; };
@@ -94,6 +96,9 @@
 		F422628D280FE5540041C2FA /* MainTabBarConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarConroller.swift; sourceTree = "<group>"; };
 		F422628F280FE6840041C2FA /* MainTabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarPresenter.swift; sourceTree = "<group>"; };
 		F4226291280FE6FF0041C2FA /* MainTabBarMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarMake.swift; sourceTree = "<group>"; };
+		F42262A42810060B0041C2FA /* MapMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMake.swift; sourceTree = "<group>"; };
+		F42262A52810060B0041C2FA /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
+		F42262A62810060B0041C2FA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		F47F843B280DCFF800C51C0E /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Bold.ttf"; path = "meet2guide/fonts/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		F47F843C280DCFF800C51C0E /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Medium.ttf"; path = "meet2guide/fonts/Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		F47F843D280DCFF800C51C0E /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Regular.ttf"; path = "meet2guide/fonts/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
@@ -115,7 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE84301C2800CD2400775255 /* PinLayout in Frameworks */,
+				F42262A2281003E50041C2FA /* PinLayout in Frameworks */,
 				8D2093EEE5AB2A6E189309C1 /* Pods_meet2guide.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -177,6 +182,7 @@
 		CECE356827FEEF3F004B64DC /* meet2guide */ = {
 			isa = PBXGroup;
 			children = (
+				F42262A32810060B0041C2FA /* MapView */,
 				F422628C280FE5440041C2FA /* MainTabBar */,
 				F47F846C280DD38A00C51C0E /* User */,
 				F47F8461280DD18D00C51C0E /* InfoUser */,
@@ -223,6 +229,16 @@
 				F4226291280FE6FF0041C2FA /* MainTabBarMake.swift */,
 			);
 			path = MainTabBar;
+			sourceTree = "<group>";
+		};
+		F42262A32810060B0041C2FA /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				F42262A42810060B0041C2FA /* MapMake.swift */,
+				F42262A52810060B0041C2FA /* MapPresenter.swift */,
+				F42262A62810060B0041C2FA /* MapViewController.swift */,
+			);
+			path = MapView;
 			sourceTree = "<group>";
 		};
 		F47F8456280DD14C00C51C0E /* AccountView */ = {
@@ -289,7 +305,7 @@
 			);
 			name = meet2guide;
 			packageProductDependencies = (
-				CE84301B2800CD2400775255 /* PinLayout */,
+				F42262A1281003E50041C2FA /* PinLayout */,
 			);
 			productName = meet2guide;
 			productReference = CECE356627FEEF3F004B64DC /* meet2guide.app */;
@@ -367,7 +383,7 @@
 			);
 			mainGroup = CECE355D27FEEF3F004B64DC;
 			packageReferences = (
-				CE84301A2800CD2400775255 /* XCRemoteSwiftPackageReference "PinLayout" */,
+				F42262A0281003E50041C2FA /* XCRemoteSwiftPackageReference "PinLayout" */,
 			);
 			productRefGroup = CECE356727FEEF3F004B64DC /* Products */;
 			projectDirPath = "";
@@ -519,6 +535,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F42262A7281006140041C2FA /* MapMake.swift in Sources */,
+				F42262A8281006140041C2FA /* MapPresenter.swift in Sources */,
 				F47F8467280DD19400C51C0E /* InfoUserMake.swift in Sources */,
 				F422628E280FE5540041C2FA /* MainTabBarConroller.swift in Sources */,
 				F47F8468280DD19400C51C0E /* InfoUserModel.swift in Sources */,
@@ -876,7 +894,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		CE84301A2800CD2400775255 /* XCRemoteSwiftPackageReference "PinLayout" */ = {
+		F42262A0281003E50041C2FA /* XCRemoteSwiftPackageReference "PinLayout" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/layoutBox/PinLayout";
 			requirement = {
@@ -887,9 +905,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		CE84301B2800CD2400775255 /* PinLayout */ = {
+		F42262A1281003E50041C2FA /* PinLayout */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CE84301A2800CD2400775255 /* XCRemoteSwiftPackageReference "PinLayout" */;
+			package = F42262A0281003E50041C2FA /* XCRemoteSwiftPackageReference "PinLayout" */;
 			productName = PinLayout;
 		};
 /* End XCSwiftPackageProductDependency section */
