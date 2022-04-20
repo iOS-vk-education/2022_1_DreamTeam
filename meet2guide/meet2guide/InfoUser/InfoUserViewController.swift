@@ -14,7 +14,7 @@ protocol InfoUserView: AnyObject {
 class InfoUserViewController: UIViewController, InfoUserView {
     var output: InfoUserPresenterProtocol?
     
-    private let label: UILabel = UILabel()
+    //private let label: UILabel = UILabel()
     
     private var userAvatar: UIImageView = UIImageView()
     
@@ -34,7 +34,10 @@ class InfoUserViewController: UIViewController, InfoUserView {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUpLabel()
+        //setUpLabel()
+        self.title = "Информация"
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(clickedCloseButton))
         
         setUpUserAvatar()
         
@@ -46,13 +49,18 @@ class InfoUserViewController: UIViewController, InfoUserView {
         output?.didLoadView()
     }
     
+    @objc
+    private func clickedCloseButton() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    /*
     private func setUpLabel() {
         label.text = titleView
         label.font = UIFont(name: "Montserrat-Regular", size: 36)
         label.textColor = colorBlue
         
         view.addSubview(label)
-    }
+    }*/
     
     private func setUpUserAvatar() {
         userAvatar.image = UIImage(systemName: "person")
@@ -113,16 +121,17 @@ class InfoUserViewController: UIViewController, InfoUserView {
         
         view.backgroundColor = .systemBackground
         
-        label
+        /*label
             .pin
             .top(0)
             .margin(20)
             .hCenter()
-            .sizeToFit()
+            .sizeToFit()*/
         
         userAvatar
             .pin
-            .topCenter(to: label.anchor.bottomCenter).margin(40)
+            .top(view.safeAreaInsets.top)
+            .margin(40)
             .height(275)
             .width(275)
             .hCenter()

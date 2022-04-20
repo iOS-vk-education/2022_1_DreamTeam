@@ -37,12 +37,6 @@ class AccountViewController: UIViewController, AccountView {
         Function(title: "Add a tour", image: UIImage(systemName: "bell.fill")),
         Function(title: "Messages", image: UIImage(systemName: "message.fill"))]
     
-    private let tabBar: UITabBar = UITabBar()
-    private let mapTabBarItem: UITabBarItem = UITabBarItem()
-    private let favoriteTabBarItem: UITabBarItem = UITabBarItem()
-    private let accountTabBarItem: UITabBarItem = UITabBarItem()
-    private let searchTabBarItem: UITabBarItem = UITabBarItem()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,7 +56,6 @@ class AccountViewController: UIViewController, AccountView {
         
         functionsTableView.separatorStyle = .none
         
-        setUpMenu()
         output?.didLoadView()
         
     }
@@ -117,23 +110,6 @@ class AccountViewController: UIViewController, AccountView {
         view.addSubview(functionsTableView)
     }
     
-    private func setUpMenu() {
-        mapTabBarItem.image = UIImage(systemName: "map")
-        favoriteTabBarItem.image = UIImage(systemName: "star")
-        accountTabBarItem.image = UIImage(systemName: "person")
-        searchTabBarItem.image = UIImage(systemName: "list.bullet")
-                
-        mapTabBarItem.title = "карта"
-        favoriteTabBarItem.title = "избранное"
-        accountTabBarItem.title = "аккаунт"
-        searchTabBarItem.title = "поиск"
-        
-        tabBar.setItems([mapTabBarItem, searchTabBarItem, favoriteTabBarItem, accountTabBarItem], animated: true)
-        tabBar.selectedItem = accountTabBarItem
-        
-        view.addSubview(tabBar)
-    }
-    
     func reloadData(with user: User) {
         userNameLabel.text = user.name + " " + user.surname
         userAvatar.image = user.image
@@ -169,13 +145,6 @@ class AccountViewController: UIViewController, AccountView {
         ratingView.pin.topCenter(to: userLocationLabel.anchor.bottomCenter).margin(20).width(80)
         
         functionsTableView.pin.topCenter(to: ratingView.anchor.bottomCenter).margin(50).width((self.view.window?.frame.width ?? 310) - 60).height((self.view.window?.frame.height ?? 310) - 100)
-        tabBar.pin
-            .bottom(view.safeAreaInsets.bottom)
-            .left(0)
-            .right(0)
-            .height(30)
-            .sizeToFit(.width)
-        
     }
 }
 
@@ -198,5 +167,6 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         output?.didRowSelect(indexPath: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

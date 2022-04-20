@@ -26,6 +26,9 @@
 		CECE359027FEEF44004B64DC /* meet2guideUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE358F27FEEF44004B64DC /* meet2guideUITestsLaunchTests.swift */; };
 		CEEEBC152802CC9E00110BFE /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEEBC142802CC9E00110BFE /* RegistrationViewController.swift */; };
 		DD9E09CC17677B19419F112B /* Pods_meet2guideTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD37CC10CDDA641D8F550A3 /* Pods_meet2guideTests.framework */; };
+		F422628E280FE5540041C2FA /* MainTabBarConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F422628D280FE5540041C2FA /* MainTabBarConroller.swift */; };
+		F4226290280FE6840041C2FA /* MainTabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F422628F280FE6840041C2FA /* MainTabBarPresenter.swift */; };
+		F4226292280FE6FF0041C2FA /* MainTabBarMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4226291280FE6FF0041C2FA /* MainTabBarMake.swift */; };
 		F47F843E280DCFF800C51C0E /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F47F843B280DCFF800C51C0E /* Montserrat-Bold.ttf */; };
 		F47F843F280DCFF800C51C0E /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F47F843C280DCFF800C51C0E /* Montserrat-Medium.ttf */; };
 		F47F8440280DCFF800C51C0E /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F47F843D280DCFF800C51C0E /* Montserrat-Regular.ttf */; };
@@ -88,6 +91,9 @@
 		CECE358D27FEEF44004B64DC /* meet2guideUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meet2guideUITests.swift; sourceTree = "<group>"; };
 		CECE358F27FEEF44004B64DC /* meet2guideUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meet2guideUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CEEEBC142802CC9E00110BFE /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegistrationViewController.swift; path = RegistrationView/RegistrationViewController.swift; sourceTree = "<group>"; };
+		F422628D280FE5540041C2FA /* MainTabBarConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarConroller.swift; sourceTree = "<group>"; };
+		F422628F280FE6840041C2FA /* MainTabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarPresenter.swift; sourceTree = "<group>"; };
+		F4226291280FE6FF0041C2FA /* MainTabBarMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarMake.swift; sourceTree = "<group>"; };
 		F47F843B280DCFF800C51C0E /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Bold.ttf"; path = "meet2guide/fonts/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		F47F843C280DCFF800C51C0E /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Medium.ttf"; path = "meet2guide/fonts/Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		F47F843D280DCFF800C51C0E /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Regular.ttf"; path = "meet2guide/fonts/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
@@ -171,6 +177,7 @@
 		CECE356827FEEF3F004B64DC /* meet2guide */ = {
 			isa = PBXGroup;
 			children = (
+				F422628C280FE5440041C2FA /* MainTabBar */,
 				F47F846C280DD38A00C51C0E /* User */,
 				F47F8461280DD18D00C51C0E /* InfoUser */,
 				F47F8456280DD14C00C51C0E /* AccountView */,
@@ -206,6 +213,16 @@
 				CECE358F27FEEF44004B64DC /* meet2guideUITestsLaunchTests.swift */,
 			);
 			path = meet2guideUITests;
+			sourceTree = "<group>";
+		};
+		F422628C280FE5440041C2FA /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				F422628D280FE5540041C2FA /* MainTabBarConroller.swift */,
+				F422628F280FE6840041C2FA /* MainTabBarPresenter.swift */,
+				F4226291280FE6FF0041C2FA /* MainTabBarMake.swift */,
+			);
+			path = MainTabBar;
 			sourceTree = "<group>";
 		};
 		F47F8456280DD14C00C51C0E /* AccountView */ = {
@@ -503,6 +520,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F47F8467280DD19400C51C0E /* InfoUserMake.swift in Sources */,
+				F422628E280FE5540041C2FA /* MainTabBarConroller.swift in Sources */,
 				F47F8468280DD19400C51C0E /* InfoUserModel.swift in Sources */,
 				F47F8469280DD19400C51C0E /* InfoUserViewController.swift in Sources */,
 				F47F846A280DD19400C51C0E /* InfoUserCell.swift in Sources */,
@@ -512,6 +530,8 @@
 				F47F845E280DD15700C51C0E /* AccountPresenter.swift in Sources */,
 				F47F845F280DD15700C51C0E /* AccountMake.swift in Sources */,
 				F47F8460280DD15700C51C0E /* AccountViewController.swift in Sources */,
+				F4226290280FE6840041C2FA /* MainTabBarPresenter.swift in Sources */,
+				F4226292280FE6FF0041C2FA /* MainTabBarMake.swift in Sources */,
 				CEEEBC152802CC9E00110BFE /* RegistrationViewController.swift in Sources */,
 				CECE356E27FEEF3F004B64DC /* ViewController.swift in Sources */,
 				CECE356A27FEEF3F004B64DC /* AppDelegate.swift in Sources */,
