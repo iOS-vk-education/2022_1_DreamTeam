@@ -1,7 +1,6 @@
 import Foundation
 
 protocol AccountPresenterProtocol: AnyObject {
-    init(view: AccountView)
     func didLoadView()
     func didRowSelect(indexPath: IndexPath)
 }

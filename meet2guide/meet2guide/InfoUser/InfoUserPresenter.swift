@@ -1,7 +1,6 @@
 import Foundation
 
 protocol InfoUserPresenterProtocol: AnyObject {
-    init(view: InfoUserView)
     func didLoadView()
 }
 
