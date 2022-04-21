@@ -17,6 +17,7 @@ class RegistrationViewController: UIViewController {
     private let colorBlueCustom: UIColor = UIColor(red: 0.205, green: 0.369, blue: 0.792, alpha: 1)
     private let nextButton: UIButton = UIButton()
     private let showPasswordButton: UIButton = UIButton()
+    private let backButton = UIBarButtonItem()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,25 +51,30 @@ class RegistrationViewController: UIViewController {
         showPasswordButton.setImage(UIImage(systemName: "eye.slash"), for: .selected)
         showPasswordButton.contentHorizontalAlignment = .center
         showPasswordButton.tintColor = colorBlueCustom
+        
+        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.tintColor = colorBlueCustom
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: colorBlueCustom]
+        backButton.title = "назад"
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        title = textTitle
 
         view.addSubview(nextButton)
-        view.addSubview(titleLabel)
         passwordTextField.addSubview(showPasswordButton)
+    }
+    
+    func popToRoot(sender:UIBarButtonItem){
+        navigationController?.popToRootViewController(animated: true)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        titleLabel.pin
-            .top(view.safeAreaInsets.top + 40)
-            .left(5%)
-            .right(5%)
-            .sizeToFit(.width)
-
-        
+ 
         mailTextField.pin
-            .below(of: titleLabel)
-            .marginTop(6%)
+            .top(view.safeAreaInsets.top + 40)
             .left(5%)
             .right(5%)
             .height(10%)
@@ -116,7 +122,7 @@ class RegistrationViewController: UIViewController {
         textField.layer.borderColor = (colorBlueCustom).cgColor
         textField.returnKeyType = UIReturnKeyType.done
         textField.clipsToBounds = true
-        textField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0);
+        textField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
         view.addSubview(textField)
     }
 }
