@@ -5,6 +5,8 @@
 # —------
 *.exe
 
+*.pbxproj
+
 # Temporary
 # —------
 *.md.bak
