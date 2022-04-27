@@ -18,3 +18,4 @@ meet2guide/Pods
 meet2guide/Pods/
 meet2guide/Pods/*
 meet2guide/Podfile.lock
+*.xcuserstate
