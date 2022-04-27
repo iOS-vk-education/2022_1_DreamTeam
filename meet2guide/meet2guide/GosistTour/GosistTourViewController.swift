@@ -9,7 +9,11 @@ import Foundation
 import UIKit
 import PinLayout
 
-class GosistTourViewController: UIViewController {
+protocol GosistTourView: AnyObject {
+}
+
+class GosistTourViewController: UIViewController, GosistTourView {
+    var output: GosistTourPresenterProtocol?
     private let textTitle: String? = "Описание"
     private let titleLabel: UILabel = UILabel()
     private let colorBlueCustom: UIColor = UIColor(red: 0.205, green: 0.369, blue: 0.792, alpha: 1)
@@ -25,7 +29,7 @@ class GosistTourViewController: UIViewController {
     private var textDescription: String = "Крупнейший национальный исторический музей России. Основан в 1872 году, здание на Красной площади Москвы было построено в 1875-1883 годах по проекту архитектора Владимира Шервуда и инженера Анатолия Семёнова"
     private var tourDescriptionTextView = UITextView()
     private let addTourButton: UIButton = UIButton()
-    private let textButton: String = "ADD TO CART"
+    private let textButton: String = "Добавить"
     private var prizeValue: Double = 300.00
     
     override func viewDidLoad() {
@@ -94,6 +98,8 @@ class GosistTourViewController: UIViewController {
         
         view.addSubview(titleLabel)
     }
+    
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

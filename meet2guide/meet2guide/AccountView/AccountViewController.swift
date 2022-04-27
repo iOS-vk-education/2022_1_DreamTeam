@@ -6,8 +6,6 @@ struct Function {
     let image: UIImage?
 }
 
-
-
 protocol AccountView: AnyObject {
     func reloadData(with user: User)
     func openInfoUser()

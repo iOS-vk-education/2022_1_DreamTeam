@@ -30,6 +30,14 @@
 		F422628E280FE5540041C2FA /* MainTabBarConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F422628D280FE5540041C2FA /* MainTabBarConroller.swift */; };
 		F4226290280FE6840041C2FA /* MainTabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F422628F280FE6840041C2FA /* MainTabBarPresenter.swift */; };
 		F4226292280FE6FF0041C2FA /* MainTabBarMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4226291280FE6FF0041C2FA /* MainTabBarMake.swift */; };
+		F42262A7281006140041C2FA /* MapMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42262A42810060B0041C2FA /* MapMake.swift */; };
+		F42262A8281006140041C2FA /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42262A52810060B0041C2FA /* MapPresenter.swift */; };
+		F42262AB281011E90041C2FA /* ExcursionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42262AA281011E90041C2FA /* ExcursionCell.swift */; };
+		F42262AD281011F50041C2FA /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42262AC281011F50041C2FA /* ListViewController.swift */; };
+		F42262AF2810197D0041C2FA /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42262AE2810197D0041C2FA /* ListPresenter.swift */; };
+		F42262B1281019E30041C2FA /* ListMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42262B0281019E30041C2FA /* ListMake.swift */; };
+		F42262B328101B7D0041C2FA /* GosistTourPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42262B228101B7D0041C2FA /* GosistTourPresenter.swift */; };
+		F42262B528101BE30041C2FA /* GosistTourMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42262B428101BE30041C2FA /* GosistTourMake.swift */; };
 		F47F843E280DCFF800C51C0E /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F47F843B280DCFF800C51C0E /* Montserrat-Bold.ttf */; };
 		F47F843F280DCFF800C51C0E /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F47F843C280DCFF800C51C0E /* Montserrat-Medium.ttf */; };
 		F47F8440280DCFF800C51C0E /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F47F843D280DCFF800C51C0E /* Montserrat-Regular.ttf */; };
@@ -96,6 +104,15 @@
 		F422628D280FE5540041C2FA /* MainTabBarConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarConroller.swift; sourceTree = "<group>"; };
 		F422628F280FE6840041C2FA /* MainTabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarPresenter.swift; sourceTree = "<group>"; };
 		F4226291280FE6FF0041C2FA /* MainTabBarMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarMake.swift; sourceTree = "<group>"; };
+		F42262A42810060B0041C2FA /* MapMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMake.swift; sourceTree = "<group>"; };
+		F42262A52810060B0041C2FA /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
+		F42262A62810060B0041C2FA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		F42262AA281011E90041C2FA /* ExcursionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcursionCell.swift; sourceTree = "<group>"; };
+		F42262AC281011F50041C2FA /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		F42262AE2810197D0041C2FA /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
+		F42262B0281019E30041C2FA /* ListMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMake.swift; sourceTree = "<group>"; };
+		F42262B228101B7D0041C2FA /* GosistTourPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GosistTourPresenter.swift; sourceTree = "<group>"; };
+		F42262B428101BE30041C2FA /* GosistTourMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GosistTourMake.swift; sourceTree = "<group>"; };
 		F47F843B280DCFF800C51C0E /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Bold.ttf"; path = "meet2guide/fonts/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		F47F843C280DCFF800C51C0E /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Medium.ttf"; path = "meet2guide/fonts/Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		F47F843D280DCFF800C51C0E /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Regular.ttf"; path = "meet2guide/fonts/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
@@ -179,11 +196,15 @@
 		CECE356827FEEF3F004B64DC /* meet2guide */ = {
 			isa = PBXGroup;
 			children = (
+				F42262A9281011C70041C2FA /* ListView */,
+				F42262A32810060B0041C2FA /* MapView */,
 				F422628C280FE5440041C2FA /* MainTabBar */,
 				F47F846C280DD38A00C51C0E /* User */,
 				F47F8461280DD18D00C51C0E /* InfoUser */,
 				F47F8456280DD14C00C51C0E /* AccountView */,
 				CE2E836828082CBB00CBF2BA /* GosistTourViewController.swift */,
+				F42262B228101B7D0041C2FA /* GosistTourPresenter.swift */,
+				F42262B428101BE30041C2FA /* GosistTourMake.swift */,
 				CE92CC4628080AED00803928 /* MapViewController.swift */,
 				CEEEBC142802CC9E00110BFE /* RegistrationViewController.swift */,
 				CE8430182800CCEB00775255 /* LoginViewController.swift */,
@@ -226,6 +247,27 @@
 				F4226291280FE6FF0041C2FA /* MainTabBarMake.swift */,
 			);
 			path = MainTabBar;
+			sourceTree = "<group>";
+		};
+		F42262A32810060B0041C2FA /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				F42262A42810060B0041C2FA /* MapMake.swift */,
+				F42262A52810060B0041C2FA /* MapPresenter.swift */,
+				F42262A62810060B0041C2FA /* MapViewController.swift */,
+			);
+			path = MapView;
+			sourceTree = "<group>";
+		};
+		F42262A9281011C70041C2FA /* ListView */ = {
+			isa = PBXGroup;
+			children = (
+				F42262AA281011E90041C2FA /* ExcursionCell.swift */,
+				F42262AC281011F50041C2FA /* ListViewController.swift */,
+				F42262AE2810197D0041C2FA /* ListPresenter.swift */,
+				F42262B0281019E30041C2FA /* ListMake.swift */,
+			);
+			path = ListView;
 			sourceTree = "<group>";
 		};
 		F47F8456280DD14C00C51C0E /* AccountView */ = {
@@ -522,6 +564,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F42262A7281006140041C2FA /* MapMake.swift in Sources */,
+				F42262A8281006140041C2FA /* MapPresenter.swift in Sources */,
 				F47F8467280DD19400C51C0E /* InfoUserMake.swift in Sources */,
 				F422628E280FE5540041C2FA /* MainTabBarConroller.swift in Sources */,
 				F47F8468280DD19400C51C0E /* InfoUserModel.swift in Sources */,
@@ -529,6 +573,8 @@
 				F47F846A280DD19400C51C0E /* InfoUserCell.swift in Sources */,
 				F47F846B280DD19400C51C0E /* InfoUserPresenter.swift in Sources */,
 				F47F845C280DD15700C51C0E /* AccountModel.swift in Sources */,
+				F42262AB281011E90041C2FA /* ExcursionCell.swift in Sources */,
+				F42262AF2810197D0041C2FA /* ListPresenter.swift in Sources */,
 				F47F845D280DD15700C51C0E /* AccountCell.swift in Sources */,
 				F47F845E280DD15700C51C0E /* AccountPresenter.swift in Sources */,
 				F47F845F280DD15700C51C0E /* AccountMake.swift in Sources */,
@@ -544,7 +590,11 @@
 				CECE356C27FEEF3F004B64DC /* SceneDelegate.swift in Sources */,
 				CEB083112809F31B009FE4A1 /* LoginPresenter.swift in Sources */,
 				CE92CC4728080AED00803928 /* MapViewController.swift in Sources */,
+				F42262AD281011F50041C2FA /* ListViewController.swift in Sources */,
+				F42262B328101B7D0041C2FA /* GosistTourPresenter.swift in Sources */,
 				F47F846E280DD3AA00C51C0E /* User.swift in Sources */,
+				F42262B528101BE30041C2FA /* GosistTourMake.swift in Sources */,
+				F42262B1281019E30041C2FA /* ListMake.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
