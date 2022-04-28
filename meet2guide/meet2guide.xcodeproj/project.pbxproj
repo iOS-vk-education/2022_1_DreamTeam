@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3135981ED0128EA9D5C76590 /* Pods_meet2guide_meet2guideUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EC677D16E38F6021F439EF9 /* Pods_meet2guide_meet2guideUITests.framework */; };
+		8B55CA9F281AE09E00C2B437 /* GuideAddingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B55CA9D281AE09E00C2B437 /* GuideAddingViewController.swift */; };
+		8B55CAA0281AE09E00C2B437 /* GuideAddingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B55CA9E281AE09E00C2B437 /* GuideAddingCell.swift */; };
 		8D2093EEE5AB2A6E189309C1 /* Pods_meet2guide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684DF54CF04EA7FD4E8A86F1 /* Pods_meet2guide.framework */; };
 		CE2E836928082CBC00CBF2BA /* GosistTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2E836828082CBB00CBF2BA /* GosistTourViewController.swift */; };
 		CE8430162800CCE000775255 /* shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8430142800CCE000775255 /* shadow.png */; };
@@ -78,6 +80,8 @@
 		684DF54CF04EA7FD4E8A86F1 /* Pods_meet2guide.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_meet2guide.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8076D611E3DFA968BD01BF18 /* Pods-meet2guide-meet2guideUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meet2guide-meet2guideUITests.release.xcconfig"; path = "Target Support Files/Pods-meet2guide-meet2guideUITests/Pods-meet2guide-meet2guideUITests.release.xcconfig"; sourceTree = "<group>"; };
 		834709DC2F2E83E6B27B54AB /* Pods-meet2guide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meet2guide.debug.xcconfig"; path = "Target Support Files/Pods-meet2guide/Pods-meet2guide.debug.xcconfig"; sourceTree = "<group>"; };
+		8B55CA9D281AE09E00C2B437 /* GuideAddingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideAddingViewController.swift; sourceTree = "<group>"; };
+		8B55CA9E281AE09E00C2B437 /* GuideAddingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideAddingCell.swift; sourceTree = "<group>"; };
 		8D2CCF311EE8B05A4F37C182 /* Pods-meet2guide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meet2guide.release.xcconfig"; path = "Target Support Files/Pods-meet2guide/Pods-meet2guide.release.xcconfig"; sourceTree = "<group>"; };
 		AD156684B65565EF5C7E1627 /* Pods-meet2guide-meet2guideUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meet2guide-meet2guideUITests.debug.xcconfig"; path = "Target Support Files/Pods-meet2guide-meet2guideUITests/Pods-meet2guide-meet2guideUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B3C9A1F24160576C7FA9EC68 /* Pods-meet2guideTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meet2guideTests.release.xcconfig"; path = "Target Support Files/Pods-meet2guideTests/Pods-meet2guideTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -207,6 +211,8 @@
 				F42262B428101BE30041C2FA /* GosistTourMake.swift */,
 				CE92CC4628080AED00803928 /* MapViewController.swift */,
 				CEEEBC142802CC9E00110BFE /* RegistrationViewController.swift */,
+				8B55CA9E281AE09E00C2B437 /* GuideAddingCell.swift */,
+				8B55CA9D281AE09E00C2B437 /* GuideAddingViewController.swift */,
 				CE8430182800CCEB00775255 /* LoginViewController.swift */,
 				CE8430152800CCE000775255 /* logo.png */,
 				CE8430142800CCE000775255 /* shadow.png */,
@@ -578,6 +584,7 @@
 				F47F845D280DD15700C51C0E /* AccountCell.swift in Sources */,
 				F47F845E280DD15700C51C0E /* AccountPresenter.swift in Sources */,
 				F47F845F280DD15700C51C0E /* AccountMake.swift in Sources */,
+				8B55CA9F281AE09E00C2B437 /* GuideAddingViewController.swift in Sources */,
 				F47F8460280DD15700C51C0E /* AccountViewController.swift in Sources */,
 				F4226290280FE6840041C2FA /* MainTabBarPresenter.swift in Sources */,
 				F4226292280FE6FF0041C2FA /* MainTabBarMake.swift in Sources */,
@@ -594,6 +601,7 @@
 				F42262B328101B7D0041C2FA /* GosistTourPresenter.swift in Sources */,
 				F47F846E280DD3AA00C51C0E /* User.swift in Sources */,
 				F42262B528101BE30041C2FA /* GosistTourMake.swift in Sources */,
+				8B55CAA0281AE09E00C2B437 /* GuideAddingCell.swift in Sources */,
 				F42262B1281019E30041C2FA /* ListMake.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
