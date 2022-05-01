@@ -115,8 +115,7 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: LoginViewControllerProtocol {
     func open(_ titleView: String){
-        let registrationView = RegistrationViewController()
-        registrationView.configTitle(with: titleView)
+        let registrationView = RegistrationAssembler.make(with: titleView)
         self.navigationController?.pushViewController(registrationView, animated: true)
     }
 }

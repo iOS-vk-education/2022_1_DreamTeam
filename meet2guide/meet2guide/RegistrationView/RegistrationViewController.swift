@@ -9,7 +9,13 @@ import Foundation
 import UIKit
 import PinLayout
 
+protocol RegistrationView: AnyObject {
+    func open()
+    func showAlert(alert: UIAlertController)
+}
+
 class RegistrationViewController: UIViewController {
+    var output: RegistrationPresenterProtocol?
     private var textTitle: String? = "Регистрация"
     private let titleLabel: UILabel = UILabel()
     private let mailTextField: UITextField = UITextField()
@@ -35,7 +41,7 @@ class RegistrationViewController: UIViewController {
         nextButton.backgroundColor = colorBlueCustom
         nextButton.setTitleColor(.white, for: .normal)
         nextButton.contentHorizontalAlignment = .center
-        nextButton.titleLabel?.font =  UIFont(name: "Avenir", size: 20)
+        nextButton.titleLabel?.font =  UIFont(name: "Montserrat-Regular", size: 20)
         nextButton.layer.cornerRadius = 5
         nextButton.layer.borderWidth = 2.0
         nextButton.layer.borderColor = (colorBlueCustom).cgColor
@@ -61,6 +67,8 @@ class RegistrationViewController: UIViewController {
         backButton.title = "назад"
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         title = textTitle
+        
+        nextButton.addTarget(self, action: #selector(didTapNextButton), for: .touchUpInside)
 
         view.addSubview(nextButton)
         passwordTextField.addSubview(showPasswordButton)
@@ -68,6 +76,25 @@ class RegistrationViewController: UIViewController {
     
     func popToRoot(sender:UIBarButtonItem){
         navigationController?.popToRootViewController(animated: true)
+    }
+    
+    @objc
+    private func didTapNextButton() {
+        guard let email = mailTextField.text, !email.isEmpty else {
+            mailTextField.layer.borderColor = UIColor.red.cgColor
+            return
+        }
+        
+        guard let password = passwordTextField.text, !password.isEmpty else {
+            passwordTextField.layer.borderColor = UIColor.red.cgColor
+            return
+        }
+        
+        let user = UserData(email: email,
+                            name: "name",
+                            surname: "surname",
+                            phone: "")
+        output?.didRegistration(user: user, password: password)
     }
     
     override func viewDidLayoutSubviews() {
@@ -124,5 +151,25 @@ class RegistrationViewController: UIViewController {
         textField.clipsToBounds = true
         textField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
         view.addSubview(textField)
+    }
+}
+
+extension RegistrationViewController: RegistrationView {
+    func open() {
+        let sceneDelegate = UIApplication.shared.connectedScenes
+                        .first!.delegate as! SceneDelegate
+        
+        sceneDelegate.window!.rootViewController = MainTabBarAssembler.make()
+        sceneDelegate.window!.makeKeyAndVisible()
+        
+        UIView.transition(with: sceneDelegate.window!,
+                          duration: 0.3,
+                          options: .transitionCrossDissolve,
+                          animations: nil,
+                          completion: nil)
+    }
+    
+    func showAlert(alert: UIAlertController) {
+        self.present(alert, animated: true, completion: nil)
     }
 }

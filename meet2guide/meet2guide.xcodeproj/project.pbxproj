@@ -14,7 +14,6 @@
 		CE2E836928082CBC00CBF2BA /* GosistTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2E836828082CBB00CBF2BA /* GosistTourViewController.swift */; };
 		CE8430162800CCE000775255 /* shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8430142800CCE000775255 /* shadow.png */; };
 		CE8430172800CCE000775255 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8430152800CCE000775255 /* logo.png */; };
-		CE8430192800CCEB00775255 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8430182800CCEB00775255 /* LoginViewController.swift */; };
 		CE84301C2800CD2400775255 /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = CE84301B2800CD2400775255 /* PinLayout */; };
 		CE92CC4728080AED00803928 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92CC4628080AED00803928 /* MapViewController.swift */; };
 		CEB083112809F31B009FE4A1 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB083102809F31A009FE4A1 /* LoginPresenter.swift */; };
@@ -29,6 +28,14 @@
 		CECE359027FEEF44004B64DC /* meet2guideUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE358F27FEEF44004B64DC /* meet2guideUITestsLaunchTests.swift */; };
 		CEEEBC152802CC9E00110BFE /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEEBC142802CC9E00110BFE /* RegistrationViewController.swift */; };
 		DD9E09CC17677B19419F112B /* Pods_meet2guideTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD37CC10CDDA641D8F550A3 /* Pods_meet2guideTests.framework */; };
+		F40F1087281EF9A3003CE9AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F40F1086281EF9A3003CE9AF /* GoogleService-Info.plist */; };
+		F41AEB44281BF68E0040DF89 /* RegistrationMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41AEB41281BF6850040DF89 /* RegistrationMake.swift */; };
+		F41AEB45281BF68E0040DF89 /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41AEB42281BF6850040DF89 /* RegistrationPresenter.swift */; };
+		F41AEB50281BF6E30040DF89 /* GosistTourPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41AEB4D281BF6DE0040DF89 /* GosistTourPresenter.swift */; };
+		F41AEB51281BF6E70040DF89 /* GosistTourMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41AEB4E281BF6DE0040DF89 /* GosistTourMake.swift */; };
+		F41AEB55281BF7B40040DF89 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41AEB53281BF7A80040DF89 /* LoginViewController.swift */; };
+		F41AEB59281BF9220040DF89 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41AEB58281BF9220040DF89 /* NetworkManager.swift */; };
+		F41AEB5B281C03310040DF89 /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41AEB5A281C03310040DF89 /* RegistrationModel.swift */; };
 		F422628E280FE5540041C2FA /* MainTabBarConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F422628D280FE5540041C2FA /* MainTabBarConroller.swift */; };
 		F4226290280FE6840041C2FA /* MainTabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F422628F280FE6840041C2FA /* MainTabBarPresenter.swift */; };
 		F4226292280FE6FF0041C2FA /* MainTabBarMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4226291280FE6FF0041C2FA /* MainTabBarMake.swift */; };
@@ -38,8 +45,6 @@
 		F42262AD281011F50041C2FA /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42262AC281011F50041C2FA /* ListViewController.swift */; };
 		F42262AF2810197D0041C2FA /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42262AE2810197D0041C2FA /* ListPresenter.swift */; };
 		F42262B1281019E30041C2FA /* ListMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42262B0281019E30041C2FA /* ListMake.swift */; };
-		F42262B328101B7D0041C2FA /* GosistTourPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42262B228101B7D0041C2FA /* GosistTourPresenter.swift */; };
-		F42262B528101BE30041C2FA /* GosistTourMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42262B428101BE30041C2FA /* GosistTourMake.swift */; };
 		F47F843E280DCFF800C51C0E /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F47F843B280DCFF800C51C0E /* Montserrat-Bold.ttf */; };
 		F47F843F280DCFF800C51C0E /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F47F843C280DCFF800C51C0E /* Montserrat-Medium.ttf */; };
 		F47F8440280DCFF800C51C0E /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F47F843D280DCFF800C51C0E /* Montserrat-Regular.ttf */; };
@@ -88,8 +93,7 @@
 		CE2E836828082CBB00CBF2BA /* GosistTourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GosistTourViewController.swift; path = GosistTour/GosistTourViewController.swift; sourceTree = "<group>"; };
 		CE8430142800CCE000775255 /* shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shadow.png; path = Assets.xcassets/shadow.png; sourceTree = "<group>"; };
 		CE8430152800CCE000775255 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = Assets.xcassets/logo.png; sourceTree = "<group>"; };
-		CE8430182800CCEB00775255 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = LoginView/LoginViewController.swift; sourceTree = "<group>"; };
-		CE92CC4628080AED00803928 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = MapView/MapViewController.swift; sourceTree = "<group>"; };
+		CE92CC4628080AED00803928 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		CEB083102809F31A009FE4A1 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginPresenter.swift; path = LoginView/LoginPresenter.swift; sourceTree = "<group>"; };
 		CECE356627FEEF3F004B64DC /* meet2guide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meet2guide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECE356927FEEF3F004B64DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -104,7 +108,18 @@
 		CECE358927FEEF44004B64DC /* meet2guideUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = meet2guideUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECE358D27FEEF44004B64DC /* meet2guideUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meet2guideUITests.swift; sourceTree = "<group>"; };
 		CECE358F27FEEF44004B64DC /* meet2guideUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meet2guideUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		CEEEBC142802CC9E00110BFE /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegistrationViewController.swift; path = RegistrationView/RegistrationViewController.swift; sourceTree = "<group>"; };
+		CEEEBC142802CC9E00110BFE /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		F40F1086281EF9A3003CE9AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "meet2guide/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F41AEB3D281BE58D0040DF89 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F41AEB41281BF6850040DF89 /* RegistrationMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationMake.swift; sourceTree = "<group>"; };
+		F41AEB42281BF6850040DF89 /* RegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
+		F41AEB4D281BF6DE0040DF89 /* GosistTourPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GosistTourPresenter.swift; sourceTree = "<group>"; };
+		F41AEB4E281BF6DE0040DF89 /* GosistTourMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GosistTourMake.swift; sourceTree = "<group>"; };
+		F41AEB4F281BF6DE0040DF89 /* GosistTourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GosistTourViewController.swift; sourceTree = "<group>"; };
+		F41AEB53281BF7A80040DF89 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F41AEB54281BF7A80040DF89 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		F41AEB58281BF9220040DF89 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = NetworkManager.swift; sourceTree = "<group>"; };
+		F41AEB5A281C03310040DF89 /* RegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModel.swift; sourceTree = "<group>"; };
 		F422628D280FE5540041C2FA /* MainTabBarConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarConroller.swift; sourceTree = "<group>"; };
 		F422628F280FE6840041C2FA /* MainTabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarPresenter.swift; sourceTree = "<group>"; };
 		F4226291280FE6FF0041C2FA /* MainTabBarMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarMake.swift; sourceTree = "<group>"; };
@@ -115,8 +130,6 @@
 		F42262AC281011F50041C2FA /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		F42262AE2810197D0041C2FA /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
 		F42262B0281019E30041C2FA /* ListMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMake.swift; sourceTree = "<group>"; };
-		F42262B228101B7D0041C2FA /* GosistTourPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GosistTourPresenter.swift; sourceTree = "<group>"; };
-		F42262B428101BE30041C2FA /* GosistTourMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GosistTourMake.swift; sourceTree = "<group>"; };
 		F47F843B280DCFF800C51C0E /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Bold.ttf"; path = "meet2guide/fonts/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		F47F843C280DCFF800C51C0E /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Medium.ttf"; path = "meet2guide/fonts/Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		F47F843D280DCFF800C51C0E /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Regular.ttf"; path = "meet2guide/fonts/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
@@ -175,6 +188,7 @@
 		CECE355D27FEEF3F004B64DC = {
 			isa = PBXGroup;
 			children = (
+				F40F1086281EF9A3003CE9AF /* GoogleService-Info.plist */,
 				F47F843B280DCFF800C51C0E /* Montserrat-Bold.ttf */,
 				F47F843C280DCFF800C51C0E /* Montserrat-Medium.ttf */,
 				F47F843D280DCFF800C51C0E /* Montserrat-Regular.ttf */,
@@ -200,6 +214,10 @@
 		CECE356827FEEF3F004B64DC /* meet2guide */ = {
 			isa = PBXGroup;
 			children = (
+				F41AEB52281BF7A80040DF89 /* LoginView */,
+				F41AEB4C281BF6DE0040DF89 /* GosistTour */,
+				F41AEB40281BF6850040DF89 /* RegistrationView */,
+				F41AEB3D281BE58D0040DF89 /* GoogleService-Info.plist */,
 				F42262A9281011C70041C2FA /* ListView */,
 				F42262A32810060B0041C2FA /* MapView */,
 				F422628C280FE5440041C2FA /* MainTabBar */,
@@ -207,13 +225,9 @@
 				F47F8461280DD18D00C51C0E /* InfoUser */,
 				F47F8456280DD14C00C51C0E /* AccountView */,
 				CE2E836828082CBB00CBF2BA /* GosistTourViewController.swift */,
-				F42262B228101B7D0041C2FA /* GosistTourPresenter.swift */,
-				F42262B428101BE30041C2FA /* GosistTourMake.swift */,
-				CE92CC4628080AED00803928 /* MapViewController.swift */,
-				CEEEBC142802CC9E00110BFE /* RegistrationViewController.swift */,
+				F41AEB58281BF9220040DF89 /* NetworkManager.swift */,
 				8B55CA9E281AE09E00C2B437 /* GuideAddingCell.swift */,
 				8B55CA9D281AE09E00C2B437 /* GuideAddingViewController.swift */,
-				CE8430182800CCEB00775255 /* LoginViewController.swift */,
 				CE8430152800CCE000775255 /* logo.png */,
 				CE8430142800CCE000775255 /* shadow.png */,
 				CECE356927FEEF3F004B64DC /* AppDelegate.swift */,
@@ -245,6 +259,36 @@
 			path = meet2guideUITests;
 			sourceTree = "<group>";
 		};
+		F41AEB40281BF6850040DF89 /* RegistrationView */ = {
+			isa = PBXGroup;
+			children = (
+				F41AEB41281BF6850040DF89 /* RegistrationMake.swift */,
+				F41AEB42281BF6850040DF89 /* RegistrationPresenter.swift */,
+				CEEEBC142802CC9E00110BFE /* RegistrationViewController.swift */,
+				F41AEB5A281C03310040DF89 /* RegistrationModel.swift */,
+			);
+			path = RegistrationView;
+			sourceTree = "<group>";
+		};
+		F41AEB4C281BF6DE0040DF89 /* GosistTour */ = {
+			isa = PBXGroup;
+			children = (
+				F41AEB4D281BF6DE0040DF89 /* GosistTourPresenter.swift */,
+				F41AEB4E281BF6DE0040DF89 /* GosistTourMake.swift */,
+				F41AEB4F281BF6DE0040DF89 /* GosistTourViewController.swift */,
+			);
+			path = GosistTour;
+			sourceTree = "<group>";
+		};
+		F41AEB52281BF7A80040DF89 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				F41AEB53281BF7A80040DF89 /* LoginViewController.swift */,
+				F41AEB54281BF7A80040DF89 /* LoginPresenter.swift */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
 		F422628C280FE5440041C2FA /* MainTabBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +304,7 @@
 			children = (
 				F42262A42810060B0041C2FA /* MapMake.swift */,
 				F42262A52810060B0041C2FA /* MapPresenter.swift */,
+				CE92CC4628080AED00803928 /* MapViewController.swift */,
 				F42262A62810060B0041C2FA /* MapViewController.swift */,
 			);
 			path = MapView;
@@ -333,6 +378,7 @@
 				CECE356327FEEF3F004B64DC /* Frameworks */,
 				CECE356427FEEF3F004B64DC /* Resources */,
 				A654985E671BC1B9C68EB9FB /* [CP] Copy Pods Resources */,
+				83CC741FBD12310AD5B9DBFB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -374,6 +420,7 @@
 				CECE358627FEEF44004B64DC /* Frameworks */,
 				CECE358727FEEF44004B64DC /* Resources */,
 				9331491E41D2AA5884561E1F /* [CP] Copy Pods Resources */,
+				E5B1E21880E024A46DBE6CE1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -436,6 +483,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F40F1087281EF9A3003CE9AF /* GoogleService-Info.plist in Resources */,
 				F47F843E280DCFF800C51C0E /* Montserrat-Bold.ttf in Resources */,
 				F47F843F280DCFF800C51C0E /* Montserrat-Medium.ttf in Resources */,
 				F47F8440280DCFF800C51C0E /* Montserrat-Regular.ttf in Resources */,
@@ -463,6 +511,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		83CC741FBD12310AD5B9DBFB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-meet2guide/Pods-meet2guide-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-meet2guide/Pods-meet2guide-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-meet2guide/Pods-meet2guide-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9331491E41D2AA5884561E1F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -541,6 +606,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E5B1E21880E024A46DBE6CE1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-meet2guide-meet2guideUITests/Pods-meet2guide-meet2guideUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-meet2guide-meet2guideUITests/Pods-meet2guide-meet2guideUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-meet2guide-meet2guideUITests/Pods-meet2guide-meet2guideUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		F35A8DF46114DD36C72CB8DA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -570,6 +652,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F41AEB59281BF9220040DF89 /* NetworkManager.swift in Sources */,
+				F41AEB55281BF7B40040DF89 /* LoginViewController.swift in Sources */,
+				CE2E836928082CBC00CBF2BA /* GosistTourViewController.swift in Sources */,
+				F41AEB51281BF6E70040DF89 /* GosistTourMake.swift in Sources */,
+				F41AEB5B281C03310040DF89 /* RegistrationModel.swift in Sources */,
+				F41AEB50281BF6E30040DF89 /* GosistTourPresenter.swift in Sources */,
+				F41AEB44281BF68E0040DF89 /* RegistrationMake.swift in Sources */,
+				F41AEB45281BF68E0040DF89 /* RegistrationPresenter.swift in Sources */,
 				F42262A7281006140041C2FA /* MapMake.swift in Sources */,
 				F42262A8281006140041C2FA /* MapPresenter.swift in Sources */,
 				F47F8467280DD19400C51C0E /* InfoUserMake.swift in Sources */,
@@ -592,15 +682,11 @@
 				CECE356E27FEEF3F004B64DC /* ViewController.swift in Sources */,
 				CECE356A27FEEF3F004B64DC /* AppDelegate.swift in Sources */,
 				CECE357427FEEF3F004B64DC /* meet2guide.xcdatamodeld in Sources */,
-				CE2E836928082CBC00CBF2BA /* GosistTourViewController.swift in Sources */,
-				CE8430192800CCEB00775255 /* LoginViewController.swift in Sources */,
 				CECE356C27FEEF3F004B64DC /* SceneDelegate.swift in Sources */,
 				CEB083112809F31B009FE4A1 /* LoginPresenter.swift in Sources */,
 				CE92CC4728080AED00803928 /* MapViewController.swift in Sources */,
 				F42262AD281011F50041C2FA /* ListViewController.swift in Sources */,
-				F42262B328101B7D0041C2FA /* GosistTourPresenter.swift in Sources */,
 				F47F846E280DD3AA00C51C0E /* User.swift in Sources */,
-				F42262B528101BE30041C2FA /* GosistTourMake.swift in Sources */,
 				8B55CAA0281AE09E00C2B437 /* GuideAddingCell.swift in Sources */,
 				F42262B1281019E30041C2FA /* ListMake.swift in Sources */,
 			);

@@ -26,7 +26,7 @@ class InfoUserCell: UITableViewCell {
             .pin
             .left(150)
             .top(self.contentView.frame.height / 2 - 20)
-            .width(200)
+            .width(55%)
             .height(40)
     }
     

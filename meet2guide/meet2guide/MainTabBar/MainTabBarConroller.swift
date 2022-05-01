@@ -8,6 +8,7 @@ class MainTabBarController: UITabBarController, MainTabBar {
     
     override func viewDidLoad() {
         tabBar.backgroundColor = .systemBackground
+        self.navigationItem.hidesBackButton = true
         let accountView = AccountAssembler.make()
         let accountPage = UINavigationController(rootViewController: accountView)
         
