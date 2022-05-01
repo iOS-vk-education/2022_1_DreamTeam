@@ -8,13 +8,15 @@ struct UserConfig {
 
 protocol InfoUserView: AnyObject {
     func reloadData(with user: User)
+    
+    func openStartWindow()
 }
 
 
-class InfoUserViewController: UIViewController, InfoUserView {
+class InfoUserViewController: UIViewController {
     var output: InfoUserPresenterProtocol?
     
-    //private let label: UILabel = UILabel()
+    private var scrollView: UIScrollView = UIScrollView()
     
     private var userAvatar: UIImageView = UIImageView()
     
@@ -31,13 +33,24 @@ class InfoUserViewController: UIViewController, InfoUserView {
     
     private var changeImageButton: UIButton = UIButton()
     
+    private var exitButton: UIButton = UIButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //setUpLabel()
         self.title = "Информация"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: colorBlue]
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(clickedCloseButton))
+        
+        scrollView.isUserInteractionEnabled = true
+        scrollView.isScrollEnabled = true
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 800)
+        
+        exitButton.addTarget(self, action: #selector(clickedExitButton), for: .touchUpInside)
+        
+        view.addSubview(scrollView)
         
         setUpUserAvatar()
         
@@ -46,21 +59,11 @@ class InfoUserViewController: UIViewController, InfoUserView {
         setUpTableViewUserConfiguration()
         
         setUpSaveButton()
+        
+        setUpExitButton()
+        
         output?.didLoadView()
     }
-    
-    @objc
-    private func clickedCloseButton() {
-        self.dismiss(animated: true, completion: nil)
-    }
-    /*
-    private func setUpLabel() {
-        label.text = titleView
-        label.font = UIFont(name: "Montserrat-Regular", size: 36)
-        label.textColor = colorBlue
-        
-        view.addSubview(label)
-    }*/
     
     private func setUpUserAvatar() {
         userAvatar.image = UIImage(systemName: "person")
@@ -68,7 +71,7 @@ class InfoUserViewController: UIViewController, InfoUserView {
         userAvatar.clipsToBounds = true
         userAvatar.backgroundColor = .systemGray5
         
-        view.addSubview(userAvatar)
+        scrollView.addSubview(userAvatar)
     }
     
     private func setUpTableViewUserConfiguration() {
@@ -80,12 +83,12 @@ class InfoUserViewController: UIViewController, InfoUserView {
         
         tableViewUserConfiguration.separatorStyle = .none
         
-        view.addSubview(tableViewUserConfiguration)
+        scrollView.addSubview(tableViewUserConfiguration)
     }
     
     private func setUpSaveButton() {
         saveButton.setTitle("Coхранить", for: .normal)
-        saveButton.titleLabel?.font = UIFont(name: "Montserrat-Regular", size: 20)
+        saveButton.titleLabel?.font = UIFont(name: "Montserrat-Regular", size: 14)
         saveButton.backgroundColor = .systemBackground
         
         saveButton.setTitleColor(colorBlue, for: .normal)
@@ -93,69 +96,79 @@ class InfoUserViewController: UIViewController, InfoUserView {
         saveButton.addTarget(self, action: #selector(clickedSaveButton), for: .touchUpInside)
         
         
-        view.addSubview(saveButton)
+        scrollView.addSubview(saveButton)
     }
     
     private func setUpChangeImageButton() {
         changeImageButton.setTitle("Изменить фото", for: .normal)
-        changeImageButton.titleLabel?.font = UIFont(name: "Montserrat-Regular", size: 20)
+        changeImageButton.titleLabel?.font = UIFont(name: "Montserrat-Regular", size: 14)
         changeImageButton.backgroundColor = .systemBackground
         changeImageButton.setTitleColor(colorBlue, for: .normal)
         
-        view.addSubview(changeImageButton)
+        scrollView.addSubview(changeImageButton)
+    }
+    
+    private func setUpExitButton() {
+        exitButton.setTitle("Выход", for: .normal)
+        exitButton.titleLabel?.font = UIFont(name: "Montserrat-Regular", size: 14)
+        exitButton.backgroundColor = .systemBackground
+        exitButton.setTitleColor(.red, for: .normal)
+        
+        scrollView.addSubview(exitButton)
     }
     
     @objc
     private func clickedSaveButton() {
     }
     
-    func reloadData(with user: User) {
-        userConfiguration[0].textIn = user.name
-        userConfiguration[1].textIn = user.surname
-        userConfiguration[2].textIn = user.phone
-        userConfiguration[3].textIn = user.email
+    @objc
+    private func clickedCloseButton() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc
+    private func clickedExitButton() {
+        output?.logOut()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         view.backgroundColor = .systemBackground
+        scrollView.backgroundColor = .systemBackground
         
-        /*label
-            .pin
-            .top(0)
-            .margin(20)
-            .hCenter()
-            .sizeToFit()*/
+        scrollView.pin
+            .all(view.pin.safeArea)
         
-        userAvatar
-            .pin
+        userAvatar.pin
             .top(view.safeAreaInsets.top)
-            .margin(40)
             .height(275)
             .width(275)
             .hCenter()
         
-        changeImageButton
-            .pin
+        changeImageButton.pin
             .topCenter(to: userAvatar.anchor.bottomCenter)
             .margin(20)
             .width((self.view.window?.frame.width ?? 310) - 100)
             .height(40)
         
-        tableViewUserConfiguration
-            .pin
+        tableViewUserConfiguration.pin
             .topCenter(to: changeImageButton.anchor.bottomCenter)
             .margin(10)
             .width((self.view.window?.frame.width ?? 310))
-            .height((self.view.window?.frame.height ?? 310) - 600)
+            .height(240)
         
-        saveButton
-            .pin
+        saveButton.pin
             .topCenter(to: tableViewUserConfiguration.anchor.bottomCenter)
             .margin(10)
             .width((self.view.window?.frame.width ?? 310) - 100)
             .height(40)
+        
+        exitButton.pin
+            .topCenter(to: saveButton.anchor.bottomCenter)
+            .margin(10)
+            .width((self.view.window?.frame.width ?? 310) - 100)
+            .height(30)
     }
 }
 
@@ -177,5 +190,29 @@ extension InfoUserViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         60
+    }
+}
+
+
+extension InfoUserViewController: InfoUserView {
+    func reloadData(with user: User) {
+        userConfiguration[0].textIn = user.name
+        userConfiguration[1].textIn = user.surname
+        userConfiguration[2].textIn = user.phone
+        userConfiguration[3].textIn = user.email
+    }
+    
+    func openStartWindow() {
+        let sceneDelegate = UIApplication.shared.connectedScenes
+                        .first!.delegate as! SceneDelegate
+        let startWindow = UINavigationController(rootViewController: LoginViewController())
+        sceneDelegate.window!.rootViewController = startWindow
+        sceneDelegate.window!.makeKeyAndVisible()
+        
+        UIView.transition(with: sceneDelegate.window!,
+                          duration: 0.3,
+                          options: .transitionCrossDissolve,
+                          animations: nil,
+                          completion: nil)
     }
 }

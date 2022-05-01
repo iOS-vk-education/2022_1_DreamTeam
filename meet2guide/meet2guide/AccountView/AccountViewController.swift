@@ -14,6 +14,8 @@ protocol AccountView: AnyObject {
 class AccountViewController: UIViewController, AccountView {
     var output: AccountPresenterProtocol?
     
+    private var scrollView: UIScrollView = UIScrollView()
+    
     private var functionsTableView: UITableView = UITableView()
     
     private var colorBlue: UIColor = UIColor(red: 52 / 255, green: 94 / 255, blue: 202 / 255, alpha: 100)
@@ -38,13 +40,21 @@ class AccountViewController: UIViewController, AccountView {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Аккаунт"
+        
+        scrollView.isUserInteractionEnabled = true
+        scrollView.isScrollEnabled = true
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 800)
+        
+        view.addSubview(scrollView)
+        
         setUpUserAvatar()
         
         setUpUserName()
         
         setUpUserLocation()
         
-        view.addSubview(ratingView)
+        scrollView.addSubview(ratingView)
         
         setUpStar()
         
@@ -63,7 +73,7 @@ class AccountViewController: UIViewController, AccountView {
         userAvatar.layer.cornerRadius = 65
         userAvatar.clipsToBounds = true
         
-        view.addSubview(userAvatar)
+        scrollView.addSubview(userAvatar)
     }
     
     private func setUpUserName() {
@@ -72,7 +82,7 @@ class AccountViewController: UIViewController, AccountView {
         userNameLabel.font = UIFont(name: "Montserrat-Regular", size: 26)
         userNameLabel.textAlignment = .center
         
-        view.addSubview(userNameLabel)
+        scrollView.addSubview(userNameLabel)
     }
     
     private func setUpUserLocation() {
@@ -81,7 +91,7 @@ class AccountViewController: UIViewController, AccountView {
         userLocationLabel.font = UIFont(name: "Montserrat-Bold", size: 16)
         userLocationLabel.textAlignment = .center
         
-        view.addSubview(userLocationLabel)
+        scrollView.addSubview(userLocationLabel)
     }
     
     private func setUpStar() {
@@ -105,7 +115,7 @@ class AccountViewController: UIViewController, AccountView {
         functionsTableView.dataSource = self
         functionsTableView.register(AccountCell.self, forCellReuseIdentifier: "AccountCell")
         
-        view.addSubview(functionsTableView)
+        scrollView.addSubview(functionsTableView)
     }
     
     func reloadData(with user: User) {
@@ -124,25 +134,49 @@ class AccountViewController: UIViewController, AccountView {
         super.viewDidLayoutSubviews()
         
         view.backgroundColor = .systemBackground
+        scrollView.backgroundColor = .systemBackground
+        
+        scrollView.pin
+            .all(view.pin.safeArea)
+        
         userAvatar.pin
-            .top(view.safeAreaInsets.top + 60)
+            .top(scrollView.safeAreaInsets.top + 40)
             .height(128)
             .width(128)
             .hCenter()
         
-        userNameLabel.pin.topCenter(to: userAvatar.anchor.bottomCenter).margin(20)
-            .sizeToFit().maxWidth((self.view.window?.frame.width ?? 310) - 100)
+        userNameLabel.pin
+            .topCenter(to: userAvatar.anchor.bottomCenter).margin(20)
+            .sizeToFit()
+            .maxWidth((self.view.window?.frame.width ?? 310) - 100)
         
-        userLocationLabel.pin.topCenter(to: userNameLabel.anchor.bottomCenter).margin(20).sizeToFit().maxWidth((self.view.window?.frame.width ?? 310) - 100)
+        userLocationLabel.pin
+            .topCenter(to: userNameLabel.anchor.bottomCenter)
+            .margin(20)
+            .sizeToFit()
+            .maxWidth((self.view.window?.frame.width ?? 310) - 100)
         
+        starImage.pin
+            .left(0)
+            .width(20)
+            .sizeToFit()
         
-        starImage.pin.left(0).width(20).sizeToFit()
-        ratingLabel.pin.after(of: starImage).margin(10).height(20).width(50)
+        ratingLabel.pin
+            .after(of: starImage)
+            .margin(10)
+            .height(20)
+            .width(50)
         
+        ratingView.pin
+            .topCenter(to: userLocationLabel.anchor.bottomCenter)
+            .margin(20)
+            .width(80)
         
-        ratingView.pin.topCenter(to: userLocationLabel.anchor.bottomCenter).margin(20).width(80)
-        
-        functionsTableView.pin.topCenter(to: ratingView.anchor.bottomCenter).margin(50).width((self.view.window?.frame.width ?? 310) - 60).height((self.view.window?.frame.height ?? 310) - 100)
+        functionsTableView.pin
+            .topCenter(to: ratingView.anchor.bottomCenter)
+            .margin(50)
+            .width((self.view.window?.frame.width ?? 310) - 60)
+            .height((self.view.window?.frame.height ?? 310) - 100)
     }
 }
 
