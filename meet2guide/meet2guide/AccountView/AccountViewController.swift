@@ -9,9 +9,10 @@ struct Function {
 protocol AccountView: AnyObject {
     func reloadData(with user: User)
     func openInfoUser()
+    func openGuideAdding()
 }
 
-class AccountViewController: UIViewController, AccountView {
+class AccountViewController: UIViewController {
     var output: AccountPresenterProtocol?
     
     private var scrollView: UIScrollView = UIScrollView()
@@ -118,18 +119,6 @@ class AccountViewController: UIViewController, AccountView {
         scrollView.addSubview(functionsTableView)
     }
     
-    func reloadData(with user: User) {
-        userNameLabel.text = user.name + " " + user.surname
-        userAvatar.image = user.image
-        ratingLabel.text = String(user.rating)
-    }
-    
-    func openInfoUser() {
-        let infoUserViewController = InfoUserAssembler.make()
-        let navigationController = UINavigationController(rootViewController: infoUserViewController)
-        present(navigationController, animated: true, completion: nil)
-    }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -200,5 +189,24 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         output?.didRowSelect(indexPath: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+extension AccountViewController: AccountView {
+    func openGuideAdding() {
+        let guideAddingViewController = GuideAddingAssemler.make()
+        self.navigationController?.pushViewController(guideAddingViewController, animated: true)
+    }
+    
+    func reloadData(with user: User) {
+        userNameLabel.text = user.name + " " + user.surname
+        userAvatar.image = user.image
+        ratingLabel.text = String(user.rating)
+    }
+    
+    func openInfoUser() {
+        let infoUserViewController = InfoUserAssembler.make()
+        let navigationController = UINavigationController(rootViewController: infoUserViewController)
+        present(navigationController, animated: true, completion: nil)
     }
 }

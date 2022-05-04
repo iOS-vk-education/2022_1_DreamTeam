@@ -45,6 +45,8 @@
 		F42262AD281011F50041C2FA /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42262AC281011F50041C2FA /* ListViewController.swift */; };
 		F42262AF2810197D0041C2FA /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42262AE2810197D0041C2FA /* ListPresenter.swift */; };
 		F42262B1281019E30041C2FA /* ListMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42262B0281019E30041C2FA /* ListMake.swift */; };
+		F42B86552822BCF7002D90DD /* GuideAddingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42B86542822BCF7002D90DD /* GuideAddingPresenter.swift */; };
+		F42B86572822BDB2002D90DD /* GuideAddingMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42B86562822BDB2002D90DD /* GuideAddingMake.swift */; };
 		F47F843E280DCFF800C51C0E /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F47F843B280DCFF800C51C0E /* Montserrat-Bold.ttf */; };
 		F47F843F280DCFF800C51C0E /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F47F843C280DCFF800C51C0E /* Montserrat-Medium.ttf */; };
 		F47F8440280DCFF800C51C0E /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F47F843D280DCFF800C51C0E /* Montserrat-Regular.ttf */; };
@@ -130,6 +132,8 @@
 		F42262AC281011F50041C2FA /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		F42262AE2810197D0041C2FA /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
 		F42262B0281019E30041C2FA /* ListMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMake.swift; sourceTree = "<group>"; };
+		F42B86542822BCF7002D90DD /* GuideAddingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideAddingPresenter.swift; sourceTree = "<group>"; };
+		F42B86562822BDB2002D90DD /* GuideAddingMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideAddingMake.swift; sourceTree = "<group>"; };
 		F47F843B280DCFF800C51C0E /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Bold.ttf"; path = "meet2guide/fonts/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		F47F843C280DCFF800C51C0E /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Medium.ttf"; path = "meet2guide/fonts/Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		F47F843D280DCFF800C51C0E /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Regular.ttf"; path = "meet2guide/fonts/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
@@ -214,6 +218,7 @@
 		CECE356827FEEF3F004B64DC /* meet2guide */ = {
 			isa = PBXGroup;
 			children = (
+				F42B86532822BC97002D90DD /* GuideAddingView */,
 				F41AEB52281BF7A80040DF89 /* LoginView */,
 				F41AEB4C281BF6DE0040DF89 /* GosistTour */,
 				F41AEB40281BF6850040DF89 /* RegistrationView */,
@@ -226,8 +231,6 @@
 				F47F8456280DD14C00C51C0E /* AccountView */,
 				CE2E836828082CBB00CBF2BA /* GosistTourViewController.swift */,
 				F41AEB58281BF9220040DF89 /* NetworkManager.swift */,
-				8B55CA9E281AE09E00C2B437 /* GuideAddingCell.swift */,
-				8B55CA9D281AE09E00C2B437 /* GuideAddingViewController.swift */,
 				CE8430152800CCE000775255 /* logo.png */,
 				CE8430142800CCE000775255 /* shadow.png */,
 				CECE356927FEEF3F004B64DC /* AppDelegate.swift */,
@@ -319,6 +322,17 @@
 				F42262B0281019E30041C2FA /* ListMake.swift */,
 			);
 			path = ListView;
+			sourceTree = "<group>";
+		};
+		F42B86532822BC97002D90DD /* GuideAddingView */ = {
+			isa = PBXGroup;
+			children = (
+				8B55CA9E281AE09E00C2B437 /* GuideAddingCell.swift */,
+				8B55CA9D281AE09E00C2B437 /* GuideAddingViewController.swift */,
+				F42B86542822BCF7002D90DD /* GuideAddingPresenter.swift */,
+				F42B86562822BDB2002D90DD /* GuideAddingMake.swift */,
+			);
+			path = GuideAddingView;
 			sourceTree = "<group>";
 		};
 		F47F8456280DD14C00C51C0E /* AccountView */ = {
@@ -668,6 +682,7 @@
 				F47F8469280DD19400C51C0E /* InfoUserViewController.swift in Sources */,
 				F47F846A280DD19400C51C0E /* InfoUserCell.swift in Sources */,
 				F47F846B280DD19400C51C0E /* InfoUserPresenter.swift in Sources */,
+				F42B86552822BCF7002D90DD /* GuideAddingPresenter.swift in Sources */,
 				F47F845C280DD15700C51C0E /* AccountModel.swift in Sources */,
 				F42262AB281011E90041C2FA /* ExcursionCell.swift in Sources */,
 				F42262AF2810197D0041C2FA /* ListPresenter.swift in Sources */,
@@ -684,6 +699,7 @@
 				CECE357427FEEF3F004B64DC /* meet2guide.xcdatamodeld in Sources */,
 				CECE356C27FEEF3F004B64DC /* SceneDelegate.swift in Sources */,
 				CEB083112809F31B009FE4A1 /* LoginPresenter.swift in Sources */,
+				F42B86572822BDB2002D90DD /* GuideAddingMake.swift in Sources */,
 				CE92CC4728080AED00803928 /* MapViewController.swift in Sources */,
 				F42262AD281011F50041C2FA /* ListViewController.swift in Sources */,
 				F47F846E280DD3AA00C51C0E /* User.swift in Sources */,
