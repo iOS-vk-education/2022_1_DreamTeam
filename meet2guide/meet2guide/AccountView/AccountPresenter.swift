@@ -25,6 +25,8 @@ final class AccountPresenter: AccountPresenterProtocol {
     func didRowSelect(indexPath: IndexPath) {
         if indexPath.row == 0 {
             viewController?.openInfoUser()
+        } else if indexPath.row == 1 {
+            viewController?.openGuideAdding()
         }
     }
 }

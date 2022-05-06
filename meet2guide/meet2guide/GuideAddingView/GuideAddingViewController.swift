@@ -8,7 +8,12 @@ struct guideInfo{
 
 }
 
+protocol GuideAddingView: AnyObject {
+    
+}
+
 class GuideAddingViewController: UIViewController {
+    var output: GuideAddingPresenterProtocol?
     private var textTitle: String? = "Добавить экскурсию"
     private let titleLabel: UILabel = UILabel()
     private let nameTextField: UITextField = UITextField()
@@ -145,4 +150,8 @@ extension GuideAddingViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         50
     }
+}
+
+extension GuideAddingViewController: GuideAddingView {
+    
 }
