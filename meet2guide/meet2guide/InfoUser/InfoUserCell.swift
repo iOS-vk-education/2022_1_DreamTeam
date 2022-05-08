@@ -51,6 +51,13 @@ class InfoUserCell: UITableViewCell {
         information.layer.masksToBounds = true
         information.layer.cornerRadius = 10
         
+        information.backgroundColor = UIColor.systemGray
+        UIView.animate(withDuration: 1,
+                       delay: 1,
+                       options: [.repeat, .autoreverse],
+                       animations: { self.information.alpha = 0.2 }
+                      )
+        
         contentView.addSubview(titleLabel)
         contentView.addSubview(information)
     }
@@ -58,6 +65,15 @@ class InfoUserCell: UITableViewCell {
     func configure(with config: UserConfig) {
         titleLabel.text = config.title
         information.text = config.textIn
+        information.backgroundColor = config.color
+        if (config.isLoaded) {
+            information.layer.removeAllAnimations()
+            information.alpha = 1
+        }
+    }
+    
+    func getInfo() -> String? {
+        return information.text
     }
     
 }

@@ -1,15 +1,18 @@
 import UIKit
 import PinLayout
 
+import CoreLocation
+
 struct Function {
     let title: String
     let image: UIImage?
 }
 
 protocol AccountView: AnyObject {
-    func reloadData(with user: User)
+    func reloadData(with user: UserData)
     func openInfoUser()
     func openGuideAdding()
+    func showAlert(alert: UIAlertController)
 }
 
 class AccountViewController: UIViewController {
@@ -38,8 +41,24 @@ class AccountViewController: UIViewController {
         Function(title: "Add a tour", image: UIImage(systemName: "bell.fill")),
         Function(title: "Messages", image: UIImage(systemName: "message.fill"))]
     
+    let locationManager = CLLocationManager()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        output?.didLoadView()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
         
         title = "Аккаунт"
         
@@ -65,29 +84,44 @@ class AccountViewController: UIViewController {
         
         functionsTableView.separatorStyle = .none
         
-        output?.didLoadView()
-        
     }
     
     private func setUpUserAvatar() {
-        userAvatar.image = UIImage(systemName: "person")
+        userAvatar.image = UIImage()
         userAvatar.layer.cornerRadius = 65
         userAvatar.clipsToBounds = true
+        userAvatar.layer.backgroundColor = UIColor.systemGray.cgColor
+        UIView.animate(withDuration: 1,
+                       delay: 1,
+                       options: [.repeat, .autoreverse],
+                       animations: { self.userAvatar.alpha = 0.5
+            print(self.userNameLabel.alpha)
+        }
+                      )
         
         scrollView.addSubview(userAvatar)
     }
     
     private func setUpUserName() {
-        userNameLabel.text = "Екатерина Григоренко"
+        userNameLabel.text = "                               "
         userNameLabel.textColor = colorBlue
         userNameLabel.font = UIFont(name: "Montserrat-Regular", size: 26)
         userNameLabel.textAlignment = .center
+        userNameLabel.layer.backgroundColor = UIColor.systemGray.cgColor
+        userNameLabel.layer.cornerRadius = 7
+        userNameLabel.layer.masksToBounds = true
+        UIView.animate(withDuration: 1,
+                       delay: 1,
+                       options: [.repeat, .autoreverse],
+                       animations: { self.userNameLabel.alpha = 0.5
+            print(self.userNameLabel.alpha)}
+                      )
         
         scrollView.addSubview(userNameLabel)
     }
     
     private func setUpUserLocation() {
-        userLocationLabel.text = "Санкт-Петербург, Россия"
+        userLocationLabel.text = "                                    "
         userLocationLabel.textColor = colorBlue
         userLocationLabel.font = UIFont(name: "Montserrat-Bold", size: 16)
         userLocationLabel.textAlignment = .center
@@ -102,9 +136,19 @@ class AccountViewController: UIViewController {
     }
     
     private func setUpRating() {
-        ratingLabel.text = "4.87"
+        ratingLabel.text = ""
         ratingLabel.textColor = .gray
         ratingLabel.font = UIFont(name: "Montserrat-Medium", size: 18)
+        
+        ratingLabel.layer.backgroundColor = UIColor.systemGray.cgColor
+        ratingLabel.layer.cornerRadius = 7
+        ratingLabel.layer.masksToBounds = true
+        UIView.animate(withDuration: 1,
+                       delay: 1,
+                       options: [.repeat, .autoreverse],
+                       animations: { self.ratingLabel.alpha = 0.5
+            print(self.userNameLabel.alpha)}
+                      )
         
         ratingView.addSubview(ratingLabel)
     }
@@ -198,15 +242,45 @@ extension AccountViewController: AccountView {
         self.navigationController?.pushViewController(guideAddingViewController, animated: true)
     }
     
-    func reloadData(with user: User) {
+    func reloadData(with user: UserData) {
         userNameLabel.text = user.name + " " + user.surname
-        userAvatar.image = user.image
+        userAvatar.image = user.profileImage
         ratingLabel.text = String(user.rating)
+        self.userNameLabel.layer.removeAllAnimations()
+        self.userNameLabel.alpha = 1
+        userNameLabel.layer.backgroundColor = UIColor.systemBackground.cgColor
+        self.userAvatar.layer.removeAllAnimations()
+        self.userAvatar.alpha = 1
+        userAvatar.layer.backgroundColor = UIColor.systemBackground.cgColor
+        self.ratingLabel.layer.removeAllAnimations()
+        self.ratingLabel.alpha = 1
+        ratingLabel.layer.backgroundColor = UIColor.systemBackground.cgColor
     }
     
     func openInfoUser() {
         let infoUserViewController = InfoUserAssembler.make()
         let navigationController = UINavigationController(rootViewController: infoUserViewController)
         present(navigationController, animated: true, completion: nil)
+    }
+    
+    func showAlert(alert: UIAlertController) {
+        self.present(alert, animated: true, completion: nil)
+    }
+}
+
+extension CLLocation {
+    func fetchCityAndCountry(completion: @escaping (_ city: String?, _ country: String?, _ error: Error?) -> ()) {
+        CLGeocoder().reverseGeocodeLocation(self) { completion($0?.first?.locality, $0?.first?.country, $1)}
+    }
+}
+
+extension AccountViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let currentLocation = locations.last!
+        currentLocation.fetchCityAndCountry { city, country, error in
+            guard let city = city, let country = country, error == nil else { return }
+            print(city + ", " + country)
+            self.userLocationLabel.text = city + ", " + country
+        }
     }
 }
