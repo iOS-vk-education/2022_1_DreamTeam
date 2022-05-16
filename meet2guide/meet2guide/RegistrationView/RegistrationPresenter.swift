@@ -10,12 +10,13 @@ import UIKit
 
 protocol RegistrationPresenterProtocol: AnyObject {
     func didRegistration(user: UserData, password: String)
-    func openMainWIndow()
+    func openMainWindow()
 }
 
 final class RegistrationPresenter {
     weak var viewController: RegistrationView?
-    private let model: RegistrationModelProtocol = RegistrationModel()
+    
+    let networkManager = NetworkManager.shared
     
     init(view: RegistrationView) {
         viewController = view
@@ -24,17 +25,17 @@ final class RegistrationPresenter {
 
 extension RegistrationPresenter: RegistrationPresenterProtocol {
     func didRegistration(user: UserData, password: String) {
-        model.createUser(user: user, password: password) { result in
+        networkManager.createUser(user: user, password: password) { result in
             switch result {
             case .success:
-                self.openMainWIndow()
+                self.openMainWindow()
             case .failure(let error):
                 self.failedRegistration(error: error)
             }
         }
     }
     
-    func openMainWIndow() {
+    func openMainWindow() {
         viewController?.open()
     }
     

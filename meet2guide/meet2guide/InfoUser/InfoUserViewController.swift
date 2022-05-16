@@ -1,15 +1,24 @@
 import UIKit
 import PinLayout
 
+
 struct UserConfig {
     let title: String?
     var textIn: String?
+    var color: UIColor
+    var isLoaded: Bool
 }
 
 protocol InfoUserView: AnyObject {
-    func reloadData(with user: User)
+    func reloadData(with user: UserData)
     
     func openStartWindow()
+    
+    func showAlert(alert: UIAlertController)
+    
+    func loadImage(image: UIImage?)
+    
+    func openImagePicker(output: ImagePickerProtocol)
 }
 
 
@@ -24,7 +33,11 @@ class InfoUserViewController: UIViewController {
     
     private var tableViewUserConfiguration: UITableView = UITableView()
     
-    private var userConfiguration: [UserConfig] = [UserConfig(title: "Имя", textIn: "Иван"), UserConfig(title: "Фамилия", textIn: "Иванов"), UserConfig(title: "Телефон", textIn: "8 (800) 555-35-35"), UserConfig(title: "Почта", textIn: "pochta@bmstu.student.ru")]
+    private var userConfiguration: [UserConfig] =
+    [UserConfig(title: "Имя", textIn: "", color: UIColor.systemGray5, isLoaded: false),
+     UserConfig(title: "Фамилия", textIn: "", color: UIColor.systemGray5, isLoaded: false),
+     UserConfig(title: "Телефон", textIn: "", color: UIColor.systemGray5, isLoaded: false),
+     UserConfig(title: "Почта", textIn: "", color: UIColor.systemGray5, isLoaded: false)]
     
     
     private let titleView = "Информация"
@@ -35,10 +48,14 @@ class InfoUserViewController: UIViewController {
     
     private var exitButton: UIButton = UIButton()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        output?.didLoadView()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //setUpLabel()
         self.title = "Информация"
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: colorBlue]
         
@@ -47,8 +64,6 @@ class InfoUserViewController: UIViewController {
         scrollView.isUserInteractionEnabled = true
         scrollView.isScrollEnabled = true
         scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 800)
-        
-        exitButton.addTarget(self, action: #selector(clickedExitButton), for: .touchUpInside)
         
         view.addSubview(scrollView)
         
@@ -61,15 +76,20 @@ class InfoUserViewController: UIViewController {
         setUpSaveButton()
         
         setUpExitButton()
-        
-        output?.didLoadView()
     }
     
     private func setUpUserAvatar() {
-        userAvatar.image = UIImage(systemName: "person")
+        userAvatar.image = UIImage()
         userAvatar.layer.cornerRadius = 140
         userAvatar.clipsToBounds = true
         userAvatar.backgroundColor = .systemGray5
+        userAvatar.layer.backgroundColor = UIColor.systemGray.cgColor
+        userAvatar.layer.masksToBounds = true
+        UIView.animate(withDuration: 1,
+                       delay: 1,
+                       options: [.repeat, .autoreverse],
+                       animations: { self.userAvatar.alpha = 0.5}
+                      )
         
         scrollView.addSubview(userAvatar)
     }
@@ -88,6 +108,7 @@ class InfoUserViewController: UIViewController {
     
     private func setUpSaveButton() {
         saveButton.setTitle("Coхранить", for: .normal)
+        saveButton.addTarget(self, action: #selector(clickedSaveButton), for: .touchUpInside)
         saveButton.titleLabel?.font = UIFont(name: "Montserrat-Regular", size: 14)
         saveButton.backgroundColor = .systemBackground
         
@@ -101,6 +122,7 @@ class InfoUserViewController: UIViewController {
     
     private func setUpChangeImageButton() {
         changeImageButton.setTitle("Изменить фото", for: .normal)
+        changeImageButton.addTarget(self, action: #selector(clickedChangeImageButton), for: .touchUpInside)
         changeImageButton.titleLabel?.font = UIFont(name: "Montserrat-Regular", size: 14)
         changeImageButton.backgroundColor = .systemBackground
         changeImageButton.setTitleColor(colorBlue, for: .normal)
@@ -110,6 +132,7 @@ class InfoUserViewController: UIViewController {
     
     private func setUpExitButton() {
         exitButton.setTitle("Выход", for: .normal)
+        exitButton.addTarget(self, action: #selector(clickedExitButton), for: .touchUpInside)
         exitButton.titleLabel?.font = UIFont(name: "Montserrat-Regular", size: 14)
         exitButton.backgroundColor = .systemBackground
         exitButton.setTitleColor(.red, for: .normal)
@@ -119,6 +142,39 @@ class InfoUserViewController: UIViewController {
     
     @objc
     private func clickedSaveButton() {
+        var cell = tableViewUserConfiguration.cellForRow(at: IndexPath(row: 0, section: 0)) as! InfoUserCell
+        guard let name = cell.getInfo(), !name.isEmpty else {
+            return
+        }
+        
+        cell = tableViewUserConfiguration.cellForRow(at: IndexPath(row: 1, section: 0)) as! InfoUserCell
+        
+        guard let surname = cell.getInfo(), !surname.isEmpty else {
+            return
+        }
+        
+        cell = tableViewUserConfiguration.cellForRow(at: IndexPath(row: 2, section: 0)) as! InfoUserCell
+        
+        guard let phone = cell.getInfo(), !phone.isEmpty else {
+            return
+        }
+        
+        cell = tableViewUserConfiguration.cellForRow(at: IndexPath(row: 3, section: 0)) as! InfoUserCell
+        
+        guard let email = cell.getInfo(), !email.isEmpty else {
+            return
+        }
+        
+        guard let image = userAvatar.image else {
+            return
+        }
+        
+        let user = UserData(email: email,
+                            name: name,
+                            surname: surname,
+                            phone: phone,
+                            image: image)
+        output?.didUpdateUser(user: user)
     }
     
     @objc
@@ -129,6 +185,11 @@ class InfoUserViewController: UIViewController {
     @objc
     private func clickedExitButton() {
         output?.logOut()
+    }
+    
+    @objc
+    private func clickedChangeImageButton() {
+        output?.didTapChangeImage()
     }
     
     override func viewDidLayoutSubviews() {
@@ -195,11 +256,30 @@ extension InfoUserViewController: UITableViewDelegate, UITableViewDataSource {
 
 
 extension InfoUserViewController: InfoUserView {
-    func reloadData(with user: User) {
+    func openImagePicker(output: ImagePickerProtocol) {
+        let imagePicker = ImagePicker()
+        imagePicker.output = output
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func loadImage(image: UIImage?) {
+        userAvatar.image = image
+    }
+    
+    func reloadData(with user: UserData) {
         userConfiguration[0].textIn = user.name
         userConfiguration[1].textIn = user.surname
         userConfiguration[2].textIn = user.phone
         userConfiguration[3].textIn = user.email
+        for i in (0..<userConfiguration.count) {
+            userConfiguration[i].isLoaded = true
+            userConfiguration[i].color = UIColor.systemBackground
+        }
+        userAvatar.image = user.profileImage
+        userAvatar.layer.removeAllAnimations()
+        userAvatar.alpha = 1
+        userAvatar.layer.backgroundColor = UIColor.systemBackground.cgColor
+        tableViewUserConfiguration.reloadData()
     }
     
     func openStartWindow() {
@@ -215,4 +295,9 @@ extension InfoUserViewController: InfoUserView {
                           animations: nil,
                           completion: nil)
     }
+    
+    func showAlert(alert: UIAlertController) {
+        self.present(alert, animated: true, completion: nil)
+    }
 }
+

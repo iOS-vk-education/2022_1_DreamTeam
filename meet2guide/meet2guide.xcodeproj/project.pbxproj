@@ -14,7 +14,6 @@
 		CE2E836928082CBC00CBF2BA /* GosistTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2E836828082CBB00CBF2BA /* GosistTourViewController.swift */; };
 		CE8430162800CCE000775255 /* shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8430142800CCE000775255 /* shadow.png */; };
 		CE8430172800CCE000775255 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8430152800CCE000775255 /* logo.png */; };
-		CE84301C2800CD2400775255 /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = CE84301B2800CD2400775255 /* PinLayout */; };
 		CE92CC4728080AED00803928 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92CC4628080AED00803928 /* MapViewController.swift */; };
 		CEB083112809F31B009FE4A1 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB083102809F31A009FE4A1 /* LoginPresenter.swift */; };
 		CECE356A27FEEF3F004B64DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE356927FEEF3F004B64DC /* AppDelegate.swift */; };
@@ -35,7 +34,6 @@
 		F41AEB51281BF6E70040DF89 /* GosistTourMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41AEB4E281BF6DE0040DF89 /* GosistTourMake.swift */; };
 		F41AEB55281BF7B40040DF89 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41AEB53281BF7A80040DF89 /* LoginViewController.swift */; };
 		F41AEB59281BF9220040DF89 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41AEB58281BF9220040DF89 /* NetworkManager.swift */; };
-		F41AEB5B281C03310040DF89 /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41AEB5A281C03310040DF89 /* RegistrationModel.swift */; };
 		F422628E280FE5540041C2FA /* MainTabBarConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F422628D280FE5540041C2FA /* MainTabBarConroller.swift */; };
 		F4226290280FE6840041C2FA /* MainTabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F422628F280FE6840041C2FA /* MainTabBarPresenter.swift */; };
 		F4226292280FE6FF0041C2FA /* MainTabBarMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4226291280FE6FF0041C2FA /* MainTabBarMake.swift */; };
@@ -47,16 +45,16 @@
 		F42262B1281019E30041C2FA /* ListMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42262B0281019E30041C2FA /* ListMake.swift */; };
 		F42B86552822BCF7002D90DD /* GuideAddingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42B86542822BCF7002D90DD /* GuideAddingPresenter.swift */; };
 		F42B86572822BDB2002D90DD /* GuideAddingMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42B86562822BDB2002D90DD /* GuideAddingMake.swift */; };
+		F4614669282664A600BCAE08 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4614668282664A600BCAE08 /* ImageLoader.swift */; };
+		F46146722826B17E00BCAE08 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46146712826B17E00BCAE08 /* ImagePicker.swift */; };
 		F47F843E280DCFF800C51C0E /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F47F843B280DCFF800C51C0E /* Montserrat-Bold.ttf */; };
 		F47F843F280DCFF800C51C0E /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F47F843C280DCFF800C51C0E /* Montserrat-Medium.ttf */; };
 		F47F8440280DCFF800C51C0E /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F47F843D280DCFF800C51C0E /* Montserrat-Regular.ttf */; };
-		F47F845C280DD15700C51C0E /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F8457280DD14C00C51C0E /* AccountModel.swift */; };
 		F47F845D280DD15700C51C0E /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F8458280DD14C00C51C0E /* AccountCell.swift */; };
 		F47F845E280DD15700C51C0E /* AccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F8459280DD14C00C51C0E /* AccountPresenter.swift */; };
 		F47F845F280DD15700C51C0E /* AccountMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F845A280DD14C00C51C0E /* AccountMake.swift */; };
 		F47F8460280DD15700C51C0E /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F845B280DD14C00C51C0E /* AccountViewController.swift */; };
 		F47F8467280DD19400C51C0E /* InfoUserMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F8462280DD18D00C51C0E /* InfoUserMake.swift */; };
-		F47F8468280DD19400C51C0E /* InfoUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F8463280DD18D00C51C0E /* InfoUserModel.swift */; };
 		F47F8469280DD19400C51C0E /* InfoUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F8464280DD18D00C51C0E /* InfoUserViewController.swift */; };
 		F47F846A280DD19400C51C0E /* InfoUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F8465280DD18D00C51C0E /* InfoUserCell.swift */; };
 		F47F846B280DD19400C51C0E /* InfoUserPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F8466280DD18D00C51C0E /* InfoUserPresenter.swift */; };
@@ -121,7 +119,6 @@
 		F41AEB53281BF7A80040DF89 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F41AEB54281BF7A80040DF89 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		F41AEB58281BF9220040DF89 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = NetworkManager.swift; sourceTree = "<group>"; };
-		F41AEB5A281C03310040DF89 /* RegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModel.swift; sourceTree = "<group>"; };
 		F422628D280FE5540041C2FA /* MainTabBarConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarConroller.swift; sourceTree = "<group>"; };
 		F422628F280FE6840041C2FA /* MainTabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarPresenter.swift; sourceTree = "<group>"; };
 		F4226291280FE6FF0041C2FA /* MainTabBarMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarMake.swift; sourceTree = "<group>"; };
@@ -134,16 +131,16 @@
 		F42262B0281019E30041C2FA /* ListMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMake.swift; sourceTree = "<group>"; };
 		F42B86542822BCF7002D90DD /* GuideAddingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideAddingPresenter.swift; sourceTree = "<group>"; };
 		F42B86562822BDB2002D90DD /* GuideAddingMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideAddingMake.swift; sourceTree = "<group>"; };
+		F4614668282664A600BCAE08 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		F46146712826B17E00BCAE08 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		F47F843B280DCFF800C51C0E /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Bold.ttf"; path = "meet2guide/fonts/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		F47F843C280DCFF800C51C0E /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Medium.ttf"; path = "meet2guide/fonts/Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		F47F843D280DCFF800C51C0E /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Regular.ttf"; path = "meet2guide/fonts/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
-		F47F8457280DD14C00C51C0E /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 		F47F8458280DD14C00C51C0E /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
 		F47F8459280DD14C00C51C0E /* AccountPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountPresenter.swift; sourceTree = "<group>"; };
 		F47F845A280DD14C00C51C0E /* AccountMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountMake.swift; sourceTree = "<group>"; };
 		F47F845B280DD14C00C51C0E /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		F47F8462280DD18D00C51C0E /* InfoUserMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoUserMake.swift; sourceTree = "<group>"; };
-		F47F8463280DD18D00C51C0E /* InfoUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoUserModel.swift; sourceTree = "<group>"; };
 		F47F8464280DD18D00C51C0E /* InfoUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoUserViewController.swift; sourceTree = "<group>"; };
 		F47F8465280DD18D00C51C0E /* InfoUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoUserCell.swift; sourceTree = "<group>"; };
 		F47F8466280DD18D00C51C0E /* InfoUserPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoUserPresenter.swift; sourceTree = "<group>"; };
@@ -155,7 +152,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE84301C2800CD2400775255 /* PinLayout in Frameworks */,
 				8D2093EEE5AB2A6E189309C1 /* Pods_meet2guide.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,6 +237,8 @@
 				CECE357A27FEEF43004B64DC /* Info.plist */,
 				CECE357227FEEF3F004B64DC /* meet2guide.xcdatamodeld */,
 				CEB083102809F31A009FE4A1 /* LoginPresenter.swift */,
+				F4614668282664A600BCAE08 /* ImageLoader.swift */,
+				F46146712826B17E00BCAE08 /* ImagePicker.swift */,
 			);
 			path = meet2guide;
 			sourceTree = "<group>";
@@ -268,7 +266,6 @@
 				F41AEB41281BF6850040DF89 /* RegistrationMake.swift */,
 				F41AEB42281BF6850040DF89 /* RegistrationPresenter.swift */,
 				CEEEBC142802CC9E00110BFE /* RegistrationViewController.swift */,
-				F41AEB5A281C03310040DF89 /* RegistrationModel.swift */,
 			);
 			path = RegistrationView;
 			sourceTree = "<group>";
@@ -338,7 +335,6 @@
 		F47F8456280DD14C00C51C0E /* AccountView */ = {
 			isa = PBXGroup;
 			children = (
-				F47F8457280DD14C00C51C0E /* AccountModel.swift */,
 				F47F8458280DD14C00C51C0E /* AccountCell.swift */,
 				F47F8459280DD14C00C51C0E /* AccountPresenter.swift */,
 				F47F845A280DD14C00C51C0E /* AccountMake.swift */,
@@ -351,7 +347,6 @@
 			isa = PBXGroup;
 			children = (
 				F47F8462280DD18D00C51C0E /* InfoUserMake.swift */,
-				F47F8463280DD18D00C51C0E /* InfoUserModel.swift */,
 				F47F8464280DD18D00C51C0E /* InfoUserViewController.swift */,
 				F47F8465280DD18D00C51C0E /* InfoUserCell.swift */,
 				F47F8466280DD18D00C51C0E /* InfoUserPresenter.swift */,
@@ -400,7 +395,6 @@
 			);
 			name = meet2guide;
 			packageProductDependencies = (
-				CE84301B2800CD2400775255 /* PinLayout */,
 			);
 			productName = meet2guide;
 			productReference = CECE356627FEEF3F004B64DC /* meet2guide.app */;
@@ -479,7 +473,6 @@
 			);
 			mainGroup = CECE355D27FEEF3F004B64DC;
 			packageReferences = (
-				CE84301A2800CD2400775255 /* XCRemoteSwiftPackageReference "PinLayout" */,
 			);
 			productRefGroup = CECE356727FEEF3F004B64DC /* Products */;
 			projectDirPath = "";
@@ -670,7 +663,6 @@
 				F41AEB55281BF7B40040DF89 /* LoginViewController.swift in Sources */,
 				CE2E836928082CBC00CBF2BA /* GosistTourViewController.swift in Sources */,
 				F41AEB51281BF6E70040DF89 /* GosistTourMake.swift in Sources */,
-				F41AEB5B281C03310040DF89 /* RegistrationModel.swift in Sources */,
 				F41AEB50281BF6E30040DF89 /* GosistTourPresenter.swift in Sources */,
 				F41AEB44281BF68E0040DF89 /* RegistrationMake.swift in Sources */,
 				F41AEB45281BF68E0040DF89 /* RegistrationPresenter.swift in Sources */,
@@ -678,16 +670,16 @@
 				F42262A8281006140041C2FA /* MapPresenter.swift in Sources */,
 				F47F8467280DD19400C51C0E /* InfoUserMake.swift in Sources */,
 				F422628E280FE5540041C2FA /* MainTabBarConroller.swift in Sources */,
-				F47F8468280DD19400C51C0E /* InfoUserModel.swift in Sources */,
 				F47F8469280DD19400C51C0E /* InfoUserViewController.swift in Sources */,
 				F47F846A280DD19400C51C0E /* InfoUserCell.swift in Sources */,
 				F47F846B280DD19400C51C0E /* InfoUserPresenter.swift in Sources */,
 				F42B86552822BCF7002D90DD /* GuideAddingPresenter.swift in Sources */,
-				F47F845C280DD15700C51C0E /* AccountModel.swift in Sources */,
+				F46146722826B17E00BCAE08 /* ImagePicker.swift in Sources */,
 				F42262AB281011E90041C2FA /* ExcursionCell.swift in Sources */,
 				F42262AF2810197D0041C2FA /* ListPresenter.swift in Sources */,
 				F47F845D280DD15700C51C0E /* AccountCell.swift in Sources */,
 				F47F845E280DD15700C51C0E /* AccountPresenter.swift in Sources */,
+				F4614669282664A600BCAE08 /* ImageLoader.swift in Sources */,
 				F47F845F280DD15700C51C0E /* AccountMake.swift in Sources */,
 				8B55CA9F281AE09E00C2B437 /* GuideAddingViewController.swift in Sources */,
 				F47F8460280DD15700C51C0E /* AccountViewController.swift in Sources */,
@@ -1038,25 +1030,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		CE84301A2800CD2400775255 /* XCRemoteSwiftPackageReference "PinLayout" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/layoutBox/PinLayout";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		CE84301B2800CD2400775255 /* PinLayout */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CE84301A2800CD2400775255 /* XCRemoteSwiftPackageReference "PinLayout" */;
-			productName = PinLayout;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		CECE357227FEEF3F004B64DC /* meet2guide.xcdatamodeld */ = {
