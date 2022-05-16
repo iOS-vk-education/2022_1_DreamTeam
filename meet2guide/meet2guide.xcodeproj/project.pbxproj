@@ -15,7 +15,6 @@
 		CE8430162800CCE000775255 /* shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8430142800CCE000775255 /* shadow.png */; };
 		CE8430172800CCE000775255 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8430152800CCE000775255 /* logo.png */; };
 		CE92CC4728080AED00803928 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92CC4628080AED00803928 /* MapViewController.swift */; };
-		CEB083112809F31B009FE4A1 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB083102809F31A009FE4A1 /* LoginPresenter.swift */; };
 		CECE356A27FEEF3F004B64DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE356927FEEF3F004B64DC /* AppDelegate.swift */; };
 		CECE356C27FEEF3F004B64DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE356B27FEEF3F004B64DC /* SceneDelegate.swift */; };
 		CECE356E27FEEF3F004B64DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE356D27FEEF3F004B64DC /* ViewController.swift */; };
@@ -28,11 +27,15 @@
 		CEEEBC152802CC9E00110BFE /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEEBC142802CC9E00110BFE /* RegistrationViewController.swift */; };
 		DD9E09CC17677B19419F112B /* Pods_meet2guideTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD37CC10CDDA641D8F550A3 /* Pods_meet2guideTests.framework */; };
 		F40F1087281EF9A3003CE9AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F40F1086281EF9A3003CE9AF /* GoogleService-Info.plist */; };
+		F416A1142832582D00012CE4 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F416A112283257CF00012CE4 /* WelcomeViewController.swift */; };
+		F416A1152832582D00012CE4 /* WelcomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F416A113283257CF00012CE4 /* WelcomePresenter.swift */; };
+		F416A11828325A1E00012CE4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F416A11728325A1E00012CE4 /* LoginViewController.swift */; };
+		F416A11A28325A2900012CE4 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F416A11928325A2900012CE4 /* LoginPresenter.swift */; };
+		F416A11C28325A3500012CE4 /* LoginMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F416A11B28325A3500012CE4 /* LoginMake.swift */; };
 		F41AEB44281BF68E0040DF89 /* RegistrationMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41AEB41281BF6850040DF89 /* RegistrationMake.swift */; };
 		F41AEB45281BF68E0040DF89 /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41AEB42281BF6850040DF89 /* RegistrationPresenter.swift */; };
 		F41AEB50281BF6E30040DF89 /* GosistTourPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41AEB4D281BF6DE0040DF89 /* GosistTourPresenter.swift */; };
 		F41AEB51281BF6E70040DF89 /* GosistTourMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41AEB4E281BF6DE0040DF89 /* GosistTourMake.swift */; };
-		F41AEB55281BF7B40040DF89 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41AEB53281BF7A80040DF89 /* LoginViewController.swift */; };
 		F41AEB59281BF9220040DF89 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41AEB58281BF9220040DF89 /* NetworkManager.swift */; };
 		F422628E280FE5540041C2FA /* MainTabBarConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F422628D280FE5540041C2FA /* MainTabBarConroller.swift */; };
 		F4226290280FE6840041C2FA /* MainTabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F422628F280FE6840041C2FA /* MainTabBarPresenter.swift */; };
@@ -110,14 +113,17 @@
 		CECE358F27FEEF44004B64DC /* meet2guideUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meet2guideUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CEEEBC142802CC9E00110BFE /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		F40F1086281EF9A3003CE9AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "meet2guide/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F416A112283257CF00012CE4 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		F416A113283257CF00012CE4 /* WelcomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePresenter.swift; sourceTree = "<group>"; };
+		F416A11728325A1E00012CE4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F416A11928325A2900012CE4 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		F416A11B28325A3500012CE4 /* LoginMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMake.swift; sourceTree = "<group>"; };
 		F41AEB3D281BE58D0040DF89 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F41AEB41281BF6850040DF89 /* RegistrationMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationMake.swift; sourceTree = "<group>"; };
 		F41AEB42281BF6850040DF89 /* RegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
 		F41AEB4D281BF6DE0040DF89 /* GosistTourPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GosistTourPresenter.swift; sourceTree = "<group>"; };
 		F41AEB4E281BF6DE0040DF89 /* GosistTourMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GosistTourMake.swift; sourceTree = "<group>"; };
 		F41AEB4F281BF6DE0040DF89 /* GosistTourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GosistTourViewController.swift; sourceTree = "<group>"; };
-		F41AEB53281BF7A80040DF89 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		F41AEB54281BF7A80040DF89 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		F41AEB58281BF9220040DF89 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = NetworkManager.swift; sourceTree = "<group>"; };
 		F422628D280FE5540041C2FA /* MainTabBarConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarConroller.swift; sourceTree = "<group>"; };
 		F422628F280FE6840041C2FA /* MainTabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarPresenter.swift; sourceTree = "<group>"; };
@@ -214,8 +220,9 @@
 		CECE356827FEEF3F004B64DC /* meet2guide */ = {
 			isa = PBXGroup;
 			children = (
+				F416A11628325A0300012CE4 /* LoginView */,
+				F416A111283257CF00012CE4 /* WelcomeView */,
 				F42B86532822BC97002D90DD /* GuideAddingView */,
-				F41AEB52281BF7A80040DF89 /* LoginView */,
 				F41AEB4C281BF6DE0040DF89 /* GosistTour */,
 				F41AEB40281BF6850040DF89 /* RegistrationView */,
 				F41AEB3D281BE58D0040DF89 /* GoogleService-Info.plist */,
@@ -260,6 +267,25 @@
 			path = meet2guideUITests;
 			sourceTree = "<group>";
 		};
+		F416A111283257CF00012CE4 /* WelcomeView */ = {
+			isa = PBXGroup;
+			children = (
+				F416A112283257CF00012CE4 /* WelcomeViewController.swift */,
+				F416A113283257CF00012CE4 /* WelcomePresenter.swift */,
+			);
+			path = WelcomeView;
+			sourceTree = "<group>";
+		};
+		F416A11628325A0300012CE4 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				F416A11728325A1E00012CE4 /* LoginViewController.swift */,
+				F416A11928325A2900012CE4 /* LoginPresenter.swift */,
+				F416A11B28325A3500012CE4 /* LoginMake.swift */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
 		F41AEB40281BF6850040DF89 /* RegistrationView */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,15 +304,6 @@
 				F41AEB4F281BF6DE0040DF89 /* GosistTourViewController.swift */,
 			);
 			path = GosistTour;
-			sourceTree = "<group>";
-		};
-		F41AEB52281BF7A80040DF89 /* LoginView */ = {
-			isa = PBXGroup;
-			children = (
-				F41AEB53281BF7A80040DF89 /* LoginViewController.swift */,
-				F41AEB54281BF7A80040DF89 /* LoginPresenter.swift */,
-			);
-			path = LoginView;
 			sourceTree = "<group>";
 		};
 		F422628C280FE5440041C2FA /* MainTabBar */ = {
@@ -659,8 +676,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F416A1142832582D00012CE4 /* WelcomeViewController.swift in Sources */,
+				F416A1152832582D00012CE4 /* WelcomePresenter.swift in Sources */,
 				F41AEB59281BF9220040DF89 /* NetworkManager.swift in Sources */,
-				F41AEB55281BF7B40040DF89 /* LoginViewController.swift in Sources */,
 				CE2E836928082CBC00CBF2BA /* GosistTourViewController.swift in Sources */,
 				F41AEB51281BF6E70040DF89 /* GosistTourMake.swift in Sources */,
 				F41AEB50281BF6E30040DF89 /* GosistTourPresenter.swift in Sources */,
@@ -682,6 +700,9 @@
 				F4614669282664A600BCAE08 /* ImageLoader.swift in Sources */,
 				F47F845F280DD15700C51C0E /* AccountMake.swift in Sources */,
 				8B55CA9F281AE09E00C2B437 /* GuideAddingViewController.swift in Sources */,
+				F416A11C28325A3500012CE4 /* LoginMake.swift in Sources */,
+				F416A11A28325A2900012CE4 /* LoginPresenter.swift in Sources */,
+				F416A11828325A1E00012CE4 /* LoginViewController.swift in Sources */,
 				F47F8460280DD15700C51C0E /* AccountViewController.swift in Sources */,
 				F4226290280FE6840041C2FA /* MainTabBarPresenter.swift in Sources */,
 				F4226292280FE6FF0041C2FA /* MainTabBarMake.swift in Sources */,
@@ -690,7 +711,6 @@
 				CECE356A27FEEF3F004B64DC /* AppDelegate.swift in Sources */,
 				CECE357427FEEF3F004B64DC /* meet2guide.xcdatamodeld in Sources */,
 				CECE356C27FEEF3F004B64DC /* SceneDelegate.swift in Sources */,
-				CEB083112809F31B009FE4A1 /* LoginPresenter.swift in Sources */,
 				F42B86572822BDB2002D90DD /* GuideAddingMake.swift in Sources */,
 				CE92CC4728080AED00803928 /* MapViewController.swift in Sources */,
 				F42262AD281011F50041C2FA /* ListViewController.swift in Sources */,

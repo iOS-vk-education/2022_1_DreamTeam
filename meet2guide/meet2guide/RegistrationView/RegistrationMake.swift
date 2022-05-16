@@ -9,9 +9,8 @@ import Foundation
 import UIKit
 
 final class RegistrationAssembler {
-    static func make(with title: String?) -> UIViewController {
+    static func make() -> UIViewController {
         let viewController = RegistrationViewController()
-        viewController.configTitle(with: title)
         let presenter = RegistrationPresenter(view: viewController)
         viewController.output = presenter
         return viewController

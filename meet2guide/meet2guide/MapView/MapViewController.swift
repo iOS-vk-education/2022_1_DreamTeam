@@ -13,10 +13,7 @@ import CoreLocation
 protocol MapView: AnyObject {
 }
 
-class MapViewController: UIViewController, MapView, YMKMapCameraListener {
-    func onCameraPositionChanged(with map: YMKMap, cameraPosition: YMKCameraPosition, cameraUpdateReason: YMKCameraUpdateReason, finished: Bool) {
-    }
-    
+class MapViewController: UIViewController, MapView {
     var output: MapPresenterProtocol?
     
     private let mapView: YMKMapView = YMKMapView()
@@ -86,6 +83,11 @@ class MapViewController: UIViewController, MapView, YMKMapCameraListener {
             with: YMKCameraPosition(target: YMKPoint(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude), zoom: 15, azimuth: 0, tilt: 0),
             animationType: YMKAnimation(type: YMKAnimationType.smooth, duration: 5),
             cameraCallback: nil)
+    }
+}
+
+extension MapViewController: YMKMapCameraListener {
+    func onCameraPositionChanged(with map: YMKMap, cameraPosition: YMKCameraPosition, cameraUpdateReason: YMKCameraUpdateReason, finished: Bool) {
     }
 }
 

@@ -22,6 +22,8 @@ protocol NetworkManagerProtocol {
     func updateUser(user: UserData)
     
     func saveUser(user: UserData)
+    
+    func checkUser(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 final class NetworkManager {
@@ -134,5 +136,16 @@ extension NetworkManager: NetworkManagerProtocol {
                 completion(.success(user))
             }
         })
+    }
+    
+    func checkUser(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            guard error == nil else {
+                completion(.failure(error!))
+                return
+            }
+            
+            completion(.success(()))
+        }
     }
 }
