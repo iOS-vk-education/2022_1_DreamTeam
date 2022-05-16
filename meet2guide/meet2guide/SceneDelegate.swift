@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private var startViewController: UIViewController {
         if (Auth.auth().currentUser == nil) {
-            return UINavigationController(rootViewController: LoginViewController())
+            return UINavigationController(rootViewController: WelcomeViewController())
         }
         
         return MainTabBarAssembler.make()

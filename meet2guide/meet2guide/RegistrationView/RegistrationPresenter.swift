@@ -25,12 +25,12 @@ final class RegistrationPresenter {
 
 extension RegistrationPresenter: RegistrationPresenterProtocol {
     func didRegistration(user: UserData, password: String) {
-        networkManager.createUser(user: user, password: password) { result in
+        networkManager.createUser(user: user, password: password) { [weak self] result in
             switch result {
             case .success:
-                self.openMainWindow()
+                self?.openMainWindow()
             case .failure(let error):
-                self.failedRegistration(error: error)
+                self?.failedRegistration(error: error)
             }
         }
     }

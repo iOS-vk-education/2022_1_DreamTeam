@@ -20,6 +20,8 @@ class RegistrationViewController: UIViewController {
     private let titleLabel: UILabel = UILabel()
     private let mailTextField: UITextField = UITextField()
     private let passwordTextField: UITextField = UITextField()
+    private let nameTextField: UITextField = UITextField()
+    private let surnameTextField: UITextField = UITextField()
     private let colorBlueCustom: UIColor = UIColor(red: 0.205, green: 0.369, blue: 0.792, alpha: 1)
     private let nextButton: UIButton = UIButton()
     private let showPasswordButton: UIButton = UIButton()
@@ -30,6 +32,9 @@ class RegistrationViewController: UIViewController {
         view.backgroundColor = .white
         configTextField(mailTextField, "example@example.ru", .emailAddress, false, .username)
         configTextField(passwordTextField, "password", .default, true, .password)
+        
+        configTextField(nameTextField, "name", .default, false, .username)
+        configTextField(surnameTextField, "surname", .default, false, .username)
         
         titleLabel.text = textTitle
         titleLabel.numberOfLines = 0
@@ -90,9 +95,19 @@ class RegistrationViewController: UIViewController {
             return
         }
         
+        guard let name = nameTextField.text, !name.isEmpty else {
+            nameTextField.layer.borderColor = UIColor.red.cgColor
+            return
+        }
+        
+        guard let surname = surnameTextField.text, !surname.isEmpty else {
+            surnameTextField.layer.borderColor = UIColor.red.cgColor
+            return
+        }
+        
         let user = UserData(email: email,
-                            name: "name",
-                            surname: "surname",
+                            name: name,
+                            surname: surname,
                             phone: "")
         output?.didRegistration(user: user, password: password)
     }
@@ -115,6 +130,22 @@ class RegistrationViewController: UIViewController {
             .height(10%)
             .maxHeight(50)
         
+        nameTextField.pin
+            .below(of: passwordTextField)
+            .marginTop(6%)
+            .left(5%)
+            .right(5%)
+            .height(10%)
+            .maxHeight(50)
+        
+        surnameTextField.pin
+            .below(of: nameTextField)
+            .marginTop(6%)
+            .left(5%)
+            .right(5%)
+            .height(10%)
+            .maxHeight(50)
+        
         showPasswordButton.pin
             .right(20)
             .vCenter()
@@ -122,7 +153,7 @@ class RegistrationViewController: UIViewController {
             .height(50%)
         
         nextButton.pin
-            .below(of: passwordTextField)
+            .below(of: surnameTextField)
             .marginTop(10%)
             .left(5%)
             .right(5%)

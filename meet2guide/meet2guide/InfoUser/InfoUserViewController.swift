@@ -285,7 +285,7 @@ extension InfoUserViewController: InfoUserView {
     func openStartWindow() {
         let sceneDelegate = UIApplication.shared.connectedScenes
                         .first!.delegate as! SceneDelegate
-        let startWindow = UINavigationController(rootViewController: LoginViewController())
+        let startWindow = UINavigationController(rootViewController: WelcomeViewController())
         sceneDelegate.window!.rootViewController = startWindow
         sceneDelegate.window!.makeKeyAndVisible()
         

@@ -1,121 +1,170 @@
 //
-//  MainViewController.swift
+//  LoginViewController.swift
 //  meet2guide
 //
-//  Created by user on 08.04.2022.
+//  Created by Екатерина Григоренко on 16.05.2022.
 //
 
 import Foundation
 import UIKit
 import PinLayout
 
-protocol LoginViewControllerProtocol: AnyObject {
-    func open(_ titleView: String)
+protocol LoginView: AnyObject {
+    func open()
+    func showAlert(alert: UIAlertController)
 }
 
 class LoginViewController: UIViewController {
-    private let colorBlueCustom: UIColor = UIColor(red: 0.205, green: 0.369, blue: 0.792, alpha: 1)
-    private let textInLabel: String = "Найдите лучшие экскурсии рядом с вами"
+    var output: LoginPresenterProtocol?
+    private var textTitle: String? = "Вход"
     private let titleLabel: UILabel = UILabel()
-    private let logIn: UIButton = UIButton()
-    private let registration: UIButton = UIButton()
-    private let imageLogo: UIImage? = UIImage(named: "logo")
-    private let imageViewLogo: UIImageView = UIImageView()
-    private let imageShadow: UIImage? = UIImage(named: "shadow")
-    private let imageViewShadow: UIImageView = UIImageView()
-    private var loginPresenter: LoginPresenterProtocol?
-
-    @objc func loginButtonAction() {
-        loginPresenter?.didLoginButtonTapped()
-    }
-    
-    @objc func registrationButtonAction() {
-        loginPresenter?.didRegistrationButtonTapped()
-    }
+    private let mailTextField: UITextField = UITextField()
+    private let passwordTextField: UITextField = UITextField()
+    private let colorBlueCustom: UIColor = UIColor(red: 0.205, green: 0.369, blue: 0.792, alpha: 1)
+    private let nextButton: UIButton = UIButton()
+    private let showPasswordButton: UIButton = UIButton()
+    private let backButton = UIBarButtonItem()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        configTextField(mailTextField, "example@example.ru", .emailAddress, false, .username)
+        configTextField(passwordTextField, "password", .default, true, .password)
         
-        titleLabel.text = textInLabel
+        titleLabel.text = textTitle
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .center
         titleLabel.textColor = colorBlueCustom
         titleLabel.font = UIFont(name: "Avenir", size: 32)
         
-        imageViewLogo.contentMode = .scaleAspectFill
-        imageViewLogo.image = imageLogo
+        nextButton.setTitle("Далее", for: .normal)
+        nextButton.backgroundColor = colorBlueCustom
+        nextButton.setTitleColor(.white, for: .normal)
+        nextButton.contentHorizontalAlignment = .center
+        nextButton.titleLabel?.font =  UIFont(name: "Montserrat-Regular", size: 20)
+        nextButton.layer.cornerRadius = 5
+        nextButton.layer.borderWidth = 2.0
+        nextButton.layer.borderColor = (colorBlueCustom).cgColor
+
+        nextButton.layer.shadowColor = UIColor.darkGray.cgColor
+        nextButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        nextButton.layer.shadowRadius = 4
+        nextButton.layer.shadowOpacity = 1
+        nextButton.clipsToBounds = true
+        nextButton.layer.masksToBounds = false
         
-        imageViewShadow.image = imageShadow
+        showPasswordButton.setImage(UIImage(systemName: "eye"), for: .normal)
+        showPasswordButton.setImage(UIImage(systemName: "eye.slash"), for: .selected)
+        showPasswordButton.contentHorizontalAlignment = .center
+        showPasswordButton.tintColor = colorBlueCustom
         
-        view.addSubview(imageViewShadow)
-        view.addSubview(imageViewLogo)
-        view.addSubview(titleLabel)
-        configButton(logIn, "Вход", .white, colorBlueCustom, #selector(loginButtonAction))
-        configButton(registration, "Регистрация", colorBlueCustom, .white, #selector(registrationButtonAction))
-        loginPresenter = LoginPresenter(view: self)
+        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.tintColor = colorBlueCustom
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: colorBlueCustom]
+        backButton.title = "назад"
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        title = textTitle
+        
+        nextButton.addTarget(self, action: #selector(didTapNextButton), for: .touchUpInside)
+
+        view.addSubview(nextButton)
+        passwordTextField.addSubview(showPasswordButton)
+    }
+    
+    func popToRoot(sender:UIBarButtonItem){
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
+    @objc
+    private func didTapNextButton() {
+        guard let email = mailTextField.text, !email.isEmpty else {
+            mailTextField.layer.borderColor = UIColor.red.cgColor
+            return
+        }
+        
+        guard let password = passwordTextField.text, !password.isEmpty else {
+            passwordTextField.layer.borderColor = UIColor.red.cgColor
+            return
+        }
+        output?.didLogin(email: email, password: password)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-    
-        titleLabel.pin
-            .top(view.safeAreaInsets.top)
+ 
+        mailTextField.pin
+            .top(view.safeAreaInsets.top + 40)
             .left(5%)
             .right(5%)
-            .sizeToFit(.width)
+            .height(10%)
+            .maxHeight(50)
         
-        logIn.pin
-            .bottom(view.safeAreaInsets.bottom + 20)
+        passwordTextField.pin
+            .below(of: mailTextField)
+            .marginTop(6%)
             .left(5%)
-            .sizeToFit(.width)
-            .width(40%)
-            .height(10%)
-        
-        registration.pin
-            .bottom(view.safeAreaInsets.bottom + 20)
             .right(5%)
-            .sizeToFit(.width)
-            .width(40%)
             .height(10%)
+            .maxHeight(50)
         
-        imageViewLogo.pin
-            .verticallyBetween(titleLabel, and: logIn).marginVertical(10%)
-            .hCenter()
-            .aspectRatio()
-
-        imageViewShadow.pin
-            .below(of: imageViewLogo)
-            .marginTop(-4%)
-            .hCenter()
-            .width(of: imageViewLogo)
-            .aspectRatio(3)
+        showPasswordButton.pin
+            .right(20)
+            .vCenter()
+            .width(6%)
+            .height(50%)
+        
+        nextButton.pin
+            .below(of: passwordTextField)
+            .marginTop(10%)
+            .left(5%)
+            .right(5%)
+            .height(15%)
+            .maxHeight(60)
+        
+    }
+    func configTitle(with title: String?){
+        textTitle = title
     }
     
-    func configButton (_ button: UIButton, _ name: String, _ backGrColor: UIColor, _ textColor: UIColor, _ funcAction: Selector){
-        button.setTitle(name, for: .normal)
-        button.backgroundColor = backGrColor
-        button.setTitleColor(textColor, for: .normal)
-        button.contentHorizontalAlignment = .center
-        button.titleLabel?.font =  UIFont(name: "Avenir", size: 14)
-        button.layer.cornerRadius = 5
-        button.layer.borderWidth = 2.0
-        button.layer.borderColor = (colorBlueCustom).cgColor
-
-        button.layer.shadowColor = UIColor.darkGray.cgColor
-        button.layer.shadowOffset = CGSize(width: 0, height: 2)
-        button.layer.shadowRadius = 4
-        button.layer.shadowOpacity = 1
-        button.clipsToBounds = true
-        button.layer.masksToBounds = false
-        button.addTarget(self, action: funcAction, for: .touchUpInside)
-        view.addSubview(button)
+    func configTextField (_ textField: UITextField, _ name: String, _ typeKeyboard: UIKeyboardType, _ security: Bool, _ typeContent: UITextContentType){
+        textField.textContentType = typeContent
+        textField.placeholder = name
+        textField.backgroundColor = .white
+        textField.textColor = colorBlueCustom
+        textField.font = UIFont(name: "Avenir", size: 14)
+        textField.keyboardType = typeKeyboard
+        textField.isSecureTextEntry = security
+        textField.adjustsFontSizeToFitWidth = true
+        textField.minimumFontSize = 10
+        textField.layer.cornerRadius = 10
+        textField.layer.borderWidth = 2.0
+        textField.layer.borderColor = (colorBlueCustom).cgColor
+        textField.returnKeyType = UIReturnKeyType.done
+        textField.clipsToBounds = true
+        textField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
+        view.addSubview(textField)
     }
 }
 
-extension LoginViewController: LoginViewControllerProtocol {
-    func open(_ titleView: String){
-        let registrationView = RegistrationAssembler.make(with: titleView)
-        self.navigationController?.pushViewController(registrationView, animated: true)
+extension LoginViewController: LoginView {
+    func open() {
+        let sceneDelegate = UIApplication.shared.connectedScenes
+                        .first!.delegate as! SceneDelegate
+        
+        sceneDelegate.window!.rootViewController = MainTabBarAssembler.make()
+        sceneDelegate.window!.makeKeyAndVisible()
+        
+        UIView.transition(with: sceneDelegate.window!,
+                          duration: 0.3,
+                          options: .transitionCrossDissolve,
+                          animations: nil,
+                          completion: nil)
+    }
+    
+    func showAlert(alert: UIAlertController) {
+        self.present(alert, animated: true, completion: nil)
     }
 }
