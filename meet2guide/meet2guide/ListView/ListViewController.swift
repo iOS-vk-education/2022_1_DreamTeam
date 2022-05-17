@@ -8,6 +8,8 @@
 import UIKit
 import PinLayout
 
+
+
 struct Excursion {
     let name: String
     let rating: Double

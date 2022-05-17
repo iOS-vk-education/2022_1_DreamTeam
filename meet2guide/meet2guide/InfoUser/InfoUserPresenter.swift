@@ -60,7 +60,7 @@ extension InfoUserPresenter: InfoUserPresenterProtocol {
     }
     
     func didUpdateUser(user: UserData) {
-        networkManager.updateUser(user: user)
+        networkManager.saveUser(user: user)
     }
 }
 

@@ -24,6 +24,8 @@ protocol NetworkManagerProtocol {
     func saveUser(user: UserData)
     
     func checkUser(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void)
+    
+    func addExcursion(excursion: ExcursionData)
 }
 
 final class NetworkManager {
@@ -32,6 +34,8 @@ final class NetworkManager {
     let imageLoader = ImageLoader.shared
     
     private var userData: UserData?
+    
+    private var excursionData: ExcursionData?
     
     private init() {}
 }
@@ -147,5 +151,32 @@ extension NetworkManager: NetworkManagerProtocol {
             
             completion(.success(()))
         }
+    }
+    
+    func addExcursion(excursion: ExcursionData) {
+        guard let currentUser = Auth.auth().currentUser else { return }
+        self.excursionData = excursion
+        self.excursionData?.addedByUser = currentUser.uid
+        imageLoader.load(image: excursion.image) { [weak self] (result) in
+            switch result {
+            case .success(let name):
+                self?.excursionData?.imageName = name
+                guard let excursionData = self?.excursionData else {
+                    print("error")
+                    return
+                }
+                self?.addExcursionInBase(excursion: excursionData)
+            case .failure(let error):
+                print("registration interactor error: \(error)")
+            }
+        }
+        
+    }
+    
+    
+    func addExcursionInBase(excursion: ExcursionData) {
+        let ref = Database.database().reference(withPath: "excursions")
+        
+        ref.child(excursion.name).setValue(excursion.toDictionary())
     }
 }
