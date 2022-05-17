@@ -4,14 +4,15 @@ protocol ListPresenterProtocol: AnyObject {
     func didRowSelect(indexPath: IndexPath)
 }
 
-final class ListPresenter: ListPresenterProtocol {
+final class ListPresenter  {
     weak var viewController: ListView?
-    //private let model: InfoUserModel = InfoUserModel()
     
     init(view: ListView) {
         viewController = view
     }
-    
+}
+
+extension ListPresenter: ListPresenterProtocol {
     func didRowSelect(indexPath: IndexPath) {
         viewController?.openExcursion()
     }

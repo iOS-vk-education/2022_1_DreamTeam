@@ -4,7 +4,7 @@ import PinLayout
 class GuideAddingCell: UITableViewCell {
     private let titleLabel: UILabel = UILabel()
 
-    private var information: UITextField = UITextField()
+    private var information: UITextView = UITextView()
 
     private var colorBlue: UIColor = UIColor(red: 52 / 255, green: 94 / 255, blue: 202 / 255, alpha: 100)
 
@@ -19,15 +19,15 @@ class GuideAddingCell: UITableViewCell {
             .pin
             .left(20)
             .top(self.contentView.frame.height / 2 - 12.5)
-            .width(100)
+            .width(80)
             .height(25)
 
         information
             .pin
-            .left(150)
+            .left(100)
             .top(self.contentView.frame.height / 2 - 20)
-            .width(200)
-            .height(40)
+            .width(250)
+            .height(self.contentView.frame.height - 10)
     }
 
     required init?(coder: NSCoder) {
@@ -39,6 +39,7 @@ class GuideAddingCell: UITableViewCell {
         titleLabel.font = UIFont(name: "Montserrat-Medium", size: 14)
         titleLabel.textColor = colorBlue
         titleLabel.textAlignment = .left
+    
 
         information.text = "test"
         information.font = UIFont(name: "Montserrat-Medium", size: 14)
@@ -47,9 +48,9 @@ class GuideAddingCell: UITableViewCell {
 
         information.layer.borderColor = CGColor(red: 52 / 255, green: 94 / 255, blue: 202 / 255, alpha: 100)
         information.layer.borderWidth = 1.0
-        information.borderStyle = .roundedRect
-        information.layer.masksToBounds = true
+        //information.layer.masksToBounds = true
         information.layer.cornerRadius = 10
+        information.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 
         contentView.addSubview(titleLabel)
         contentView.addSubview(information)
@@ -58,6 +59,10 @@ class GuideAddingCell: UITableViewCell {
     func configure(with config: guideInfo) {
         titleLabel.text = config.tableLabel
         information.text = config.textIn
+    }
+    
+    func getInfo() -> String {
+        return information.text
     }
 
 }
