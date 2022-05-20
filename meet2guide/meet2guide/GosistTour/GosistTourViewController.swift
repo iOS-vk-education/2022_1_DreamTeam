@@ -10,37 +10,43 @@ import UIKit
 import PinLayout
 
 protocol GosistTourView: AnyObject {
+    func reloadData(with excursion: ExcursionData)
 }
 
-class GosistTourViewController: UIViewController, GosistTourView {
+class GosistTourViewController: UIViewController {
     var output: GosistTourPresenterProtocol?
+    private var idExcursion: String = ""
     private let textTitle: String? = "Описание"
     private let titleLabel: UILabel = UILabel()
     private let colorBlueCustom: UIColor = UIColor(red: 0.205, green: 0.369, blue: 0.792, alpha: 1)
     private let colorGrayCustom: UIColor = UIColor(red: 0.769, green: 0.769, blue: 0.769, alpha: 0.2)
     private let formContainerView = UIView()
     private let tourImageView = UIImageView()
-    private var tourName: String? = "Государственный Исторический Музей"
+    private var tourName: String? = "                              "
     private let formTitleLabel = UILabel()
     private let labelTourPlace: String = "Расположение"
-    private var textTourPlace: String = "Красная площадь 1"
+    private var textTourPlace: String = "                   "
     private var tourPlaceTextView = UITextView()
     private let labelDescription: String = "Описание"
-    private var textDescription: String = "Крупнейший национальный исторический музей России. Основан в 1872 году, здание на Красной площади Москвы было построено в 1875-1883 годах по проекту архитектора Владимира Шервуда и инженера Анатолия Семёнова"
+    private var textDescription: String = "                            "
     private var tourDescriptionTextView = UITextView()
     private let addTourButton: UIButton = UIButton()
     private let textButton: String = "Добавить"
     private var prizeValue: Double = 300.00
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        output?.didLoadView(with: idExcursion)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        titleLabel.text = textTitle
-        titleLabel.numberOfLines = 0
-        titleLabel.textAlignment = .center
-        titleLabel.textColor = colorBlueCustom
-        titleLabel.font = UIFont(name: "Avenir", size: 32)
+        self.title = "Описание"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: colorBlueCustom]
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(clickedCloseButton))
         
         formContainerView.backgroundColor = colorGrayCustom
         formContainerView.layer.cornerRadius = 15.0
@@ -79,7 +85,7 @@ class GosistTourViewController: UIViewController, GosistTourView {
         tourDescriptionTextView.text = labelDescription + ": " + textDescription
         formContainerView.addSubview(tourDescriptionTextView)
 
-        addTourButton.setTitle(textButton + " " + String(prizeValue) + " ₽", for: .normal)
+        addTourButton.setTitle(textButton, for: .normal)
         addTourButton.backgroundColor = colorBlueCustom
         addTourButton.setTitleColor(.white, for: .normal)
         addTourButton.contentHorizontalAlignment = .center
@@ -99,22 +105,48 @@ class GosistTourViewController: UIViewController, GosistTourView {
         view.addSubview(titleLabel)
     }
     
+    func setIdExcursion(idExcursion: String) {
+        self.idExcursion = idExcursion
+    }
     
+    @objc
+    private func clickedCloseButton() {
+        dismiss(animated: true, completion: nil)
+    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        titleLabel.pin
-            .top(view.safeAreaInsets.top)
+        formContainerView.pin
+            .top(view.safeAreaInsets.top + 20)
+            .left(5%)
+            .right(5%)
+            .bottom(view.safeAreaInsets.bottom)
+        
+        
+        formTitleLabel.pin
+            .top(formContainerView.safeAreaInsets.top + 10)
             .left(5%)
             .right(5%)
             .sizeToFit(.width)
         
-        formContainerView.pin
-            .below(of: titleLabel)
-            .left(5%)
-            .right(5%)
-            .bottom(view.safeAreaInsets.bottom)
+        tourImageView.pin
+            .topCenter(to: formTitleLabel.anchor.bottomCenter)
+            .margin(10)
+            .width(300)
+            .height(300)
+        
+        tourPlaceTextView.pin
+            .topCenter(to: tourImageView.anchor.bottomCenter)
+            .margin(20)
+            .width(300)
+            .height(30)
+        
+        tourDescriptionTextView.pin
+            .topCenter(to: tourPlaceTextView.anchor.bottomCenter)
+            .margin(10)
+            .width(300)
+            .height(100)
         
         addTourButton.pin
             .bottom(view.safeAreaInsets.bottom)
@@ -124,30 +156,15 @@ class GosistTourViewController: UIViewController, GosistTourView {
             .height(15%)
             .maxHeight(60)
         
-        tourDescriptionTextView.pin
-            .above(of: addTourButton)
-            .left(5%)
-            .right(5%)
-            .sizeToFit(.width)
-            .minHeight(10)
         
-        tourPlaceTextView.pin
-            .above(of: tourDescriptionTextView)
-            .left(5%)
-            .right(5%)
-            .sizeToFit(.width)
-            .minHeight(10)
-        
-        formTitleLabel.pin
-            .left(5%)
-            .right(5%)
-            .sizeToFit(.width)
-        
-        tourImageView.pin
-            .below(of: formTitleLabel)
-            .left(5%)
-            .right(5%)
-            .above(of: tourPlaceTextView)
-            .minHeight(100)
+    }
+}
+
+extension GosistTourViewController: GosistTourView {
+    func reloadData(with excursion: ExcursionData) {
+        formTitleLabel.text = excursion.name
+        tourImageView.image = excursion.image
+        tourPlaceTextView.text = labelTourPlace + ": " + excursion.address
+        tourDescriptionTextView.text = labelDescription + ": " + (excursion.description ?? String(""))
     }
 }

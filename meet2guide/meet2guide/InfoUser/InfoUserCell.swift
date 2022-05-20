@@ -4,7 +4,7 @@ import PinLayout
 class InfoUserCell: UITableViewCell {
     private let titleLabel: UILabel = UILabel()
     
-    private var information: UITextField = UITextField()
+    var information: UITextField = UITextField()
     
     private var colorBlue: UIColor = UIColor(red: 52 / 255, green: 94 / 255, blue: 202 / 255, alpha: 100)
     
@@ -76,4 +76,7 @@ class InfoUserCell: UITableViewCell {
         return information.text
     }
     
+    func setInfo(with info: String) {
+        information.text = info
+    }
 }

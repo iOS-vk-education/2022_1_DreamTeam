@@ -158,8 +158,10 @@ class GuideAddingViewController: UIViewController {
                                       date: date,
                                       address: address,
                                       description: description,
-                                      image: image)
+                                      image: image,
+                                      price: "300")
         output?.addExcursion(excursion: excursion)
+        self.navigationController?.popViewController(animated: true)
     }
 
     private func configImages() {

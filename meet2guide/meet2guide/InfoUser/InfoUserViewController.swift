@@ -33,6 +33,19 @@ class InfoUserViewController: UIViewController {
     
     private var tableViewUserConfiguration: UITableView = UITableView()
     
+    private var nameTextField = UITextField()
+    private var nameLabel = UILabel()
+    
+    private var surnameTextField = UITextField()
+    private var surnameLabel = UILabel()
+    
+    private var phoneTextField = UITextField()
+    private var phoneLabel = UILabel()
+    
+    private var emailTextField = UITextField()
+    private var emailLabel = UILabel()
+    
+    
     private var userConfiguration: [UserConfig] =
     [UserConfig(title: "Имя", textIn: "", color: UIColor.systemGray5, isLoaded: false),
      UserConfig(title: "Фамилия", textIn: "", color: UIColor.systemGray5, isLoaded: false),
@@ -57,6 +70,19 @@ class InfoUserViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "Информация"
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardOnTap))
+        tap.delegate = self
+        self.view.addGestureRecognizer(tap)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                name: UIResponder.keyboardWillShowNotification,
+                                object: nil)
+        NotificationCenter.default.addObserver(self,
+                                selector: #selector(keyboardWillHide),
+                                name: UIResponder.keyboardWillHideNotification,
+                                object: nil)
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: colorBlue]
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(clickedCloseButton))
@@ -76,6 +102,23 @@ class InfoUserViewController: UIViewController {
         setUpSaveButton()
         
         setUpExitButton()
+    }
+    
+    @objc
+    func hideKeyboardOnTap() {
+        view.endEditing(true)
+    }
+    
+    @objc
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            scrollView.contentOffset = CGPoint(x: 0, y: keyboardSize.height)
+        }
+    }
+
+    @objc
+    func keyboardWillHide(notification: NSNotification) {
+        scrollView.contentOffset = CGPoint.zero
     }
     
     private func setUpUserAvatar() {
@@ -138,6 +181,34 @@ class InfoUserViewController: UIViewController {
         exitButton.setTitleColor(.red, for: .normal)
         
         scrollView.addSubview(exitButton)
+    }
+    
+    private func setUpTextField(label: UILabel, textField: UITextField, labelText: String) {
+        label.text = labelText
+        label.font = UIFont(name: "Montserrat-Medium", size: 14)
+        label.textColor = colorBlue
+        label.textAlignment = .left
+        
+        textField.text = "test"
+        textField.font = UIFont(name: "Montserrat-Medium", size: 14)
+        textField.textColor = colorBlue
+        textField.textAlignment = .left
+        
+        textField.layer.borderColor = CGColor(red: 52 / 255, green: 94 / 255, blue: 202 / 255, alpha: 100)
+        textField.layer.borderWidth = 1.0
+        textField.borderStyle = .roundedRect
+        textField.layer.masksToBounds = true
+        textField.layer.cornerRadius = 10
+        
+        textField.backgroundColor = UIColor.systemGray
+        UIView.animate(withDuration: 1,
+                       delay: 1,
+                       options: [.repeat, .autoreverse],
+                       animations: { textField.alpha = 0.2 }
+                      )
+        
+        scrollView.addSubview(label)
+        scrollView.addSubview(textField)
     }
     
     @objc
@@ -210,8 +281,7 @@ class InfoUserViewController: UIViewController {
         changeImageButton.pin
             .topCenter(to: userAvatar.anchor.bottomCenter)
             .margin(20)
-            .width((self.view.window?.frame.width ?? 310) - 100)
-            .height(40)
+            .sizeToFit()
         
         tableViewUserConfiguration.pin
             .topCenter(to: changeImageButton.anchor.bottomCenter)
@@ -222,14 +292,21 @@ class InfoUserViewController: UIViewController {
         saveButton.pin
             .topCenter(to: tableViewUserConfiguration.anchor.bottomCenter)
             .margin(10)
-            .width((self.view.window?.frame.width ?? 310) - 100)
-            .height(40)
+            .sizeToFit()
         
         exitButton.pin
             .topCenter(to: saveButton.anchor.bottomCenter)
             .margin(10)
-            .width((self.view.window?.frame.width ?? 310) - 100)
-            .height(30)
+            .sizeToFit()
+    }
+    
+    private func removeKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(UIResponder.keyboardWillShowNotification)
+        NotificationCenter.default.removeObserver(UIResponder.keyboardWillHideNotification)
+    }
+    
+    deinit {
+        
     }
 }
 
@@ -241,6 +318,12 @@ extension InfoUserViewController: UITableViewDelegate, UITableViewDataSource {
         cell?.configure(with: userConfiguration[indexPath.row])
         
         cell?.selectionStyle = UITableViewCell.SelectionStyle.none
+        if userConfiguration[indexPath.row].title == "Телефон", userConfiguration[indexPath.row].isLoaded {
+            cell?.information.delegate = self
+            cell?.information.keyboardType = .numberPad
+        } else {
+            print("here")
+        }
         
         return cell ?? .init()
     }
@@ -299,5 +382,56 @@ extension InfoUserViewController: InfoUserView {
     func showAlert(alert: UIAlertController) {
         self.present(alert, animated: true, completion: nil)
     }
+    
+    private func formatPhoneNumber(number: String) -> String {
+           let cleanPhoneNumber = number.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+           let mask = "+X (XXX) XXX-XX-XX"
+
+           var result = ""
+
+           var index = cleanPhoneNumber.startIndex
+
+           for ch in mask where index < cleanPhoneNumber.endIndex {
+
+               if ch == "X" {
+
+                   result.append(cleanPhoneNumber[index])
+
+                   index = cleanPhoneNumber.index(after: index)
+
+               } else {
+
+                   result.append(ch)
+
+               }
+
+           }
+
+           return result
+
+       }
 }
+
+extension InfoUserViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let cell = tableViewUserConfiguration.cellForRow(at: IndexPath(row: 2, section: 0)) as! InfoUserCell
+        if textField == cell.information {
+            guard let text = cell.information.text else { return false }
+            let newString = (text as NSString).replacingCharacters(in: range, with: string)
+
+            cell.information.text = formatPhoneNumber(number: newString)
+            return false
+        }
+        
+        return false
+    }
+    
+}
+
+extension InfoUserViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+}
+
 
