@@ -4,6 +4,8 @@ import PinLayout
 class ExcursionCell: UITableViewCell {
     static let reuseIdentifier = "ExcursionCell"
     
+    private var idExcursion: String = ""
+    
     private let mainView = UIView()
     private let rightView = UIView()
     private let nameLabel = UILabel()
@@ -33,22 +35,24 @@ class ExcursionCell: UITableViewCell {
         nameLabel.font = UIFont(name: "Montserrat-Regular", size: 12)
         nameLabel.textColor = .black
         nameLabel.text = "Государственный Исторический \nМузей"
-        nameLabel.lineBreakMode = .byTruncatingHead
+        nameLabel.lineBreakMode = .byWordWrapping
         nameLabel.numberOfLines = 0
         nameLabel.textAlignment = .left
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         mainView.addSubview(nameLabel)
         
         ratingText.textColor = colorGrayText
+        ratingText.backgroundColor = .clear
         ratingText.font = UIFont(name: "Montserrat-Regular", size: 12)
         mainView.addSubview(ratingText)
         
         priceText.textColor = .black
         priceText.font = UIFont(name: "Montserrat-Bold", size: 15)
+        priceText.backgroundColor = .clear
         
         
-        ratingText.text = "4.78"
-        priceText.text = "₽300.00"
+        ratingText.text = "   "
+        priceText.text = "    "
         
         mainImage.image = UIImage(systemName: "photo")
         mainView.addSubview(mainImage)
@@ -67,24 +71,31 @@ class ExcursionCell: UITableViewCell {
             .pin
             .top(20)
             .left(20)
-            .width(125)
-            .height(100)
+            .width(100)
+            .height(80)
         nameLabel
             .pin
-            .top(15)
-            .after(of: mainImage).margin(10).sizeToFit()
+            .right(20)
+            .after(of: mainImage, aligned: .top)
+            .marginLeft(30)
+            .height(30)
+            .width(200)
         
         starImageView
             .pin
             .top(60)
-            .after(of: mainImage).margin(10).sizeToFit()
+            .after(of: mainImage)
+            .marginLeft(30)
+            .sizeToFit()
         ratingText
             .pin
-            .top(65)
-            .after(of: starImageView).sizeToFit()
+            .top(60)
+            .after(of: starImageView)
+            .sizeToFit()
         priceText
             .pin
-            .after(of: mainImage).margin(10)
+            .after(of: mainImage)
+            .marginLeft(30)
             .top(80)
             .sizeToFit()
             
@@ -102,5 +113,18 @@ class ExcursionCell: UITableViewCell {
         }
         ratingText.text = String(excursion.rating)
         priceText.text = String(excursion.price)
+    }
+    
+    func configure(excursion: ExcursionData) {
+        nameLabel.text = excursion.name
+        mainImage.image = excursion.image
+        //mainImage.contentMode = .scaleAspectFill
+        ratingText.text = String(excursion.rating)
+        priceText.text = excursion.price + "₽"
+        idExcursion = excursion.id
+    }
+    
+    func getId() -> String {
+        return idExcursion
     }
 }

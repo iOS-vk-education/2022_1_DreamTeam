@@ -7,8 +7,10 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 struct ExcursionData {
+    var id: String
     var name: String
     var date: String
     var address: String
@@ -16,8 +18,10 @@ struct ExcursionData {
     var image: UIImage?
     var imageName: String
     var addedByUser: String
+    var rating: Float
+    var price: String
     
-    init(name: String, date: String, address: String, description: String?, image: UIImage, userId: String = "") {
+    init(name: String, date: String, address: String, description: String?, image: UIImage, price: String, userId: String = "") {
         self.name = name
         self.date = date
         self.address = address
@@ -25,9 +29,34 @@ struct ExcursionData {
         self.image = image
         self.imageName = ""
         self.addedByUser = userId
+        self.id = ""
+        self.rating = 0.0
+        self.price = price
+    }
+    
+    init(snapshot: FirebaseDatabase.DataSnapshot) {
+        let value = snapshot.value as! [String: AnyObject]
+        id = value["id"] as! String
+        name = value["name"] as! String
+        date = value["date"] as! String
+        address = value["address"] as! String
+        description = value["description"] as! String
+        imageName = value["image_name"] as! String
+        addedByUser = value["user_id"] as! String
+        rating = 0
+        price = value["price"] as! String
+        //rating = value["rating"] as! Float
     }
     
     func toDictionary() -> Any {
-        return ["name": name, "date": date, "address": address, "description": description, "image_name": imageName, "user_id": addedByUser]
+        return ["id": id,
+                "name": name,
+                "date": date,
+                "address": address,
+                "description": description,
+                "image_name": imageName,
+                "user_id": addedByUser,
+                "rating": String(rating),
+                "price": price]
     }
 }

@@ -26,6 +26,10 @@ protocol NetworkManagerProtocol {
     func checkUser(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void)
     
     func addExcursion(excursion: ExcursionData)
+    
+    func loadListExcursion(completion: @escaping (Result<Array<ExcursionData>, Error>) -> Void)
+    
+    func getExcursion(with id: String, completion: @escaping (Result<ExcursionData, Error>) -> Void)
 }
 
 final class NetworkManager {
@@ -41,6 +45,7 @@ final class NetworkManager {
 }
 
 extension NetworkManager: NetworkManagerProtocol {
+    
     func saveUser(user: UserData) {
         self.userData = user
         imageLoader.load(image: user.profileImage) { [weak self] (result) in
@@ -161,6 +166,7 @@ extension NetworkManager: NetworkManagerProtocol {
             switch result {
             case .success(let name):
                 self?.excursionData?.imageName = name
+                self?.excursionData?.id = UUID().uuidString
                 guard let excursionData = self?.excursionData else {
                     print("error")
                     return
@@ -177,6 +183,64 @@ extension NetworkManager: NetworkManagerProtocol {
     func addExcursionInBase(excursion: ExcursionData) {
         let ref = Database.database().reference(withPath: "excursions")
         
-        ref.child(excursion.name).setValue(excursion.toDictionary())
+        ref.child(excursion.id).setValue(excursion.toDictionary())
+    }
+    
+    func loadListExcursion(completion: @escaping (Result<Array<ExcursionData>, Error>) -> Void) {
+        let ref = Database.database().reference(withPath: "excursions")
+        ref.getData { [weak self] error, snapshot in
+            if let error = error {
+                return
+            }
+            if snapshot.exists() {
+                var excursions = Array<ExcursionData>()
+                var excursionsFromBase = Array<Firebase.DataSnapshot>()
+                for item in snapshot.children {
+                    excursionsFromBase.append(item as! DataSnapshot)
+                }
+                
+                for item in excursionsFromBase {
+                    var excursion = ExcursionData(snapshot: item)
+                    self?.imageLoader.get(name: excursion.imageName) { result in
+                        switch result {
+                        case .success(let image):
+                            excursion.image = image
+                            excursions.append(excursion)
+                            if excursions.count == excursionsFromBase.count {
+                                completion(.success(excursions))
+                            }
+                        case .failure(let error):
+                            print(error.localizedDescription)
+                        }
+                    }
+                }
+                
+                
+            }
+            
+        }
+    }
+    
+    func getExcursion(with id: String, completion: @escaping (Result<ExcursionData, Error>) -> Void) {
+        let ref = Database.database().reference(withPath: "excursions")
+        ref.child(id).observe(.value, with: {[weak self] (snapshot) in
+            print(snapshot)
+            var excursion = ExcursionData(snapshot: snapshot)
+            if !(excursion.imageName.isEmpty) {
+                self?.imageLoader.get(name: excursion.imageName, completion: { (result) in
+                    switch result {
+                    case .success(let image):
+                        excursion.image = image
+                        completion(.success(excursion))
+                    case .failure(let error):
+                        excursion.image = UIImage(systemName: "map")
+                        completion(.failure(error))
+                    }
+                })
+            } else {
+                excursion.image = UIImage(systemName: "map")
+                completion(.success(excursion))
+            }
+        })
     }
 }
