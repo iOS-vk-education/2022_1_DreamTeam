@@ -37,7 +37,7 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         
         titleLabel.text = textInLabel
         titleLabel.numberOfLines = 0
@@ -53,8 +53,8 @@ class WelcomeViewController: UIViewController {
         view.addSubview(imageViewShadow)
         view.addSubview(imageViewLogo)
         view.addSubview(titleLabel)
-        configButton(logIn, "Вход", .white, colorBlueCustom, #selector(loginButtonAction))
-        configButton(registration, "Регистрация", colorBlueCustom, .white, #selector(registrationButtonAction))
+        configButton(logIn, "Вход", .systemBackground, colorBlueCustom, #selector(loginButtonAction))
+        configButton(registration, "Регистрация", colorBlueCustom, .systemBackground, #selector(registrationButtonAction))
         loginPresenter = WelcomePresenter(view: self)
     }
     
@@ -72,14 +72,14 @@ class WelcomeViewController: UIViewController {
             .left(5%)
             .sizeToFit(.width)
             .width(40%)
-            .height(10%)
+            .height(20%)
         
         registration.pin
             .bottom(view.safeAreaInsets.bottom + 20)
             .right(5%)
             .sizeToFit(.width)
             .width(40%)
-            .height(10%)
+            .height(20%)
         
         imageViewLogo.pin
             .verticallyBetween(titleLabel, and: logIn).marginVertical(10%)

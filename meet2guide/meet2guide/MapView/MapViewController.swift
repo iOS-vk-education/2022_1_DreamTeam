@@ -57,7 +57,7 @@ class MapViewController: UIViewController, MapView {
         
         
         currentLocationButton.setImage(UIImage(systemName: "location"), for: .normal)
-        currentLocationButton.backgroundColor = .systemBackground
+        currentLocationButton.backgroundColor = .clear
         currentLocationButton.addTarget(self, action: #selector(clickedCurrentLocationButton), for: .touchUpInside)
         mapView.addSubview(currentLocationButton)
         

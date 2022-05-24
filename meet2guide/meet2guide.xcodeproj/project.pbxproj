@@ -50,6 +50,15 @@
 		F42B86572822BDB2002D90DD /* GuideAddingMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42B86562822BDB2002D90DD /* GuideAddingMake.swift */; };
 		F4614669282664A600BCAE08 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4614668282664A600BCAE08 /* ImageLoader.swift */; };
 		F46146722826B17E00BCAE08 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46146712826B17E00BCAE08 /* ImagePicker.swift */; };
+		F47865DF2837E3C900346AAD /* AddedExcursionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47865DE2837E3C900346AAD /* AddedExcursionsViewController.swift */; };
+		F47865E12837E43200346AAD /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47865E02837E43200346AAD /* CollectionView.swift */; };
+		F47865E32837E49B00346AAD /* CustomFlipTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47865E22837E49B00346AAD /* CustomFlipTransition.swift */; };
+		F47865E72837EB7F00346AAD /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47865E62837EB7F00346AAD /* CardCell.swift */; };
+		F47865E92837ECDD00346AAD /* CustomCardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47865E82837ECDD00346AAD /* CustomCardLayout.swift */; };
+		F47865EB2838043B00346AAD /* CollectionVIewCalculate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47865EA2838043B00346AAD /* CollectionVIewCalculate.swift */; };
+		F47865ED2838275600346AAD /* AddedExcursionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47865EC2838275600346AAD /* AddedExcursionPresenter.swift */; };
+		F47865EF2838285000346AAD /* AddedExcursionMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47865EE2838285000346AAD /* AddedExcursionMake.swift */; };
+		F47865F128382B5700346AAD /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47865F028382B5700346AAD /* Animation.swift */; };
 		F47F843E280DCFF800C51C0E /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F47F843B280DCFF800C51C0E /* Montserrat-Bold.ttf */; };
 		F47F843F280DCFF800C51C0E /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F47F843C280DCFF800C51C0E /* Montserrat-Medium.ttf */; };
 		F47F8440280DCFF800C51C0E /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F47F843D280DCFF800C51C0E /* Montserrat-Regular.ttf */; };
@@ -140,6 +149,15 @@
 		F42B86562822BDB2002D90DD /* GuideAddingMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideAddingMake.swift; sourceTree = "<group>"; };
 		F4614668282664A600BCAE08 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		F46146712826B17E00BCAE08 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		F47865DE2837E3C900346AAD /* AddedExcursionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedExcursionsViewController.swift; sourceTree = "<group>"; };
+		F47865E02837E43200346AAD /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		F47865E22837E49B00346AAD /* CustomFlipTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFlipTransition.swift; sourceTree = "<group>"; };
+		F47865E62837EB7F00346AAD /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
+		F47865E82837ECDD00346AAD /* CustomCardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCardLayout.swift; sourceTree = "<group>"; };
+		F47865EA2838043B00346AAD /* CollectionVIewCalculate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVIewCalculate.swift; sourceTree = "<group>"; };
+		F47865EC2838275600346AAD /* AddedExcursionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedExcursionPresenter.swift; sourceTree = "<group>"; };
+		F47865EE2838285000346AAD /* AddedExcursionMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedExcursionMake.swift; sourceTree = "<group>"; };
+		F47865F028382B5700346AAD /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		F47F843B280DCFF800C51C0E /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Bold.ttf"; path = "meet2guide/fonts/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		F47F843C280DCFF800C51C0E /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Medium.ttf"; path = "meet2guide/fonts/Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		F47F843D280DCFF800C51C0E /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Regular.ttf"; path = "meet2guide/fonts/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
@@ -222,6 +240,7 @@
 		CECE356827FEEF3F004B64DC /* meet2guide */ = {
 			isa = PBXGroup;
 			children = (
+				F47865DD2837E39400346AAD /* AddedExcursionsVIew */,
 				F4A5CD602832DF5B0063939F /* Excursion */,
 				F416A11628325A0300012CE4 /* LoginView */,
 				F416A111283257CF00012CE4 /* WelcomeView */,
@@ -350,6 +369,22 @@
 				F42B86562822BDB2002D90DD /* GuideAddingMake.swift */,
 			);
 			path = GuideAddingView;
+			sourceTree = "<group>";
+		};
+		F47865DD2837E39400346AAD /* AddedExcursionsVIew */ = {
+			isa = PBXGroup;
+			children = (
+				F47865DE2837E3C900346AAD /* AddedExcursionsViewController.swift */,
+				F47865E02837E43200346AAD /* CollectionView.swift */,
+				F47865E22837E49B00346AAD /* CustomFlipTransition.swift */,
+				F47865E62837EB7F00346AAD /* CardCell.swift */,
+				F47865E82837ECDD00346AAD /* CustomCardLayout.swift */,
+				F47865EA2838043B00346AAD /* CollectionVIewCalculate.swift */,
+				F47865EC2838275600346AAD /* AddedExcursionPresenter.swift */,
+				F47865EE2838285000346AAD /* AddedExcursionMake.swift */,
+				F47865F028382B5700346AAD /* Animation.swift */,
+			);
+			path = AddedExcursionsVIew;
 			sourceTree = "<group>";
 		};
 		F47F8456280DD14C00C51C0E /* AccountView */ = {
@@ -700,9 +735,11 @@
 				F47F8467280DD19400C51C0E /* InfoUserMake.swift in Sources */,
 				F422628E280FE5540041C2FA /* MainTabBarConroller.swift in Sources */,
 				F47F8469280DD19400C51C0E /* InfoUserViewController.swift in Sources */,
+				F47865EB2838043B00346AAD /* CollectionVIewCalculate.swift in Sources */,
 				F47F846A280DD19400C51C0E /* InfoUserCell.swift in Sources */,
 				F47F846B280DD19400C51C0E /* InfoUserPresenter.swift in Sources */,
 				F42B86552822BCF7002D90DD /* GuideAddingPresenter.swift in Sources */,
+				F47865E92837ECDD00346AAD /* CustomCardLayout.swift in Sources */,
 				F46146722826B17E00BCAE08 /* ImagePicker.swift in Sources */,
 				F42262AB281011E90041C2FA /* ExcursionCell.swift in Sources */,
 				F42262AF2810197D0041C2FA /* ListPresenter.swift in Sources */,
@@ -710,15 +747,19 @@
 				F47F845E280DD15700C51C0E /* AccountPresenter.swift in Sources */,
 				F4614669282664A600BCAE08 /* ImageLoader.swift in Sources */,
 				F4A5CD622832DF6D0063939F /* Excursion.swift in Sources */,
+				F47865E32837E49B00346AAD /* CustomFlipTransition.swift in Sources */,
 				F47F845F280DD15700C51C0E /* AccountMake.swift in Sources */,
+				F47865E72837EB7F00346AAD /* CardCell.swift in Sources */,
 				8B55CA9F281AE09E00C2B437 /* GuideAddingViewController.swift in Sources */,
 				F416A11C28325A3500012CE4 /* LoginMake.swift in Sources */,
 				F416A11A28325A2900012CE4 /* LoginPresenter.swift in Sources */,
 				F416A11828325A1E00012CE4 /* LoginViewController.swift in Sources */,
 				F47F8460280DD15700C51C0E /* AccountViewController.swift in Sources */,
+				F47865ED2838275600346AAD /* AddedExcursionPresenter.swift in Sources */,
 				F4226290280FE6840041C2FA /* MainTabBarPresenter.swift in Sources */,
 				F4226292280FE6FF0041C2FA /* MainTabBarMake.swift in Sources */,
 				CEEEBC152802CC9E00110BFE /* RegistrationViewController.swift in Sources */,
+				F47865F128382B5700346AAD /* Animation.swift in Sources */,
 				CECE356E27FEEF3F004B64DC /* ViewController.swift in Sources */,
 				CECE356A27FEEF3F004B64DC /* AppDelegate.swift in Sources */,
 				CECE357427FEEF3F004B64DC /* meet2guide.xcdatamodeld in Sources */,
@@ -728,6 +769,9 @@
 				F42262AD281011F50041C2FA /* ListViewController.swift in Sources */,
 				F47F846E280DD3AA00C51C0E /* User.swift in Sources */,
 				8B55CAA0281AE09E00C2B437 /* GuideAddingCell.swift in Sources */,
+				F47865DF2837E3C900346AAD /* AddedExcursionsViewController.swift in Sources */,
+				F47865EF2838285000346AAD /* AddedExcursionMake.swift in Sources */,
+				F47865E12837E43200346AAD /* CollectionView.swift in Sources */,
 				F42262B1281019E30041C2FA /* ListMake.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -900,8 +944,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q7A52Z2TS2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = meet2guide/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "I need your location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -927,8 +973,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q7A52Z2TS2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = meet2guide/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "I need your location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

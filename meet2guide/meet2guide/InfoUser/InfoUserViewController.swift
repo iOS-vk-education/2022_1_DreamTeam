@@ -112,13 +112,15 @@ class InfoUserViewController: UIViewController {
     @objc
     func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            scrollView.contentOffset = CGPoint(x: 0, y: keyboardSize.height)
+            scrollView.contentOffset = CGPoint(x: 0, y: keyboardSize.height + 100)
+            scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
         }
     }
 
     @objc
     func keyboardWillHide(notification: NSNotification) {
         scrollView.contentOffset = CGPoint.zero
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     private func setUpUserAvatar() {
@@ -246,6 +248,7 @@ class InfoUserViewController: UIViewController {
                             phone: phone,
                             image: image)
         output?.didUpdateUser(user: user)
+        dismiss(animated: true, completion: nil)
     }
     
     @objc
@@ -321,8 +324,6 @@ extension InfoUserViewController: UITableViewDelegate, UITableViewDataSource {
         if userConfiguration[indexPath.row].title == "Телефон", userConfiguration[indexPath.row].isLoaded {
             cell?.information.delegate = self
             cell?.information.keyboardType = .numberPad
-        } else {
-            print("here")
         }
         
         return cell ?? .init()

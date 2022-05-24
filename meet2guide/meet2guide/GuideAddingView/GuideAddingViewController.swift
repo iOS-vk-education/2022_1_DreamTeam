@@ -38,11 +38,22 @@ class GuideAddingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        
+        view.backgroundColor = .systemBackground
         scrollView.isUserInteractionEnabled = true
         scrollView.isScrollEnabled = true
         scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 800)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardOnTap))
+        self.view.addGestureRecognizer(tap)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                name: UIResponder.keyboardWillShowNotification,
+                                object: nil)
+        NotificationCenter.default.addObserver(self,
+                                selector: #selector(keyboardWillHide),
+                                name: UIResponder.keyboardWillHideNotification,
+                                object: nil)
         
         view.addSubview(scrollView)
 
@@ -104,6 +115,25 @@ class GuideAddingViewController: UIViewController {
             .height(60%)
             .maxHeight(50)
 
+    }
+    
+    @objc
+    func hideKeyboardOnTap() {
+        view.endEditing(true)
+    }
+    
+    @objc
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            scrollView.contentOffset = CGPoint(x: 0, y: keyboardSize.height + 100)
+            scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+        }
+    }
+
+    @objc
+    func keyboardWillHide(notification: NSNotification) {
+        scrollView.contentOffset = CGPoint.zero
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     private func setUpChangeImageButton() {
@@ -168,6 +198,7 @@ class GuideAddingViewController: UIViewController {
         imagesFrame.image = UIImage(systemName: "mappin.square")
         imagesFrame.layer.cornerRadius = 10
         imagesFrame.clipsToBounds = true
+        imagesFrame.contentMode = .scaleAspectFill
 
         scrollView.addSubview(imagesFrame)
     }
