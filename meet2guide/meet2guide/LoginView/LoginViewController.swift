@@ -16,10 +16,11 @@ protocol LoginView: AnyObject {
 
 class LoginViewController: UIViewController {
     var output: LoginPresenterProtocol?
+    private var scrollView: UIScrollView = UIScrollView()
     private var textTitle: String? = "Вход"
     private let titleLabel: UILabel = UILabel()
     private let mailTextField: UITextField = UITextField()
-    private let passwordTextField: UITextField = UITextField()
+    private let passwordTextField: UITextField = PasswordTextField()
     private let colorBlueCustom: UIColor = UIColor(red: 0.205, green: 0.369, blue: 0.792, alpha: 1)
     private let nextButton: UIButton = UIButton()
     private let showPasswordButton: UIButton = UIButton()
@@ -27,9 +28,11 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
+        scrollView.backgroundColor = .systemBackground
         configTextField(mailTextField, "example@example.ru", .emailAddress, false, .username)
         configTextField(passwordTextField, "password", .default, true, .password)
+        passwordTextField.enablePasswordToggle(button: showPasswordButton)
         
         titleLabel.text = textTitle
         titleLabel.numberOfLines = 0
@@ -37,9 +40,28 @@ class LoginViewController: UIViewController {
         titleLabel.textColor = colorBlueCustom
         titleLabel.font = UIFont(name: "Avenir", size: 32)
         
+        scrollView.isUserInteractionEnabled = true
+        scrollView.isScrollEnabled = true
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 800)
+        
+        view.addSubview(scrollView)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardOnTap))
+        tap.delegate = self
+        self.view.addGestureRecognizer(tap)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                name: UIResponder.keyboardWillShowNotification,
+                                object: nil)
+        NotificationCenter.default.addObserver(self,
+                                selector: #selector(keyboardWillHide),
+                                name: UIResponder.keyboardWillHideNotification,
+                                object: nil)
+        
         nextButton.setTitle("Далее", for: .normal)
         nextButton.backgroundColor = colorBlueCustom
-        nextButton.setTitleColor(.white, for: .normal)
+        nextButton.setTitleColor(.systemBackground, for: .normal)
         nextButton.contentHorizontalAlignment = .center
         nextButton.titleLabel?.font =  UIFont(name: "Montserrat-Regular", size: 20)
         nextButton.layer.cornerRadius = 5
@@ -53,10 +75,10 @@ class LoginViewController: UIViewController {
         nextButton.clipsToBounds = true
         nextButton.layer.masksToBounds = false
         
-        showPasswordButton.setImage(UIImage(systemName: "eye"), for: .normal)
-        showPasswordButton.setImage(UIImage(systemName: "eye.slash"), for: .selected)
         showPasswordButton.contentHorizontalAlignment = .center
         showPasswordButton.tintColor = colorBlueCustom
+        passwordTextField.rightView = showPasswordButton
+        passwordTextField.rightViewMode = .always
         
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -70,8 +92,26 @@ class LoginViewController: UIViewController {
         
         nextButton.addTarget(self, action: #selector(didTapNextButton), for: .touchUpInside)
 
-        view.addSubview(nextButton)
-        passwordTextField.addSubview(showPasswordButton)
+        scrollView.addSubview(nextButton)
+    }
+    
+    @objc
+    func hideKeyboardOnTap() {
+        view.endEditing(true)
+    }
+    
+    @objc
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            scrollView.contentOffset = CGPoint(x: 0, y: nextButton.frame.minY - keyboardSize.height)
+            scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: nextButton.frame.minY - keyboardSize.height, right: 0)
+        }
+    }
+
+    @objc
+    func keyboardWillHide(notification: NSNotification) {
+        scrollView.contentOffset = CGPoint.zero
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     func popToRoot(sender:UIBarButtonItem){
@@ -94,9 +134,12 @@ class LoginViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
+        scrollView.pin
+            .all(view.pin.safeArea)
  
         mailTextField.pin
-            .top(view.safeAreaInsets.top + 40)
+            .top(scrollView.safeAreaInsets.top + 40)
             .left(5%)
             .right(5%)
             .height(10%)
@@ -132,7 +175,7 @@ class LoginViewController: UIViewController {
     func configTextField (_ textField: UITextField, _ name: String, _ typeKeyboard: UIKeyboardType, _ security: Bool, _ typeContent: UITextContentType){
         textField.textContentType = typeContent
         textField.placeholder = name
-        textField.backgroundColor = .white
+        textField.backgroundColor = .systemBackground
         textField.textColor = colorBlueCustom
         textField.font = UIFont(name: "Avenir", size: 14)
         textField.keyboardType = typeKeyboard
@@ -145,7 +188,7 @@ class LoginViewController: UIViewController {
         textField.returnKeyType = UIReturnKeyType.done
         textField.clipsToBounds = true
         textField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
-        view.addSubview(textField)
+        scrollView.addSubview(textField)
     }
 }
 
@@ -166,5 +209,11 @@ extension LoginViewController: LoginView {
     
     func showAlert(alert: UIAlertController) {
         self.present(alert, animated: true, completion: nil)
+    }
+}
+
+extension LoginViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }

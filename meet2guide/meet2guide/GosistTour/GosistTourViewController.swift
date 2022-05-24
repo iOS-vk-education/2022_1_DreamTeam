@@ -41,7 +41,7 @@ class GosistTourViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         
         self.title = "Описание"
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: colorBlueCustom]
@@ -67,8 +67,10 @@ class GosistTourViewController: UIViewController {
         formTitleLabel.numberOfLines = 2
         formContainerView.addSubview(formTitleLabel)
         
-        tourImageView.backgroundColor = .white
+        tourImageView.backgroundColor = .systemGray
         tourImageView.layer.cornerRadius = 10.0
+        tourImageView.contentMode = .scaleAspectFill
+        tourImageView.clipsToBounds = true
         formContainerView.addSubview(tourImageView)
         
         tourPlaceTextView.textColor = .black
@@ -76,6 +78,7 @@ class GosistTourViewController: UIViewController {
         tourPlaceTextView.textAlignment = .left
         tourPlaceTextView.backgroundColor = .clear
         tourPlaceTextView.text = labelTourPlace + ": " + textTourPlace
+        tourPlaceTextView.textColor = UIColor(named: "LabelColor")
         formContainerView.addSubview(tourPlaceTextView)
         
         tourDescriptionTextView.textColor = .black
@@ -83,6 +86,7 @@ class GosistTourViewController: UIViewController {
         tourDescriptionTextView.textAlignment = .left
         tourDescriptionTextView.backgroundColor = .clear
         tourDescriptionTextView.text = labelDescription + ": " + textDescription
+        tourDescriptionTextView.textColor = UIColor(named: "LabelColor")
         formContainerView.addSubview(tourDescriptionTextView)
 
         addTourButton.setTitle(textButton, for: .normal)
@@ -93,6 +97,7 @@ class GosistTourViewController: UIViewController {
         addTourButton.layer.cornerRadius = 20
         addTourButton.layer.borderWidth = 5.0
         addTourButton.layer.borderColor = (colorBlueCustom).cgColor
+        addTourButton.addTarget(self, action: #selector(clickedAddButton), for: .touchUpInside)
 
         addTourButton.layer.shadowColor = UIColor.darkGray.cgColor
         addTourButton.layer.shadowOffset = CGSize(width: 0, height: 2)
@@ -112,6 +117,11 @@ class GosistTourViewController: UIViewController {
     @objc
     private func clickedCloseButton() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc
+    func clickedAddButton() {
+        output?.didAddExcursion(with: idExcursion)
     }
     
     override func viewDidLayoutSubviews() {

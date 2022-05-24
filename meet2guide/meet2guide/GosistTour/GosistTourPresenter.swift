@@ -2,6 +2,8 @@ import Foundation
 
 protocol GosistTourPresenterProtocol: AnyObject {
     func didLoadView(with id: String)
+    
+    func didAddExcursion(with id: String)
 }
 
 final class GosistTourPresenter {
@@ -25,5 +27,9 @@ extension GosistTourPresenter: GosistTourPresenterProtocol {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    func didAddExcursion(with id: String) {
+        networkManager.addExcursionToUser(with: id)
     }
 }

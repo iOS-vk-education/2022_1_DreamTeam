@@ -30,6 +30,10 @@ protocol NetworkManagerProtocol {
     func loadListExcursion(completion: @escaping (Result<Array<ExcursionData>, Error>) -> Void)
     
     func getExcursion(with id: String, completion: @escaping (Result<ExcursionData, Error>) -> Void)
+    
+    func addExcursionToUser(with id: String)
+    
+    func getExcursionsByUser(completion: @escaping (Result<[ExcursionData], Error>) -> Void)
 }
 
 final class NetworkManager {
@@ -240,6 +244,44 @@ extension NetworkManager: NetworkManagerProtocol {
             } else {
                 excursion.image = UIImage(systemName: "map")
                 completion(.success(excursion))
+            }
+        })
+    }
+    
+    func addExcursionToUser(with id: String) {
+        guard let currentUser = Auth.auth().currentUser else { return }
+        let ref = Database.database().reference(withPath: "users")
+        let userForBase = UserBase(user: currentUser)
+        let userRef = ref.child(userForBase.uid)
+        userRef.child("excursions").child(id).setValue("")
+    }
+    
+    func getExcursionsByUser(completion: @escaping (Result<[ExcursionData], Error>) -> Void) {
+        guard let currentUser = Auth.auth().currentUser else { return }
+        let ref = Database.database().reference(withPath: "users")
+        let userForBase = UserBase(user: currentUser)
+        let userRef = ref.child(userForBase.uid)
+        userRef.child("excursions").observe(.value, with: { [weak self] snapshot in
+
+            let dictionary = snapshot.value as? [String: AnyObject]
+            guard let dict = dictionary else {
+                return
+            }
+            let array = Array(dict.keys)
+            print(array)
+            var listExcursions = [ExcursionData]()
+            for id in array {
+                self?.getExcursion(with: id) { result in
+                    switch result {
+                    case .success(let excursion):
+                        listExcursions.append(excursion)
+                        if listExcursions.count == array.count {
+                            completion(.success(listExcursions))
+                        }
+                    case .failure(let error):
+                        completion(.failure(error))
+                    }
+                }
             }
         })
     }

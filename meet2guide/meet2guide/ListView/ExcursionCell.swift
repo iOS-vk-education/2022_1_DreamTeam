@@ -26,14 +26,14 @@ class ExcursionCell: UITableViewCell {
     }
     
     func setup() {
-        backgroundColor = .white
+        backgroundColor = .systemBackground
         contentView.addSubview(mainView)
         
         mainView.backgroundColor = colorGrayCustom
         mainView.layer.cornerRadius = 15.0
         
         nameLabel.font = UIFont(name: "Montserrat-Regular", size: 12)
-        nameLabel.textColor = .black
+        nameLabel.textColor = UIColor(named: "LabelColor")
         nameLabel.text = "Государственный Исторический \nМузей"
         nameLabel.lineBreakMode = .byWordWrapping
         nameLabel.numberOfLines = 0
@@ -46,7 +46,7 @@ class ExcursionCell: UITableViewCell {
         ratingText.font = UIFont(name: "Montserrat-Regular", size: 12)
         mainView.addSubview(ratingText)
         
-        priceText.textColor = .black
+        priceText.textColor = UIColor(named: "LabelColor")
         priceText.font = UIFont(name: "Montserrat-Bold", size: 15)
         priceText.backgroundColor = .clear
         
@@ -55,6 +55,8 @@ class ExcursionCell: UITableViewCell {
         priceText.text = "    "
         
         mainImage.image = UIImage(systemName: "photo")
+        mainImage.contentMode = .scaleAspectFill
+        mainImage.clipsToBounds = true
         mainView.addSubview(mainImage)
         starImageView.image = starImage
         mainView.addSubview(starImageView)

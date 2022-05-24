@@ -16,10 +16,11 @@ protocol RegistrationView: AnyObject {
 
 class RegistrationViewController: UIViewController {
     var output: RegistrationPresenterProtocol?
+    private var scrollView: UIScrollView = UIScrollView()
     private var textTitle: String? = "Регистрация"
     private let titleLabel: UILabel = UILabel()
     private let mailTextField: UITextField = UITextField()
-    private let passwordTextField: UITextField = UITextField()
+    private let passwordTextField: UITextField = PasswordTextField()
     private let nameTextField: UITextField = UITextField()
     private let surnameTextField: UITextField = UITextField()
     private let colorBlueCustom: UIColor = UIColor(red: 0.205, green: 0.369, blue: 0.792, alpha: 1)
@@ -29,12 +30,41 @@ class RegistrationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         configTextField(mailTextField, "example@example.ru", .emailAddress, false, .username)
         configTextField(passwordTextField, "password", .default, true, .password)
+        passwordTextField.enablePasswordToggle(button: showPasswordButton)
         
         configTextField(nameTextField, "name", .default, false, .username)
         configTextField(surnameTextField, "surname", .default, false, .username)
+        
+        scrollView.isUserInteractionEnabled = true
+        scrollView.isScrollEnabled = true
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 800)
+        
+        mailTextField.tag = 0
+        mailTextField.delegate = self
+        passwordTextField.tag = 1
+        passwordTextField.delegate = self
+        nameTextField.tag = 2
+        nameTextField.delegate = self
+        surnameTextField.tag = 3
+        surnameTextField.delegate = self
+        
+        view.addSubview(scrollView)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardOnTap))
+        tap.delegate = self
+        self.view.addGestureRecognizer(tap)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                name: UIResponder.keyboardWillShowNotification,
+                                object: nil)
+        NotificationCenter.default.addObserver(self,
+                                selector: #selector(keyboardWillHide),
+                                name: UIResponder.keyboardWillHideNotification,
+                                object: nil)
         
         titleLabel.text = textTitle
         titleLabel.numberOfLines = 0
@@ -44,7 +74,7 @@ class RegistrationViewController: UIViewController {
         
         nextButton.setTitle("Далее", for: .normal)
         nextButton.backgroundColor = colorBlueCustom
-        nextButton.setTitleColor(.white, for: .normal)
+        nextButton.setTitleColor(.systemBackground, for: .normal)
         nextButton.contentHorizontalAlignment = .center
         nextButton.titleLabel?.font =  UIFont(name: "Montserrat-Regular", size: 20)
         nextButton.layer.cornerRadius = 5
@@ -58,8 +88,6 @@ class RegistrationViewController: UIViewController {
         nextButton.clipsToBounds = true
         nextButton.layer.masksToBounds = false
         
-        showPasswordButton.setImage(UIImage(systemName: "eye"), for: .normal)
-        showPasswordButton.setImage(UIImage(systemName: "eye.slash"), for: .selected)
         showPasswordButton.contentHorizontalAlignment = .center
         showPasswordButton.tintColor = colorBlueCustom
         
@@ -75,8 +103,26 @@ class RegistrationViewController: UIViewController {
         
         nextButton.addTarget(self, action: #selector(didTapNextButton), for: .touchUpInside)
 
-        view.addSubview(nextButton)
-        passwordTextField.addSubview(showPasswordButton)
+        scrollView.addSubview(nextButton)
+    }
+    
+    @objc
+    func hideKeyboardOnTap() {
+        view.endEditing(true)
+    }
+    
+    @objc
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            scrollView.contentOffset = CGPoint(x: 0, y: keyboardSize.height + 100)
+            scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+        }
+    }
+
+    @objc
+    func keyboardWillHide(notification: NSNotification) {
+        scrollView.contentOffset = CGPoint.zero
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     func popToRoot(sender:UIBarButtonItem){
@@ -114,9 +160,12 @@ class RegistrationViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
+        scrollView.pin
+            .all(view.pin.safeArea)
  
         mailTextField.pin
-            .top(view.safeAreaInsets.top + 40)
+            .top(scrollView.safeAreaInsets.top + 40)
             .left(5%)
             .right(5%)
             .height(10%)
@@ -147,7 +196,7 @@ class RegistrationViewController: UIViewController {
             .maxHeight(50)
         
         showPasswordButton.pin
-            .right(20)
+            .right(30)
             .vCenter()
             .width(6%)
             .height(50%)
@@ -168,7 +217,7 @@ class RegistrationViewController: UIViewController {
     func configTextField (_ textField: UITextField, _ name: String, _ typeKeyboard: UIKeyboardType, _ security: Bool, _ typeContent: UITextContentType){
         textField.textContentType = typeContent
         textField.placeholder = name
-        textField.backgroundColor = .white
+        textField.backgroundColor = .systemBackground
         textField.textColor = colorBlueCustom
         textField.font = UIFont(name: "Avenir", size: 14)
         textField.keyboardType = typeKeyboard
@@ -181,7 +230,7 @@ class RegistrationViewController: UIViewController {
         textField.returnKeyType = UIReturnKeyType.done
         textField.clipsToBounds = true
         textField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
-        view.addSubview(textField)
+        scrollView.addSubview(textField)
     }
 }
 
@@ -202,5 +251,49 @@ extension RegistrationViewController: RegistrationView {
     
     func showAlert(alert: UIAlertController) {
         self.present(alert, animated: true, completion: nil)
+    }
+}
+
+extension RegistrationViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+}
+
+extension UITextField {
+    
+    func enablePasswordToggle(button: UIButton) {
+        
+        button.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+        button.setImage(UIImage(systemName: "eye"), for: .selected)
+        button.addTarget(self, action: #selector(togglePasswordView(button:)), for: .touchUpInside)
+        rightView = button
+        rightViewMode = .always
+        button.alpha = 0.8
+    }
+    
+    @objc func togglePasswordView(button: UIButton) {
+        isSecureTextEntry.toggle()
+        button.isSelected.toggle()
+    }
+}
+
+extension RegistrationViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        
+        return false
+    }
+}
+
+class PasswordTextField: UITextField {
+    override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
+        var textRect = super.rightViewRect(forBounds: bounds)
+        textRect.origin.x -= 25
+        return textRect
     }
 }

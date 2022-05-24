@@ -18,10 +18,10 @@ class MainTabBarController: UITabBarController, MainTabBar {
         let excursionView = ListAssembler.make()
         let excursionPage = UINavigationController(rootViewController: excursionView)
         
-        let accountView4 = AccountAssembler.make()
-        let accountPage4 = UINavigationController(rootViewController: accountView4)
+        let addedExcursionsView = AddedExcursionsAssembler.make()
+        let addedExcursionsPage = UINavigationController(rootViewController: addedExcursionsView)
         
-        setViewControllers([mapPage, excursionPage, accountPage4, accountPage], animated: true)
+        setViewControllers([mapPage, excursionPage, addedExcursionsPage, accountPage], animated: true)
         
         self.tabBar.items?[0].image = UIImage(systemName: "map")
         self.tabBar.items?[1].image = UIImage(systemName: "list.bullet")
