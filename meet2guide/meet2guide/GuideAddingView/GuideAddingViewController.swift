@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 import PinLayout
+import YandexMapsMobile
 
 struct guideInfo{
     let tableLabel: String?
@@ -12,17 +13,24 @@ protocol GuideAddingView: AnyObject {
     func openImagePicker(output: ImagePickerProtocol)
     
     func loadImage(image: UIImage?)
+    
+    func openMap()
+    
+    func setAddress(address: String?, coords: String?)
 }
 
 class GuideAddingViewController: UIViewController {
     var output: GuideAddingPresenterProtocol?
     private var scrollView: UIScrollView = UIScrollView()
     private var textTitle: String? = "Добавить экскурсию"
-    private let titleLabel: UILabel = UILabel()
-    private let nameTextField: UITextField = UITextField()
-    private let dateTextField: UITextField = UITextField()
+    private let nameLabel: UILabel = UILabel()
+    private let nameTextField: UITextView = UITextView()
+    private let dateLabel: UILabel = UILabel()
+    private let dateTextField: UITextView = UITextView()
+    private let adressLabel: UILabel = UILabel()
     private let adressTextField: UITextField = UITextField()
-    private let descriptionTextField: UITextField = UITextField()
+    private let descriptionLabel: UILabel = UILabel()
+    private let descriptionTextField: UITextView = UITextView()
     private let addPhotoButton: UIButton = UIButton()
     private let addGuideButton: UIButton = UIButton()
     private var changeImageButton: UIButton = UIButton()
@@ -30,14 +38,16 @@ class GuideAddingViewController: UIViewController {
     private let imagesFrame: UIImageView = UIImageView()
     private var tableViewGuideInfo: UITableView = UITableView()
     private var guideConfiguration: [guideInfo] =
-    [guideInfo(tableLabel: "Название", textIn: "Достопримечательности Москвы"),
-     guideInfo(tableLabel: "Дата", textIn: "10.04.2003"),
-     guideInfo(tableLabel: "Адрес", textIn: "Красная пл. 1, г. Москва"),
-     guideInfo(tableLabel: "Описание", textIn: "траляля, тополя")]
-
+    [guideInfo(tableLabel: "Название", textIn: ""),
+     guideInfo(tableLabel: "Дата", textIn: ""),
+     guideInfo(tableLabel: "Адрес", textIn: ""),
+     guideInfo(tableLabel: "Описание", textIn: "")]
+    
+    private var coords: YMKPoint?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = textTitle
         view.backgroundColor = .systemBackground
         scrollView.isUserInteractionEnabled = true
         scrollView.isScrollEnabled = true
@@ -55,22 +65,56 @@ class GuideAddingViewController: UIViewController {
                                 name: UIResponder.keyboardWillHideNotification,
                                 object: nil)
         
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: colorBlueCustom]
+        self.navigationController?.navigationBar.tintColor = colorBlueCustom
+        let barButton = UIBarButtonItem()
+        barButton.title = "Назад"
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = barButton
+        
         view.addSubview(scrollView)
-
-        titleLabel.text = textTitle
-        titleLabel.numberOfLines = 2
-        titleLabel.textAlignment = .center
-        titleLabel.textColor = colorBlueCustom
-        tableViewGuideInfo.estimatedRowHeight = 44.0
-        tableViewGuideInfo.rowHeight = UITableView.automaticDimension
-        titleLabel.font = UIFont(name: "Avenir", size: 25)
-        scrollView.addSubview(titleLabel)
+        
+        /*setUpTextView(titleLabel: nameLabel, textView: nameTextField, title: "Название")
+        setUpTextView(titleLabel: dateLabel, textView: dateTextField, title: "Дата")
+        setUpTextView(titleLabel: descriptionLabel, textView: descriptionTextField, title: "Описание")*/
 
         configButton(addGuideButton, "Добавить", colorBlueCustom, .white)
         addGuideButton.addTarget(self, action: #selector(clickedAddGuideButton), for: .touchUpInside)
         configImages()
         setUpChangeImageButton()
         setUpTableViewGuideInfo()
+    }
+    
+    private func setUpTextView(titleLabel: UILabel, textView: UITextView, title: String) {
+        titleLabel.text = title
+        titleLabel.font = UIFont(name: "Montserrat-Medium", size: 14)
+        titleLabel.textColor = colorBlueCustom
+        titleLabel.textAlignment = .left
+    
+
+        textView.text = "                  "
+        textView.font = UIFont(name: "Montserrat-Medium", size: 14)
+        textView.textColor = colorBlueCustom
+        textView.textAlignment = .left
+
+        textView.layer.borderColor = CGColor(red: 52 / 255, green: 94 / 255, blue: 202 / 255, alpha: 100)
+        textView.layer.borderWidth = 1.0
+        //information.layer.masksToBounds = true
+        textView.layer.cornerRadius = 10
+        textView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        scrollView.addSubview(titleLabel)
+        scrollView.addSubview(textView)
+    }
+    
+    private func setUpMapTexField(titleLabel: UILabel, textField: UITextField, title: String) {
+        titleLabel.text = title
+        titleLabel.font = UIFont(name: "Montserrat-Medium", size: 14)
+        titleLabel.textColor = colorBlueCustom
+        titleLabel.textAlignment = .left
+        
+        textField.layer.borderColor = CGColor(red: 52 / 255, green: 94 / 255, blue: 202 / 255, alpha: 100)
+        textField.layer.borderWidth = 1.0
+        //information.layer.masksToBounds = true
+        textField.layer.cornerRadius = 10
     }
     
     override func viewDidLayoutSubviews() {
@@ -81,14 +125,8 @@ class GuideAddingViewController: UIViewController {
         scrollView.pin
             .all(view.pin.safeArea)
 
-        titleLabel.pin
-            .top(scrollView.safeAreaInsets.top)
-            .left(5%)
-            .right(5%)
-            .sizeToFit(.width)
-
         imagesFrame.pin
-            .topCenter(to: titleLabel.anchor.bottomCenter)
+            .top(scrollView.safeAreaInsets.top)
             .margin(30)
             .height(180)
             .width(60%)
@@ -100,11 +138,13 @@ class GuideAddingViewController: UIViewController {
             .width((self.scrollView.window?.frame.width ?? 310) - 100)
             .height(40)
 
-        tableViewGuideInfo.pin
+            tableViewGuideInfo.pin
             .topCenter(to: changeImageButton.anchor.bottomCenter)
             .margin(30)
             .width((self.scrollView.window?.frame.width ?? 310))
             .height(300)
+        /*nameLabel.pin
+            .*/
         
         addGuideButton.pin
             .topCenter(to: tableViewGuideInfo.anchor.bottomCenter)
@@ -168,9 +208,9 @@ class GuideAddingViewController: UIViewController {
             return
         }
         
-        cell = tableViewGuideInfo.cellForRow(at: IndexPath(row: 2, section: 0)) as! GuideAddingCell
+        let cellMap = tableViewGuideInfo.cellForRow(at: IndexPath(row: 2, section: 0)) as! GuideAddingCellMap
         
-        let address = cell.getInfo()
+        let address = cellMap.getInfo()
         
         if address.isEmpty {
             return
@@ -189,16 +229,17 @@ class GuideAddingViewController: UIViewController {
                                       address: address,
                                       description: description,
                                       image: image,
-                                      price: "300")
+                                      price: "300",
+                                      coords: coords)
         output?.addExcursion(excursion: excursion)
         self.navigationController?.popViewController(animated: true)
     }
 
     private func configImages() {
-        imagesFrame.image = UIImage(systemName: "mappin.square")
+        imagesFrame.image = UIImage(systemName: "photo")?.withTintColor(colorBlueCustom)
         imagesFrame.layer.cornerRadius = 10
         imagesFrame.clipsToBounds = true
-        imagesFrame.contentMode = .scaleAspectFill
+        imagesFrame.contentMode = .scaleAspectFit
 
         scrollView.addSubview(imagesFrame)
     }
@@ -209,6 +250,7 @@ class GuideAddingViewController: UIViewController {
         tableViewGuideInfo.delegate = self
         tableViewGuideInfo.dataSource = self
         tableViewGuideInfo.register(GuideAddingCell.self, forCellReuseIdentifier: "GuideAddingCell")
+        tableViewGuideInfo.register(GuideAddingCellMap.self, forCellReuseIdentifier: "GuideAddingCellMap")
 
         tableViewGuideInfo.separatorStyle = .none
 
@@ -238,12 +280,19 @@ class GuideAddingViewController: UIViewController {
 
 extension GuideAddingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "GuideAddingCell", for: indexPath) as? GuideAddingCell
+        if indexPath.row == 2 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "GuideAddingCellMap", for: indexPath) as? GuideAddingCellMap
+            cell?.configure(with: guideConfiguration[indexPath.row], presenter: output)
+            cell?.selectionStyle = UITableViewCell.SelectionStyle.none
+            return cell ?? .init()
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "GuideAddingCell", for: indexPath) as? GuideAddingCell
 
-        cell?.configure(with: guideConfiguration[indexPath.row])
+            cell?.configure(with: guideConfiguration[indexPath.row])
 
-        cell?.selectionStyle = UITableViewCell.SelectionStyle.none
-        return cell ?? .init()
+            cell?.selectionStyle = UITableViewCell.SelectionStyle.none
+            return cell ?? .init()
+        }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -259,6 +308,10 @@ extension GuideAddingViewController: UITableViewDelegate, UITableViewDataSource 
 }
 
 extension GuideAddingViewController: GuideAddingView {
+    func setAddress(address: String?, coords: String?) {
+        adressTextField.text = address
+    }
+    
     func openImagePicker(output: ImagePickerProtocol) {
         let imagePicker = ImagePicker()
         imagePicker.output = output
@@ -268,4 +321,17 @@ extension GuideAddingViewController: GuideAddingView {
     func loadImage(image: UIImage?) {
         imagesFrame.image = image
     }
+    
+    func openMap() {
+        let viewControllerMap = MapAddExcursionAssembler.make(point: coords) { [weak self] address, coords in
+            self?.guideConfiguration[2].textIn = address
+            self?.coords = coords
+            self?.tableViewGuideInfo.reloadData()
+        }
+        //present(viewControllerMap, animated: true, completion: nil)
+        self.navigationController?.pushViewController(viewControllerMap, animated: true)
+    }
 }
+
+
+

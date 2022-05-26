@@ -39,7 +39,7 @@ class MapViewController: UIViewController, MapView {
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
             locationManager.startUpdatingLocation()
         }
         
@@ -53,7 +53,7 @@ class MapViewController: UIViewController, MapView {
         userLocationLayer.setVisibleWithOn(true)
         userLocationLayer.isHeadingEnabled = true
 
-        mapView.mapWindow.map.addCameraListener(with: self)
+        //mapView.mapWindow.map.addCameraListener(with: self)
         
         
         currentLocationButton.setImage(UIImage(systemName: "location"), for: .normal)
@@ -86,10 +86,10 @@ class MapViewController: UIViewController, MapView {
     }
 }
 
-extension MapViewController: YMKMapCameraListener {
+/*extension MapViewController: YMKMapCameraListener {
     func onCameraPositionChanged(with map: YMKMap, cameraPosition: YMKCameraPosition, cameraUpdateReason: YMKCameraUpdateReason, finished: Bool) {
     }
-}
+}*/
 
 extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

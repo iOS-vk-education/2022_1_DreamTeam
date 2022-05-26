@@ -7,7 +7,7 @@ target 'meet2guide' do
 
   # Облегчённая библиотека, содержит только карту, слой пробок, 
   # LocationManager, UserLocationLayer и возможность скачивать оффлайн карты (только в платной версии).
-  pod 'YandexMapsMobile', '4.0.0-lite'
+  pod 'YandexMapsMobile', '4.0.0-full'
   pod 'Firebase/Analytics'
   pod 'Firebase/Storage'
   pod 'FirebaseDatabase'

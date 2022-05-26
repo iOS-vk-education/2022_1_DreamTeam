@@ -6,6 +6,8 @@ protocol GuideAddingPresenterProtocol: AnyObject {
     func didTapChangeImage()
     
     func addExcursion(excursion: ExcursionData)
+    
+    func didTapOpenMap()
 }
 
 
@@ -27,6 +29,10 @@ extension GuideAddingPresenter: GuideAddingPresenterProtocol {
     func addExcursion(excursion: ExcursionData) {
         networkManager.addExcursion(excursion: excursion)
         print("pyk")
+    }
+    
+    func didTapOpenMap() {
+        viewController?.openMap()
     }
 }
 

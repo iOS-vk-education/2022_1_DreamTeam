@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Firebase
+import YandexMapsMobile
 
 struct ExcursionData {
     var id: String
@@ -20,8 +21,10 @@ struct ExcursionData {
     var addedByUser: String
     var rating: Float
     var price: String
+    var latitude: Double?
+    var longtitude: Double?
     
-    init(name: String, date: String, address: String, description: String?, image: UIImage, price: String, userId: String = "") {
+    init(name: String, date: String, address: String, description: String?, image: UIImage, price: String, coords: YMKPoint?, userId: String = "") {
         self.name = name
         self.date = date
         self.address = address
@@ -32,6 +35,10 @@ struct ExcursionData {
         self.id = ""
         self.rating = 0.0
         self.price = price
+        if let coord = coords {
+            latitude = coord.latitude
+            longtitude = coord.longitude
+        }
     }
     
     init(snapshot: FirebaseDatabase.DataSnapshot) {
@@ -45,10 +52,25 @@ struct ExcursionData {
         addedByUser = value["user_id"] as! String
         rating = 0
         price = value["price"] as! String
+        latitude = value["latitude"] as? Double
+        longtitude = value["longtitude"] as? Double
         //rating = value["rating"] as! Float
     }
     
     func toDictionary() -> Any {
+        var strLatitude = ""
+        if let latitude = latitude {
+            strLatitude = String(latitude)
+        } else {
+            strLatitude = ""
+        }
+        
+        var strLongtitude = ""
+        if let longtitude = longtitude {
+            strLongtitude = String(longtitude)
+        } else {
+            strLongtitude = ""
+        }
         return ["id": id,
                 "name": name,
                 "date": date,
@@ -57,6 +79,8 @@ struct ExcursionData {
                 "image_name": imageName,
                 "user_id": addedByUser,
                 "rating": String(rating),
-                "price": price]
+                "price": price,
+                "latitude": strLatitude,
+                "longtitude": strLongtitude]
     }
 }
