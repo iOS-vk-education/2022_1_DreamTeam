@@ -48,6 +48,9 @@
 		F42262B1281019E30041C2FA /* ListMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42262B0281019E30041C2FA /* ListMake.swift */; };
 		F42B86552822BCF7002D90DD /* GuideAddingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42B86542822BCF7002D90DD /* GuideAddingPresenter.swift */; };
 		F42B86572822BDB2002D90DD /* GuideAddingMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42B86562822BDB2002D90DD /* GuideAddingMake.swift */; };
+		F43D3E5B283E276800AD4633 /* MapAddExcursionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43D3E5A283E276800AD4633 /* MapAddExcursionViewController.swift */; };
+		F43D3E5D283E277700AD4633 /* MapAddExcursionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43D3E5C283E277700AD4633 /* MapAddExcursionPresenter.swift */; };
+		F43D3E5F283E278400AD4633 /* MapAddExcursionMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43D3E5E283E278400AD4633 /* MapAddExcursionMake.swift */; };
 		F4614669282664A600BCAE08 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4614668282664A600BCAE08 /* ImageLoader.swift */; };
 		F46146722826B17E00BCAE08 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46146712826B17E00BCAE08 /* ImagePicker.swift */; };
 		F47865DF2837E3C900346AAD /* AddedExcursionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47865DE2837E3C900346AAD /* AddedExcursionsViewController.swift */; };
@@ -147,6 +150,9 @@
 		F42262B0281019E30041C2FA /* ListMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMake.swift; sourceTree = "<group>"; };
 		F42B86542822BCF7002D90DD /* GuideAddingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideAddingPresenter.swift; sourceTree = "<group>"; };
 		F42B86562822BDB2002D90DD /* GuideAddingMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideAddingMake.swift; sourceTree = "<group>"; };
+		F43D3E5A283E276800AD4633 /* MapAddExcursionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAddExcursionViewController.swift; sourceTree = "<group>"; };
+		F43D3E5C283E277700AD4633 /* MapAddExcursionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAddExcursionPresenter.swift; sourceTree = "<group>"; };
+		F43D3E5E283E278400AD4633 /* MapAddExcursionMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAddExcursionMake.swift; sourceTree = "<group>"; };
 		F4614668282664A600BCAE08 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		F46146712826B17E00BCAE08 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		F47865DE2837E3C900346AAD /* AddedExcursionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedExcursionsViewController.swift; sourceTree = "<group>"; };
@@ -240,6 +246,7 @@
 		CECE356827FEEF3F004B64DC /* meet2guide */ = {
 			isa = PBXGroup;
 			children = (
+				F43D3E59283E274B00AD4633 /* MapAddExcursionView */,
 				F47865DD2837E39400346AAD /* AddedExcursionsVIew */,
 				F4A5CD602832DF5B0063939F /* Excursion */,
 				F416A11628325A0300012CE4 /* LoginView */,
@@ -369,6 +376,16 @@
 				F42B86562822BDB2002D90DD /* GuideAddingMake.swift */,
 			);
 			path = GuideAddingView;
+			sourceTree = "<group>";
+		};
+		F43D3E59283E274B00AD4633 /* MapAddExcursionView */ = {
+			isa = PBXGroup;
+			children = (
+				F43D3E5A283E276800AD4633 /* MapAddExcursionViewController.swift */,
+				F43D3E5C283E277700AD4633 /* MapAddExcursionPresenter.swift */,
+				F43D3E5E283E278400AD4633 /* MapAddExcursionMake.swift */,
+			);
+			path = MapAddExcursionView;
 			sourceTree = "<group>";
 		};
 		F47865DD2837E39400346AAD /* AddedExcursionsVIew */ = {
@@ -759,9 +776,12 @@
 				F4226290280FE6840041C2FA /* MainTabBarPresenter.swift in Sources */,
 				F4226292280FE6FF0041C2FA /* MainTabBarMake.swift in Sources */,
 				CEEEBC152802CC9E00110BFE /* RegistrationViewController.swift in Sources */,
+				F43D3E5F283E278400AD4633 /* MapAddExcursionMake.swift in Sources */,
 				F47865F128382B5700346AAD /* Animation.swift in Sources */,
+				F43D3E5D283E277700AD4633 /* MapAddExcursionPresenter.swift in Sources */,
 				CECE356E27FEEF3F004B64DC /* ViewController.swift in Sources */,
 				CECE356A27FEEF3F004B64DC /* AppDelegate.swift in Sources */,
+				F43D3E5B283E276800AD4633 /* MapAddExcursionViewController.swift in Sources */,
 				CECE357427FEEF3F004B64DC /* meet2guide.xcdatamodeld in Sources */,
 				CECE356C27FEEF3F004B64DC /* SceneDelegate.swift in Sources */,
 				F42B86572822BDB2002D90DD /* GuideAddingMake.swift in Sources */,

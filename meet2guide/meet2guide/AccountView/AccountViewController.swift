@@ -37,9 +37,9 @@ class AccountViewController: UIViewController {
     private var ratingLabel: UILabel = UILabel()
     
     private let functions: [Function] = [
-        Function(title: "Personal information", image: UIImage(systemName: "person.fill")),
-        Function(title: "Add a tour", image: UIImage(systemName: "bell.fill")),
-        Function(title: "Messages", image: UIImage(systemName: "message.fill"))]
+        Function(title: "Персональная информация", image: UIImage(systemName: "person.fill")),
+        Function(title: "Добавить экскурсию", image: UIImage(systemName: "bell.fill")),
+        Function(title: "Хаха что же здесь будет", image: UIImage(systemName: "message.fill"))]
     
     let locationManager = CLLocationManager()
     
@@ -56,7 +56,7 @@ class AccountViewController: UIViewController {
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
             locationManager.startUpdatingLocation()
         }
         
@@ -271,6 +271,10 @@ extension AccountViewController: AccountView {
 extension CLLocation {
     func fetchCityAndCountry(completion: @escaping (_ city: String?, _ country: String?, _ error: Error?) -> ()) {
         CLGeocoder().reverseGeocodeLocation(self) { completion($0?.first?.locality, $0?.first?.country, $1)}
+    }
+    
+    func fetchName(completion: @escaping (_ name: String?, _ error: Error?) -> ()) {
+        CLGeocoder().reverseGeocodeLocation(self) { completion($0?.first?.name, $1)}
     }
 }
 
