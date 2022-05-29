@@ -8,9 +8,12 @@
 import Foundation
 import UIKit
 import PinLayout
+import YandexMapsMobile
 
 protocol GosistTourView: AnyObject {
     func reloadData(with excursion: ExcursionData)
+    
+    func openMap()
 }
 
 class GosistTourViewController: UIViewController {
@@ -30,9 +33,23 @@ class GosistTourViewController: UIViewController {
     private let labelDescription: String = "Описание"
     private var textDescription: String = "                            "
     private var tourDescriptionTextView = UITextView()
+    private var dateTextView = UITextView()
     private let addTourButton: UIButton = UIButton()
     private let textButton: String = "Добавить"
     private var prizeValue: Double = 300.00
+    
+    private var scrollView: UIScrollView = UIScrollView()
+    
+    private var showOnMapButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "map"), for: .normal)
+        button.addTarget(self, action: #selector(clickedOpenMap), for: .touchUpInside)
+        button.isHidden = true
+        return button
+    }()
+    
+    private var latitude: Double?
+    private var longtitude: Double?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -42,11 +59,19 @@ class GosistTourViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        scrollView.isUserInteractionEnabled = true
+        scrollView.isScrollEnabled = true
+        scrollView.contentMode = .scaleAspectFill
+        scrollView.contentSize = CGSize(width: formContainerView.bounds.width, height: 800)
+        scrollView.autoresizingMask = .flexibleHeight
+        scrollView.autoresizesSubviews = true
         
         self.title = "Описание"
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: colorBlueCustom]
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(clickedCloseButton))
+        
+        //view.addSubview(scrollView)
         
         formContainerView.backgroundColor = colorGrayCustom
         formContainerView.layer.cornerRadius = 15.0
@@ -56,12 +81,13 @@ class GosistTourViewController: UIViewController {
         formContainerView.layer.shadowRadius = 4
         formContainerView.layer.shadowOpacity = 1
         formContainerView.clipsToBounds = true
-        formContainerView.layer.masksToBounds = false
-        view.addSubview(formContainerView)
+        formContainerView.layer.masksToBounds = true
+        scrollView.addSubview(formContainerView)
+        view.addSubview(scrollView)
         
         formTitleLabel.text = tourName
         formTitleLabel.textColor = colorBlueCustom
-        formTitleLabel.font = UIFont(name: "Avenir", size: 20)
+        formTitleLabel.font = UIFont(name: "Montserrat", size: 20)
         formTitleLabel.textAlignment = .center
         formTitleLabel.sizeToFit()
         formTitleLabel.numberOfLines = 2
@@ -73,16 +99,14 @@ class GosistTourViewController: UIViewController {
         tourImageView.clipsToBounds = true
         formContainerView.addSubview(tourImageView)
         
-        tourPlaceTextView.textColor = .black
-        tourPlaceTextView.font = UIFont(name: "Avenir", size: 13)
+        tourPlaceTextView.font = UIFont(name: "Montserrat-Regular", size: 13)
         tourPlaceTextView.textAlignment = .left
         tourPlaceTextView.backgroundColor = .clear
         tourPlaceTextView.text = labelTourPlace + ": " + textTourPlace
         tourPlaceTextView.textColor = UIColor(named: "LabelColor")
         formContainerView.addSubview(tourPlaceTextView)
         
-        tourDescriptionTextView.textColor = .black
-        tourDescriptionTextView.font = UIFont(name: "Avenir", size: 13)
+        tourDescriptionTextView.font = UIFont(name: "Montserrat-Regular", size: 13)
         tourDescriptionTextView.textAlignment = .left
         tourDescriptionTextView.backgroundColor = .clear
         tourDescriptionTextView.text = labelDescription + ": " + textDescription
@@ -93,7 +117,7 @@ class GosistTourViewController: UIViewController {
         addTourButton.backgroundColor = colorBlueCustom
         addTourButton.setTitleColor(.white, for: .normal)
         addTourButton.contentHorizontalAlignment = .center
-        addTourButton.titleLabel?.font = UIFont(name: "Avenir", size: 20)
+        addTourButton.titleLabel?.font = UIFont(name: "Montserrat", size: 20)
         addTourButton.layer.cornerRadius = 20
         addTourButton.layer.borderWidth = 5.0
         addTourButton.layer.borderColor = (colorBlueCustom).cgColor
@@ -105,9 +129,16 @@ class GosistTourViewController: UIViewController {
         addTourButton.layer.shadowOpacity = 1
         addTourButton.clipsToBounds = true
         addTourButton.layer.masksToBounds = false
-        formContainerView.addSubview(addTourButton)
+        formContainerView.addSubview(showOnMapButton)
+
+        dateTextView.font = UIFont(name: "Montserrat-Regular", size: 13)
+        dateTextView.textAlignment = .left
+        dateTextView.backgroundColor = .clear
+        dateTextView.text = "Дата" + ": " + "    "
+        dateTextView.textColor = UIColor(named: "LabelColor")
+        formContainerView.addSubview(dateTextView)
         
-        view.addSubview(titleLabel)
+        view.addSubview(addTourButton)
     }
     
     func setIdExcursion(idExcursion: String) {
@@ -124,14 +155,25 @@ class GosistTourViewController: UIViewController {
         output?.didAddExcursion(with: idExcursion)
     }
     
+    @objc
+    private func clickedOpenMap() {
+        output?.openMap()
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        formContainerView.pin
+        scrollView.pin
             .top(view.safeAreaInsets.top + 20)
             .left(5%)
             .right(5%)
             .bottom(view.safeAreaInsets.bottom)
+        
+        formContainerView.pin
+            .top(scrollView.safeAreaInsets.top)
+            .left()
+            .right()
+            .bottom()
         
         
         formTitleLabel.pin
@@ -152,11 +194,23 @@ class GosistTourViewController: UIViewController {
             .width(300)
             .height(30)
         
-        tourDescriptionTextView.pin
+        dateTextView.pin
             .topCenter(to: tourPlaceTextView.anchor.bottomCenter)
             .margin(10)
             .width(300)
+            .height(30)
+        
+        tourDescriptionTextView.pin
+            .topCenter(to: dateTextView.anchor.bottomCenter)
+            .margin(20)
+            .width(300)
             .height(100)
+        
+        showOnMapButton.pin
+            .bottom(formContainerView.safeAreaInsets.bottom + 30)
+            .right(formContainerView.safeAreaInsets.right + 30)
+            .width(40)
+            .height(40)
         
         addTourButton.pin
             .bottom(view.safeAreaInsets.bottom)
@@ -176,5 +230,19 @@ extension GosistTourViewController: GosistTourView {
         tourImageView.image = excursion.image
         tourPlaceTextView.text = labelTourPlace + ": " + excursion.address
         tourDescriptionTextView.text = labelDescription + ": " + (excursion.description ?? String(""))
+        dateTextView.text = "Дата" + ": " + excursion.date
+        latitude = excursion.latitude
+        longtitude = excursion.longtitude
+        if latitude != nil {
+            showOnMapButton.isHidden = false
+        }
+    }
+    
+    func openMap() {
+        guard let latitude = latitude, let longtitude = longtitude else {
+            return
+        }
+        let viewController = MapShowExcursionAssembler.make(point: YMKPoint(latitude: latitude, longitude: longtitude))
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

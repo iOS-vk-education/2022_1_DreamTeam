@@ -52,8 +52,14 @@ struct ExcursionData {
         addedByUser = value["user_id"] as! String
         rating = 0
         price = value["price"] as! String
-        latitude = value["latitude"] as? Double
-        longtitude = value["longtitude"] as? Double
+        let lat = value["latitude"] as? String
+        if let lat = lat {
+            latitude = Double(lat)
+        }
+        let long = value["longtitude"] as? String
+        if let long = long {
+            longtitude = Double(long)
+        }
         //rating = value["rating"] as! Float
     }
     

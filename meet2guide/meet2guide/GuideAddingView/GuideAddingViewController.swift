@@ -70,6 +70,7 @@ class GuideAddingViewController: UIViewController {
         let barButton = UIBarButtonItem()
         barButton.title = "Назад"
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = barButton
+        view.inputViewController?.hidesBottomBarWhenPushed = true
         
         view.addSubview(scrollView)
         
@@ -276,6 +277,26 @@ class GuideAddingViewController: UIViewController {
 
         scrollView.addSubview(button)
     }
+    
+    private func saveData() {
+        var cell = tableViewGuideInfo.cellForRow(at: IndexPath(row: 0, section: 0)) as! GuideAddingCell
+        
+        let name = cell.getInfo()
+        guideConfiguration[0].textIn = name
+        
+        cell = tableViewGuideInfo.cellForRow(at: IndexPath(row: 1, section: 0)) as! GuideAddingCell
+        
+        let date = cell.getInfo()
+        
+        guideConfiguration[1].textIn = date
+        
+        cell = tableViewGuideInfo.cellForRow(at: IndexPath(row: 3, section: 0)) as! GuideAddingCell
+        
+        let description = cell.getInfo()
+        
+        guideConfiguration[3].textIn = description
+        
+    }
 }
 
 extension GuideAddingViewController: UITableViewDelegate, UITableViewDataSource {
@@ -323,6 +344,7 @@ extension GuideAddingViewController: GuideAddingView {
     }
     
     func openMap() {
+        saveData()
         let viewControllerMap = MapAddExcursionAssembler.make(point: coords) { [weak self] address, coords in
             self?.guideConfiguration[2].textIn = address
             self?.coords = coords
