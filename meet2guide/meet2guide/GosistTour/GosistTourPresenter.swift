@@ -4,6 +4,8 @@ protocol GosistTourPresenterProtocol: AnyObject {
     func didLoadView(with id: String)
     
     func didAddExcursion(with id: String)
+    
+    func openMap()
 }
 
 final class GosistTourPresenter {
@@ -31,5 +33,9 @@ extension GosistTourPresenter: GosistTourPresenterProtocol {
     
     func didAddExcursion(with id: String) {
         networkManager.addExcursionToUser(with: id)
+    }
+    
+    func openMap() {
+        viewController?.openMap()
     }
 }

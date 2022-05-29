@@ -75,6 +75,9 @@
 		F47F846B280DD19400C51C0E /* InfoUserPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F8466280DD18D00C51C0E /* InfoUserPresenter.swift */; };
 		F47F846E280DD3AA00C51C0E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F846D280DD3AA00C51C0E /* User.swift */; };
 		F4A5CD622832DF6D0063939F /* Excursion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A5CD612832DF6D0063939F /* Excursion.swift */; };
+		F4B9AA60284268D7003C38F7 /* MapShowExcursionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B9AA5F284268D7003C38F7 /* MapShowExcursionViewController.swift */; };
+		F4B9AA62284268E4003C38F7 /* MapShowExcursionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B9AA61284268E4003C38F7 /* MapShowExcursionPresenter.swift */; };
+		F4B9AA64284268EF003C38F7 /* MapShowExcursionMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B9AA63284268EF003C38F7 /* MapShowExcursionMake.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,6 +180,9 @@
 		F47F8466280DD18D00C51C0E /* InfoUserPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoUserPresenter.swift; sourceTree = "<group>"; };
 		F47F846D280DD3AA00C51C0E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F4A5CD612832DF6D0063939F /* Excursion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Excursion.swift; sourceTree = "<group>"; };
+		F4B9AA5F284268D7003C38F7 /* MapShowExcursionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapShowExcursionViewController.swift; sourceTree = "<group>"; };
+		F4B9AA61284268E4003C38F7 /* MapShowExcursionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapShowExcursionPresenter.swift; sourceTree = "<group>"; };
+		F4B9AA63284268EF003C38F7 /* MapShowExcursionMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapShowExcursionMake.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,6 +252,7 @@
 		CECE356827FEEF3F004B64DC /* meet2guide */ = {
 			isa = PBXGroup;
 			children = (
+				F4B9AA5E284268B5003C38F7 /* MapShowExcursionView */,
 				F43D3E59283E274B00AD4633 /* MapAddExcursionView */,
 				F47865DD2837E39400346AAD /* AddedExcursionsVIew */,
 				F4A5CD602832DF5B0063939F /* Excursion */,
@@ -440,6 +447,16 @@
 				F4A5CD612832DF6D0063939F /* Excursion.swift */,
 			);
 			path = Excursion;
+			sourceTree = "<group>";
+		};
+		F4B9AA5E284268B5003C38F7 /* MapShowExcursionView */ = {
+			isa = PBXGroup;
+			children = (
+				F4B9AA5F284268D7003C38F7 /* MapShowExcursionViewController.swift */,
+				F4B9AA61284268E4003C38F7 /* MapShowExcursionPresenter.swift */,
+				F4B9AA63284268EF003C38F7 /* MapShowExcursionMake.swift */,
+			);
+			path = MapShowExcursionView;
 			sourceTree = "<group>";
 		};
 		FADAF6B2756B1972502EE690 /* Pods */ = {
@@ -740,7 +757,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F416A1142832582D00012CE4 /* WelcomeViewController.swift in Sources */,
+				F4B9AA62284268E4003C38F7 /* MapShowExcursionPresenter.swift in Sources */,
 				F416A1152832582D00012CE4 /* WelcomePresenter.swift in Sources */,
+				F4B9AA60284268D7003C38F7 /* MapShowExcursionViewController.swift in Sources */,
 				F41AEB59281BF9220040DF89 /* NetworkManager.swift in Sources */,
 				CE2E836928082CBC00CBF2BA /* GosistTourViewController.swift in Sources */,
 				F41AEB51281BF6E70040DF89 /* GosistTourMake.swift in Sources */,
@@ -781,6 +800,7 @@
 				F43D3E5D283E277700AD4633 /* MapAddExcursionPresenter.swift in Sources */,
 				CECE356E27FEEF3F004B64DC /* ViewController.swift in Sources */,
 				CECE356A27FEEF3F004B64DC /* AppDelegate.swift in Sources */,
+				F4B9AA64284268EF003C38F7 /* MapShowExcursionMake.swift in Sources */,
 				F43D3E5B283E276800AD4633 /* MapAddExcursionViewController.swift in Sources */,
 				CECE357427FEEF3F004B64DC /* meet2guide.xcdatamodeld in Sources */,
 				CECE356C27FEEF3F004B64DC /* SceneDelegate.swift in Sources */,
