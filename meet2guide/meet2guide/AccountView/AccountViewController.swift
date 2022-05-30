@@ -43,8 +43,13 @@ class AccountViewController: UIViewController {
     
     let locationManager = CLLocationManager()
     
+    private var loading = LoadingViewController()
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        loading.modalPresentationStyle = .overCurrentContext
+        loading.modalTransitionStyle = .crossDissolve
+        present(loading, animated: true, completion: nil)
         output?.didLoadView()
     }
     
@@ -255,6 +260,8 @@ extension AccountViewController: AccountView {
         self.ratingLabel.layer.removeAllAnimations()
         self.ratingLabel.alpha = 1
         ratingLabel.layer.backgroundColor = UIColor.systemBackground.cgColor
+        loading.navigationController?.popViewController(animated: true)
+        loading.dismiss(animated: true, completion: nil)
     }
     
     func openInfoUser() {

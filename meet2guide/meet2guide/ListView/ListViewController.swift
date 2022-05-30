@@ -33,8 +33,13 @@ class ListViewController: UIViewController {
     
     private var excursions = Array<ExcursionData>()
     
+    private var loading = LoadingViewController()
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        loading.modalPresentationStyle = .overCurrentContext
+        loading.modalTransitionStyle = .crossDissolve
+        present(loading, animated: true, completion: nil)
         output?.didLoadView()
     }
 
@@ -120,5 +125,6 @@ extension ListViewController: ListView {
         self.excursions = excursions
         tableExcursion.reloadData()
         tableExcursion.refreshControl?.endRefreshing()
+        loading.dismiss(animated: true, completion: nil)
     }
 }

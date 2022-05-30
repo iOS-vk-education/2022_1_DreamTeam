@@ -26,7 +26,6 @@
 		CECE359027FEEF44004B64DC /* meet2guideUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE358F27FEEF44004B64DC /* meet2guideUITestsLaunchTests.swift */; };
 		CEEEBC152802CC9E00110BFE /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEEBC142802CC9E00110BFE /* RegistrationViewController.swift */; };
 		DD9E09CC17677B19419F112B /* Pods_meet2guideTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD37CC10CDDA641D8F550A3 /* Pods_meet2guideTests.framework */; };
-		F40F1087281EF9A3003CE9AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F40F1086281EF9A3003CE9AF /* GoogleService-Info.plist */; };
 		F416A1142832582D00012CE4 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F416A112283257CF00012CE4 /* WelcomeViewController.swift */; };
 		F416A1152832582D00012CE4 /* WelcomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F416A113283257CF00012CE4 /* WelcomePresenter.swift */; };
 		F416A11828325A1E00012CE4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F416A11728325A1E00012CE4 /* LoginViewController.swift */; };
@@ -51,8 +50,11 @@
 		F43D3E5B283E276800AD4633 /* MapAddExcursionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43D3E5A283E276800AD4633 /* MapAddExcursionViewController.swift */; };
 		F43D3E5D283E277700AD4633 /* MapAddExcursionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43D3E5C283E277700AD4633 /* MapAddExcursionPresenter.swift */; };
 		F43D3E5F283E278400AD4633 /* MapAddExcursionMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43D3E5E283E278400AD4633 /* MapAddExcursionMake.swift */; };
+		F458CC6F2844C614001D8DB4 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F458CC6E2844C614001D8DB4 /* LoadingViewController.swift */; };
+		F458CC712844D268001D8DB4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F458CC702844D268001D8DB4 /* GoogleService-Info.plist */; };
 		F4614669282664A600BCAE08 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4614668282664A600BCAE08 /* ImageLoader.swift */; };
 		F46146722826B17E00BCAE08 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46146712826B17E00BCAE08 /* ImagePicker.swift */; };
+		F463205428450F1500A39DB6 /* mark.png in Resources */ = {isa = PBXBuildFile; fileRef = F463205328450F1400A39DB6 /* mark.png */; };
 		F47865DF2837E3C900346AAD /* AddedExcursionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47865DE2837E3C900346AAD /* AddedExcursionsViewController.swift */; };
 		F47865E12837E43200346AAD /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47865E02837E43200346AAD /* CollectionView.swift */; };
 		F47865E32837E49B00346AAD /* CustomFlipTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47865E22837E49B00346AAD /* CustomFlipTransition.swift */; };
@@ -128,13 +130,11 @@
 		CECE358D27FEEF44004B64DC /* meet2guideUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meet2guideUITests.swift; sourceTree = "<group>"; };
 		CECE358F27FEEF44004B64DC /* meet2guideUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meet2guideUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CEEEBC142802CC9E00110BFE /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
-		F40F1086281EF9A3003CE9AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "meet2guide/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F416A112283257CF00012CE4 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		F416A113283257CF00012CE4 /* WelcomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePresenter.swift; sourceTree = "<group>"; };
 		F416A11728325A1E00012CE4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F416A11928325A2900012CE4 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		F416A11B28325A3500012CE4 /* LoginMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMake.swift; sourceTree = "<group>"; };
-		F41AEB3D281BE58D0040DF89 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F41AEB41281BF6850040DF89 /* RegistrationMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationMake.swift; sourceTree = "<group>"; };
 		F41AEB42281BF6850040DF89 /* RegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
 		F41AEB4D281BF6DE0040DF89 /* GosistTourPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GosistTourPresenter.swift; sourceTree = "<group>"; };
@@ -156,8 +156,11 @@
 		F43D3E5A283E276800AD4633 /* MapAddExcursionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAddExcursionViewController.swift; sourceTree = "<group>"; };
 		F43D3E5C283E277700AD4633 /* MapAddExcursionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAddExcursionPresenter.swift; sourceTree = "<group>"; };
 		F43D3E5E283E278400AD4633 /* MapAddExcursionMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAddExcursionMake.swift; sourceTree = "<group>"; };
+		F458CC6E2844C614001D8DB4 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		F458CC702844D268001D8DB4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "meet2guide/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F4614668282664A600BCAE08 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		F46146712826B17E00BCAE08 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		F463205328450F1400A39DB6 /* mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mark.png; sourceTree = "<group>"; };
 		F47865DE2837E3C900346AAD /* AddedExcursionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedExcursionsViewController.swift; sourceTree = "<group>"; };
 		F47865E02837E43200346AAD /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		F47865E22837E49B00346AAD /* CustomFlipTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFlipTransition.swift; sourceTree = "<group>"; };
@@ -226,7 +229,7 @@
 		CECE355D27FEEF3F004B64DC = {
 			isa = PBXGroup;
 			children = (
-				F40F1086281EF9A3003CE9AF /* GoogleService-Info.plist */,
+				F458CC702844D268001D8DB4 /* GoogleService-Info.plist */,
 				F47F843B280DCFF800C51C0E /* Montserrat-Bold.ttf */,
 				F47F843C280DCFF800C51C0E /* Montserrat-Medium.ttf */,
 				F47F843D280DCFF800C51C0E /* Montserrat-Regular.ttf */,
@@ -261,7 +264,6 @@
 				F42B86532822BC97002D90DD /* GuideAddingView */,
 				F41AEB4C281BF6DE0040DF89 /* GosistTour */,
 				F41AEB40281BF6850040DF89 /* RegistrationView */,
-				F41AEB3D281BE58D0040DF89 /* GoogleService-Info.plist */,
 				F42262A9281011C70041C2FA /* ListView */,
 				F42262A32810060B0041C2FA /* MapView */,
 				F422628C280FE5440041C2FA /* MainTabBar */,
@@ -272,6 +274,7 @@
 				F41AEB58281BF9220040DF89 /* NetworkManager.swift */,
 				CE8430152800CCE000775255 /* logo.png */,
 				CE8430142800CCE000775255 /* shadow.png */,
+				F463205328450F1400A39DB6 /* mark.png */,
 				CECE356927FEEF3F004B64DC /* AppDelegate.swift */,
 				CECE356B27FEEF3F004B64DC /* SceneDelegate.swift */,
 				CECE356D27FEEF3F004B64DC /* ViewController.swift */,
@@ -282,6 +285,7 @@
 				CEB083102809F31A009FE4A1 /* LoginPresenter.swift */,
 				F4614668282664A600BCAE08 /* ImageLoader.swift */,
 				F46146712826B17E00BCAE08 /* ImagePicker.swift */,
+				F458CC6E2844C614001D8DB4 /* LoadingViewController.swift */,
 			);
 			path = meet2guide;
 			sourceTree = "<group>";
@@ -587,11 +591,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F40F1087281EF9A3003CE9AF /* GoogleService-Info.plist in Resources */,
+				F458CC712844D268001D8DB4 /* GoogleService-Info.plist in Resources */,
 				F47F843E280DCFF800C51C0E /* Montserrat-Bold.ttf in Resources */,
 				F47F843F280DCFF800C51C0E /* Montserrat-Medium.ttf in Resources */,
 				F47F8440280DCFF800C51C0E /* Montserrat-Regular.ttf in Resources */,
 				CE8430172800CCE000775255 /* logo.png in Resources */,
+				F463205428450F1500A39DB6 /* mark.png in Resources */,
 				CECE357927FEEF43004B64DC /* LaunchScreen.storyboard in Resources */,
 				CECE357627FEEF43004B64DC /* Assets.xcassets in Resources */,
 				CE8430162800CCE000775255 /* shadow.png in Resources */,
@@ -759,6 +764,7 @@
 				F416A1142832582D00012CE4 /* WelcomeViewController.swift in Sources */,
 				F4B9AA62284268E4003C38F7 /* MapShowExcursionPresenter.swift in Sources */,
 				F416A1152832582D00012CE4 /* WelcomePresenter.swift in Sources */,
+				F458CC6F2844C614001D8DB4 /* LoadingViewController.swift in Sources */,
 				F4B9AA60284268D7003C38F7 /* MapShowExcursionViewController.swift in Sources */,
 				F41AEB59281BF9220040DF89 /* NetworkManager.swift in Sources */,
 				CE2E836928082CBC00CBF2BA /* GosistTourViewController.swift in Sources */,

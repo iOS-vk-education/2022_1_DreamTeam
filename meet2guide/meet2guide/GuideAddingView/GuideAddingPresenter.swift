@@ -27,8 +27,14 @@ extension GuideAddingPresenter: GuideAddingPresenterProtocol {
     }
     
     func addExcursion(excursion: ExcursionData) {
-        networkManager.addExcursion(excursion: excursion)
-        print("pyk")
+        networkManager.addExcursion(excursion: excursion, completion: { [weak self] result in
+            switch result {
+            case .success():
+                self?.viewController?.close()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        })
     }
     
     func didTapOpenMap() {

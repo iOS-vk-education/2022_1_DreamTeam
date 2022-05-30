@@ -19,6 +19,8 @@ protocol InfoUserView: AnyObject {
     func loadImage(image: UIImage?)
     
     func openImagePicker(output: ImagePickerProtocol)
+    
+    func close()
 }
 
 
@@ -60,6 +62,8 @@ class InfoUserViewController: UIViewController {
     private var changeImageButton: UIButton = UIButton()
     
     private var exitButton: UIButton = UIButton()
+    
+    private var loading = LoadingViewController()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -247,8 +251,10 @@ class InfoUserViewController: UIViewController {
                             surname: surname,
                             phone: phone,
                             image: image)
+        loading.modalPresentationStyle = .overCurrentContext
+        loading.modalTransitionStyle = .crossDissolve
+        present(loading, animated: true, completion: nil)
         output?.didUpdateUser(user: user)
-        dismiss(animated: true, completion: nil)
     }
     
     @objc
@@ -309,7 +315,7 @@ class InfoUserViewController: UIViewController {
     }
     
     deinit {
-        
+        removeKeyboardNotifications()
     }
 }
 
@@ -411,6 +417,12 @@ extension InfoUserViewController: InfoUserView {
            return result
 
        }
+    
+    func close() {
+        loading.navigationController?.popViewController(animated: true)
+        loading.dismiss(animated: true, completion: nil)
+        //dismiss(animated: true, completion: nil)
+    }
 }
 
 extension InfoUserViewController: UITextFieldDelegate {
