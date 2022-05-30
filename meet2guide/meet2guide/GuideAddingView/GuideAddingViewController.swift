@@ -17,6 +17,8 @@ protocol GuideAddingView: AnyObject {
     func openMap()
     
     func setAddress(address: String?, coords: String?)
+    
+    func close()
 }
 
 class GuideAddingViewController: UIViewController {
@@ -44,6 +46,8 @@ class GuideAddingViewController: UIViewController {
      guideInfo(tableLabel: "Описание", textIn: "")]
     
     private var coords: YMKPoint?
+    
+    private var loading = LoadingViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -232,8 +236,11 @@ class GuideAddingViewController: UIViewController {
                                       image: image,
                                       price: "300",
                                       coords: coords)
+        loading.modalPresentationStyle = .overCurrentContext
+        loading.modalTransitionStyle = .crossDissolve
+        present(loading, animated: true, completion: nil)
         output?.addExcursion(excursion: excursion)
-        self.navigationController?.popViewController(animated: true)
+        
     }
 
     private func configImages() {
@@ -352,6 +359,13 @@ extension GuideAddingViewController: GuideAddingView {
         }
         //present(viewControllerMap, animated: true, completion: nil)
         self.navigationController?.pushViewController(viewControllerMap, animated: true)
+    }
+    
+    func close() {
+        //loading.navigationController?.popViewController(animated: true)
+        loading.dismiss(animated: true, completion: nil)
+        
+        navigationController?.popViewController(animated: true)
     }
 }
 

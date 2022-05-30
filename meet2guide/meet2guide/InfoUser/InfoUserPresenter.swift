@@ -60,7 +60,14 @@ extension InfoUserPresenter: InfoUserPresenterProtocol {
     }
     
     func didUpdateUser(user: UserData) {
-        networkManager.saveUser(user: user)
+        networkManager.saveUser(user: user) { [weak self] result in
+            switch result {
+            case .success():
+                self?.viewController?.close()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }
 

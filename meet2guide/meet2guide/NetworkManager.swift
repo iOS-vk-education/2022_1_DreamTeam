@@ -21,11 +21,11 @@ protocol NetworkManagerProtocol {
     
     func updateUser(user: UserData)
     
-    func saveUser(user: UserData)
+    func saveUser(user: UserData, completion: @escaping (Result<Void, Error>) -> Void)
     
     func checkUser(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void)
     
-    func addExcursion(excursion: ExcursionData)
+    func addExcursion(excursion: ExcursionData, completion: @escaping (Result<Void, Error>) -> Void)
     
     func loadListExcursion(completion: @escaping (Result<Array<ExcursionData>, Error>) -> Void)
     
@@ -34,6 +34,8 @@ protocol NetworkManagerProtocol {
     func addExcursionToUser(with id: String)
     
     func getExcursionsByUser(completion: @escaping (Result<[ExcursionData], Error>) -> Void)
+    func observeUpdateExcursions(completion: @escaping (Result<Array<ExcursionData>, Error>) -> Void)
+    
 }
 
 final class NetworkManager {
@@ -50,7 +52,7 @@ final class NetworkManager {
 
 extension NetworkManager: NetworkManagerProtocol {
     
-    func saveUser(user: UserData) {
+    func saveUser(user: UserData, completion: @escaping (Result<Void, Error>) -> Void) {
         self.userData = user
         imageLoader.load(image: user.profileImage) { [weak self] (result) in
             switch result {
@@ -61,8 +63,10 @@ extension NetworkManager: NetworkManagerProtocol {
                     return
                 }
                 self?.updateUser(user: user)
+                completion(.success(()))
             case .failure(let error):
                 print("registration interactor error: \(error)")
+                completion(.failure(error))
             }
         }
     }
@@ -162,7 +166,7 @@ extension NetworkManager: NetworkManagerProtocol {
         }
     }
     
-    func addExcursion(excursion: ExcursionData) {
+    func addExcursion(excursion: ExcursionData, completion: @escaping (Result<Void, Error>) -> Void) {
         guard let currentUser = Auth.auth().currentUser else { return }
         self.excursionData = excursion
         self.excursionData?.addedByUser = currentUser.uid
@@ -176,8 +180,10 @@ extension NetworkManager: NetworkManagerProtocol {
                     return
                 }
                 self?.addExcursionInBase(excursion: excursionData)
+                completion(.success(()))
             case .failure(let error):
                 print("registration interactor error: \(error)")
+                completion(.failure(error))
             }
         }
         
@@ -283,6 +289,38 @@ extension NetworkManager: NetworkManagerProtocol {
                     }
                 }
             }
+        })
+    }
+    
+    func observeUpdateExcursions(completion: @escaping (Result<Array<ExcursionData>, Error>) -> Void) {
+        let ref = Database.database().reference(withPath: "excursions")
+        ref.observe(.value, with: {[weak self] snapshot in
+            if snapshot.exists() {
+                var excursions = Array<ExcursionData>()
+                var excursionsFromBase = Array<Firebase.DataSnapshot>()
+                for item in snapshot.children {
+                    excursionsFromBase.append(item as! DataSnapshot)
+                }
+                
+                for item in excursionsFromBase {
+                    var excursion = ExcursionData(snapshot: item)
+                    self?.imageLoader.get(name: excursion.imageName) { result in
+                        switch result {
+                        case .success(let image):
+                            excursion.image = image
+                            excursions.append(excursion)
+                            if excursions.count == excursionsFromBase.count {
+                                completion(.success(excursions))
+                            }
+                        case .failure(let error):
+                            print(error.localizedDescription)
+                        }
+                    }
+                }
+                
+                
+            }
+            
         })
     }
 }

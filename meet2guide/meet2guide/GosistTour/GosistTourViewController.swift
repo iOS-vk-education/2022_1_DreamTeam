@@ -104,6 +104,7 @@ class GosistTourViewController: UIViewController {
         tourPlaceTextView.backgroundColor = .clear
         tourPlaceTextView.text = labelTourPlace + ": " + textTourPlace
         tourPlaceTextView.textColor = UIColor(named: "LabelColor")
+        tourPlaceTextView.isEditable = false
         formContainerView.addSubview(tourPlaceTextView)
         
         tourDescriptionTextView.font = UIFont(name: "Montserrat-Regular", size: 13)
@@ -111,6 +112,7 @@ class GosistTourViewController: UIViewController {
         tourDescriptionTextView.backgroundColor = .clear
         tourDescriptionTextView.text = labelDescription + ": " + textDescription
         tourDescriptionTextView.textColor = UIColor(named: "LabelColor")
+        tourDescriptionTextView.isEditable = false
         formContainerView.addSubview(tourDescriptionTextView)
 
         addTourButton.setTitle(textButton, for: .normal)
@@ -136,6 +138,7 @@ class GosistTourViewController: UIViewController {
         dateTextView.backgroundColor = .clear
         dateTextView.text = "Дата" + ": " + "    "
         dateTextView.textColor = UIColor(named: "LabelColor")
+        dateTextView.isEditable = false
         formContainerView.addSubview(dateTextView)
         
         view.addSubview(addTourButton)
@@ -190,7 +193,7 @@ class GosistTourViewController: UIViewController {
         
         tourPlaceTextView.pin
             .topCenter(to: tourImageView.anchor.bottomCenter)
-            .margin(20)
+            .margin(10)
             .width(300)
             .height(30)
         
@@ -202,23 +205,24 @@ class GosistTourViewController: UIViewController {
         
         tourDescriptionTextView.pin
             .topCenter(to: dateTextView.anchor.bottomCenter)
-            .margin(20)
+            .margin(10)
             .width(300)
-            .height(100)
+            .bottom(50)
         
         showOnMapButton.pin
-            .bottom(formContainerView.safeAreaInsets.bottom + 30)
-            .right(formContainerView.safeAreaInsets.right + 30)
+            .bottom(formContainerView.safeAreaInsets.bottom + 10)
+            .right(formContainerView.safeAreaInsets.right + 10)
             .width(40)
             .height(40)
         
         addTourButton.pin
-            .bottom(view.safeAreaInsets.bottom)
+            .bottom(view.safeAreaInsets.bottom + 5)
             .marginTop(10%)
             .left(5%)
             .right(5%)
             .height(15%)
             .maxHeight(60)
+        
         
         
     }

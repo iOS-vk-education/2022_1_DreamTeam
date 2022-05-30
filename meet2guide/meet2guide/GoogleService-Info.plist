@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>60879718045-9km4ff468cc4be0msvsarb00elu2ark9.apps.googleusercontent.com</string>
+	<string>443121475520-6r3cp30ndb432fj8m0b425v1hna25qrs.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.60879718045-9km4ff468cc4be0msvsarb00elu2ark9</string>
+	<string>com.googleusercontent.apps.443121475520-6r3cp30ndb432fj8m0b425v1hna25qrs</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCiZvhtppMSFI6DWRv8FrfkHYEm7VOWn3Y</string>
+	<string>AIzaSyDNT4Z76R9bNeCtyLG8P6-qxzDyLSvnAe8</string>
 	<key>GCM_SENDER_ID</key>
-	<string>60879718045</string>
+	<string>443121475520</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>none.meet2guide</string>
 	<key>PROJECT_ID</key>
-	<string>meet2guide-1b47e</string>
+	<string>meet2guide-bd624</string>
 	<key>STORAGE_BUCKET</key>
-	<string>meet2guide-1b47e.appspot.com</string>
+	<string>meet2guide-bd624.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:60879718045:ios:86e81ad78556512966b674</string>
+	<string>1:443121475520:ios:9fb6345265271b9afff225</string>
 </dict>
 </plist>
