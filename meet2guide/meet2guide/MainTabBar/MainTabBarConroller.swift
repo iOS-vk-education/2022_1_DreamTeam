@@ -25,12 +25,12 @@ class MainTabBarController: UITabBarController, MainTabBar {
         
         self.tabBar.items?[0].image = UIImage(systemName: "map")
         self.tabBar.items?[1].image = UIImage(systemName: "list.bullet")
-        self.tabBar.items?[2].image = UIImage(systemName: "star")
+        self.tabBar.items?[2].image = UIImage(systemName: "ticket")
         self.tabBar.items?[3].image = UIImage(systemName: "person")
         
         self.tabBar.items?[0].title = "карта"
         self.tabBar.items?[1].title = "поиск"
-        self.tabBar.items?[2].title = "избранное"
+        self.tabBar.items?[2].title = "билеты"
         self.tabBar.items?[3].title = "аккаунт"
     }
 }

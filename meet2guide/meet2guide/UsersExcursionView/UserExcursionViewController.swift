@@ -1,8 +1,8 @@
 //
-//  AddedExcursionsViewController.swift
+//  UserExcursionViewController.swift
 //  meet2guide
 //
-//  Created by Екатерина Григоренко on 20.05.2022.
+//  Created by Екатерина Григоренко on 01.06.2022.
 //
 
 import Foundation
@@ -10,7 +10,7 @@ import UIKit
 import PinLayout
 
 
-protocol AddedExcursionsView: AnyObject {
+protocol UserExcursionView: AnyObject {
     func reloadData(with listExcursions: [ExcursionData])
     
     func showAlert(alert: UIAlertController)
@@ -20,8 +20,8 @@ protocol AddedExcursionsView: AnyObject {
     func openExcursion(with id: String)
 }
 
-class AddedExcursionsViewController: UIViewController {
-    var output: AddedExcursionsPresenterProtocol?
+class UserExcursionViewController: UIViewController {
+    var output: UserExcursionPresenterProtocol?
     
     fileprivate var transition = CustomFlipTransition(duration: 0.5)
     
@@ -71,7 +71,7 @@ class AddedExcursionsViewController: UIViewController {
         self.transitioningDelegate = self
         
         
-        cardCollection.register(CardCell.self, forCellWithReuseIdentifier: "CardCell")
+        cardCollection.register(ExcursionCardCell.self, forCellWithReuseIdentifier: "ExcursionCardCell")
         
         if let layout = cardCollection.collectionViewLayout as? CustomCardLayout {
             layout.titleHeight = 100
@@ -103,7 +103,7 @@ class AddedExcursionsViewController: UIViewController {
     }
 }
 
-extension AddedExcursionsViewController: UICollectionViewDataSource {
+extension UserExcursionViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         1
     }
@@ -113,7 +113,7 @@ extension AddedExcursionsViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: indexPath) as? CardCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExcursionCardCell", for: indexPath) as? ExcursionCardCell
         
         guard let cell = cell else {
             return .init()
@@ -140,7 +140,7 @@ extension AddedExcursionsViewController: UICollectionViewDataSource {
 
 
 
-extension AddedExcursionsViewController: AddedExcursionsView {
+extension UserExcursionViewController: UserExcursionView {
     func reloadData(with listExcursions: [ExcursionData]) {
         listAddedExcursions = listExcursions
         cardCollection.reloadData()
@@ -166,7 +166,7 @@ extension AddedExcursionsViewController: AddedExcursionsView {
     }
 }
 
-extension AddedExcursionsViewController: UIViewControllerTransitioningDelegate {
+extension UserExcursionViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.transitionMode = .present
         if let custom = cardCollection.collectionViewLayout as? CustomCardLayout, let path = custom.selectPath {

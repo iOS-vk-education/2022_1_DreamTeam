@@ -9,9 +9,11 @@ import Foundation
 import UIKit
 
 final class GosistTourAssembler {
-    static func make(idExcursion: String) -> UIViewController {
+    static func make(idExcursion: String, isAdding: Bool, isAdded: Bool = false) -> UIViewController {
         let viewController = GosistTourViewController()
         viewController.setIdExcursion(idExcursion: idExcursion)
+        viewController.setAdding(isAdding: isAdding)
+        viewController.setAdded(isAdded: isAdded)
         let presenter = GosistTourPresenter(view: viewController)
         viewController.output = presenter
         return viewController

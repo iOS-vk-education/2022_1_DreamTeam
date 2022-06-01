@@ -14,6 +14,8 @@ protocol GosistTourView: AnyObject {
     func reloadData(with excursion: ExcursionData)
     
     func openMap()
+    
+    func close()
 }
 
 class GosistTourViewController: UIViewController {
@@ -39,6 +41,10 @@ class GosistTourViewController: UIViewController {
     private var prizeValue: Double = 300.00
     
     private var scrollView: UIScrollView = UIScrollView()
+    
+    private var isAdding: Bool = false
+    
+    private var isAdded: Bool = false
     
     private var showOnMapButton: UIButton = {
         let button = UIButton()
@@ -114,9 +120,17 @@ class GosistTourViewController: UIViewController {
         tourDescriptionTextView.textColor = UIColor(named: "LabelColor")
         tourDescriptionTextView.isEditable = false
         formContainerView.addSubview(tourDescriptionTextView)
+        
+        if isAdded {
+            addTourButton.setTitle("Уже добавлено", for: .normal)
+            addTourButton.backgroundColor = .systemGray6
+            addTourButton.isUserInteractionEnabled = false
+        } else {
+            addTourButton.setTitle(textButton, for: .normal)
+            addTourButton.backgroundColor = colorBlueCustom
+            addTourButton.isUserInteractionEnabled = true
+        }
 
-        addTourButton.setTitle(textButton, for: .normal)
-        addTourButton.backgroundColor = colorBlueCustom
         addTourButton.setTitleColor(.white, for: .normal)
         addTourButton.contentHorizontalAlignment = .center
         addTourButton.titleLabel?.font = UIFont(name: "Montserrat", size: 20)
@@ -131,6 +145,11 @@ class GosistTourViewController: UIViewController {
         addTourButton.layer.shadowOpacity = 1
         addTourButton.clipsToBounds = true
         addTourButton.layer.masksToBounds = false
+        if isAdding {
+            addTourButton.isHidden = false
+        } else {
+            addTourButton.isHidden = true
+        }
         formContainerView.addSubview(showOnMapButton)
 
         dateTextView.font = UIFont(name: "Montserrat-Regular", size: 13)
@@ -226,6 +245,15 @@ class GosistTourViewController: UIViewController {
         
         
     }
+    
+    func setAdding(isAdding: Bool) {
+        self.isAdding = isAdding
+    }
+    
+    func setAdded(isAdded: Bool) {
+        self.isAdded = isAdded
+    }
+
 }
 
 extension GosistTourViewController: GosistTourView {
@@ -248,5 +276,9 @@ extension GosistTourViewController: GosistTourView {
         }
         let viewController = MapShowExcursionAssembler.make(point: YMKPoint(latitude: latitude, longitude: longtitude))
         navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func close() {
+        dismiss(animated: true, completion: nil)
     }
 }

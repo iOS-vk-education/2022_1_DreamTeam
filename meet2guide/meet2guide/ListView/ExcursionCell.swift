@@ -99,7 +99,8 @@ class ExcursionCell: UITableViewCell {
             .after(of: mainImage)
             .marginLeft(30)
             .top(80)
-            .sizeToFit()
+            .width(100)
+            .height(30)
             
     }
     

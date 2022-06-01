@@ -52,7 +52,7 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.requestAlwaysAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
@@ -212,16 +212,18 @@ class ExcursionViewController: UIViewController {
         view.addGestureRecognizer(swipeDown)
         
         tourImageView.backgroundColor = .systemGray
-        tourImageView.layer.cornerRadius = 10.0
         tourImageView.alpha = 1
         tourImageView.contentMode = .scaleAspectFill
         tourImageView.clipsToBounds = true
+        tourImageView.layer.cornerRadius = 20
         view.addSubview(tourImageView)
         
         let blurEffect = UIView()
         blurEffect.backgroundColor = .black
         blurEffect.alpha = 0.5
         blurEffect.frame = view.bounds
+        blurEffect.clipsToBounds = true
+        blurEffect.layer.cornerRadius = 20
         blurEffect.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(blurEffect)
         //formTitleLabel.text = tourName
@@ -230,7 +232,7 @@ class ExcursionViewController: UIViewController {
         formTitleLabel.textAlignment = .center
         formTitleLabel.sizeToFit()
         formTitleLabel.alpha = 1
-        formTitleLabel.numberOfLines = 2
+        formTitleLabel.numberOfLines = 0
         scrollView.addSubview(formTitleLabel)
         
         labelTourPlace.text = "Расположение"
@@ -307,9 +309,8 @@ class ExcursionViewController: UIViewController {
         formTitleLabel.pin
             .topCenter(to: hideButton.anchor.bottomCenter)
             .margin(10)
-            .left(5%)
-            .right(5%)
-            .sizeToFit()
+            .width(view.frame.width - 40)
+            .height(20)
         
         tourPlaceView.pin
             .topCenter(to: formTitleLabel.anchor.bottomCenter)

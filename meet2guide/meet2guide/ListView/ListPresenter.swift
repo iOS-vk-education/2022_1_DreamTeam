@@ -32,6 +32,24 @@ extension ListPresenter: ListPresenterProtocol {
                 print(error.localizedDescription)
             }
         }
+        
+        networkManager.getExcursionsIdByUser { [weak self] result in
+            switch result {
+            case .success(let excustionsId):
+                self?.viewController?.loadIdAdded(with: excustionsId)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+        networkManager.getAddedExcursionsIdByUser { [weak self] result in
+                switch result {
+                case .success(let excustionsId):
+                    self?.viewController?.loadMyExcursions(with: excustionsId)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+        }
     }
     
     func updateList() {

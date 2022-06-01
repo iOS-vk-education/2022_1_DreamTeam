@@ -20,6 +20,10 @@ protocol ListView: AnyObject {
     func openExcursion(idExcursion: String)
     
     func loadedListExcursions(excursions: Array<ExcursionData>)
+    
+    func loadIdAdded(with ids: Array<String>)
+    
+    func loadMyExcursions(with ids: Array<String>)
 }
 
 
@@ -34,6 +38,10 @@ class ListViewController: UIViewController {
     private var excursions = Array<ExcursionData>()
     
     private var loading = LoadingViewController()
+    
+    private var addedExcursionsId = Array<String>()
+    
+    private var myExcursionsId = Array<String>()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -116,7 +124,21 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
 extension ListViewController: ListView {
     func openExcursion(idExcursion: String) {
         print(idExcursion)
-        let excursionViewController = GosistTourAssembler.make(idExcursion: idExcursion)
+        var isAdded: Bool = false
+        if addedExcursionsId.contains(idExcursion) {
+            isAdded = true
+        } else {
+            isAdded = false
+        }
+        
+        var isAdding = false
+        
+        if myExcursionsId.contains(idExcursion) {
+            isAdding = false
+        } else {
+            isAdding = true
+        }
+        let excursionViewController = GosistTourAssembler.make(idExcursion: idExcursion, isAdding: isAdding, isAdded: isAdded)
         let navigationController = UINavigationController(rootViewController: excursionViewController)
         present(navigationController, animated: true, completion: nil)
     }
@@ -126,5 +148,13 @@ extension ListViewController: ListView {
         tableExcursion.reloadData()
         tableExcursion.refreshControl?.endRefreshing()
         loading.dismiss(animated: true, completion: nil)
+    }
+    
+    func loadIdAdded(with ids: Array<String>) {
+        self.addedExcursionsId = ids
+    }
+    
+    func loadMyExcursions(with ids: Array<String>) {
+        myExcursionsId = ids
     }
 }

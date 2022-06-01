@@ -54,7 +54,7 @@ class MapAddExcursionViewController: UIViewController {
         }
         
         self.navigationController?.navigationBar.barTintColor = .systemBackground
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(didTapSearchBarButton))
+        //navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(didTapSearchBarButton))
         
         if let excursionCoords = coords {
             mapView.mapWindow.map.move(

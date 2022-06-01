@@ -42,6 +42,7 @@ class GuideAddingViewController: UIViewController {
     private var guideConfiguration: [guideInfo] =
     [guideInfo(tableLabel: "Название", textIn: ""),
      guideInfo(tableLabel: "Дата", textIn: ""),
+     guideInfo(tableLabel: "Цена", textIn: ""),
      guideInfo(tableLabel: "Адрес", textIn: ""),
      guideInfo(tableLabel: "Описание", textIn: "")]
     
@@ -147,7 +148,8 @@ class GuideAddingViewController: UIViewController {
             .topCenter(to: changeImageButton.anchor.bottomCenter)
             .margin(30)
             .width((self.scrollView.window?.frame.width ?? 310))
-            .height(300)
+            .height(380)
+            //.sizeToFit(.height)
         /*nameLabel.pin
             .*/
         
@@ -205,15 +207,15 @@ class GuideAddingViewController: UIViewController {
             return
         }
         
-        cell = tableViewGuideInfo.cellForRow(at: IndexPath(row: 1, section: 0)) as! GuideAddingCell
+        var cellDate = tableViewGuideInfo.cellForRow(at: IndexPath(row: 1, section: 0)) as! GuideAddingCellDate
         
-        let date = cell.getInfo()
+        let date = cellDate.getInfo()
         
         if date.isEmpty {
             return
         }
         
-        let cellMap = tableViewGuideInfo.cellForRow(at: IndexPath(row: 2, section: 0)) as! GuideAddingCellMap
+        let cellMap = tableViewGuideInfo.cellForRow(at: IndexPath(row: 3, section: 0)) as! GuideAddingCellMap
         
         let address = cellMap.getInfo()
         
@@ -221,7 +223,15 @@ class GuideAddingViewController: UIViewController {
             return
         }
         
-        cell = tableViewGuideInfo.cellForRow(at: IndexPath(row: 3, section: 0)) as! GuideAddingCell
+        cell = tableViewGuideInfo.cellForRow(at: IndexPath(row: 2, section: 0)) as! GuideAddingCell
+        
+        let price = cell.getInfo()
+        
+        if price.isEmpty {
+            return
+        }
+        
+        cell = tableViewGuideInfo.cellForRow(at: IndexPath(row: 4, section: 0)) as! GuideAddingCell
         
         let description = cell.getInfo()
         
@@ -234,7 +244,7 @@ class GuideAddingViewController: UIViewController {
                                       address: address,
                                       description: description,
                                       image: image,
-                                      price: "300",
+                                      price: price,
                                       coords: coords)
         loading.modalPresentationStyle = .overCurrentContext
         loading.modalTransitionStyle = .crossDissolve
@@ -259,6 +269,7 @@ class GuideAddingViewController: UIViewController {
         tableViewGuideInfo.dataSource = self
         tableViewGuideInfo.register(GuideAddingCell.self, forCellReuseIdentifier: "GuideAddingCell")
         tableViewGuideInfo.register(GuideAddingCellMap.self, forCellReuseIdentifier: "GuideAddingCellMap")
+        tableViewGuideInfo.register(GuideAddingCellDate.self, forCellReuseIdentifier: "GuideAddingCellDate")
 
         tableViewGuideInfo.separatorStyle = .none
 
@@ -291,30 +302,48 @@ class GuideAddingViewController: UIViewController {
         let name = cell.getInfo()
         guideConfiguration[0].textIn = name
         
-        cell = tableViewGuideInfo.cellForRow(at: IndexPath(row: 1, section: 0)) as! GuideAddingCell
+        var cellDate = tableViewGuideInfo.cellForRow(at: IndexPath(row: 1, section: 0)) as! GuideAddingCellDate
         
-        let date = cell.getInfo()
+        let date = cellDate.getInfo()
         
         guideConfiguration[1].textIn = date
         
-        cell = tableViewGuideInfo.cellForRow(at: IndexPath(row: 3, section: 0)) as! GuideAddingCell
+        cell = tableViewGuideInfo.cellForRow(at: IndexPath(row: 2, section: 0)) as! GuideAddingCell
+        
+        let price = cell.getInfo()
+        
+        guideConfiguration[2].textIn = price
+        
+        cell = tableViewGuideInfo.cellForRow(at: IndexPath(row: 4, section: 0)) as! GuideAddingCell
         
         let description = cell.getInfo()
         
-        guideConfiguration[3].textIn = description
+        guideConfiguration[4].textIn = description
         
     }
 }
 
 extension GuideAddingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 2 {
+        if indexPath.row == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "GuideAddingCellMap", for: indexPath) as? GuideAddingCellMap
             cell?.configure(with: guideConfiguration[indexPath.row], presenter: output)
             cell?.selectionStyle = UITableViewCell.SelectionStyle.none
             return cell ?? .init()
+        } else if indexPath.row == 1 {
+            print("in 1")
+            let cell = tableView.dequeueReusableCell(withIdentifier: "GuideAddingCellDate", for: indexPath) as? GuideAddingCellDate
+            
+            print(guideConfiguration[indexPath.row])
+
+            cell?.configure(with: guideConfiguration[indexPath.row])
+
+            cell?.selectionStyle = UITableViewCell.SelectionStyle.none
+            return cell ?? .init()
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "GuideAddingCell", for: indexPath) as? GuideAddingCell
+            
+            print(guideConfiguration[indexPath.row])
 
             cell?.configure(with: guideConfiguration[indexPath.row])
 
@@ -324,11 +353,11 @@ extension GuideAddingViewController: UITableViewDelegate, UITableViewDataSource 
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        4
+        guideConfiguration.count
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 3 {
+        if indexPath.row == 4 {
             return 100
         }
         return 50
@@ -353,9 +382,11 @@ extension GuideAddingViewController: GuideAddingView {
     func openMap() {
         saveData()
         let viewControllerMap = MapAddExcursionAssembler.make(point: coords) { [weak self] address, coords in
-            self?.guideConfiguration[2].textIn = address
+            self?.guideConfiguration[3].textIn = address
             self?.coords = coords
-            self?.tableViewGuideInfo.reloadData()
+            DispatchQueue.main.async {
+                self?.tableViewGuideInfo.reloadData()
+            }
         }
         //present(viewControllerMap, animated: true, completion: nil)
         self.navigationController?.pushViewController(viewControllerMap, animated: true)

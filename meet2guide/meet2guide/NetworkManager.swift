@@ -36,6 +36,15 @@ protocol NetworkManagerProtocol {
     func getExcursionsByUser(completion: @escaping (Result<[ExcursionData], Error>) -> Void)
     func observeUpdateExcursions(completion: @escaping (Result<Array<ExcursionData>, Error>) -> Void)
     
+    func updateUserExcurions(with excursionId: String)
+    
+    func getExcursionsIdByUser(completion: @escaping (Result<[String], Error>) -> Void)
+    
+    func getExcursionsAddedByUser(completion: @escaping (Result<[ExcursionData], Error>) -> Void)
+    
+    func deleteExcrusion(with id: String)
+    
+    func getAddedExcursionsIdByUser(completion: @escaping (Result<[String], Error>) -> Void)
 }
 
 final class NetworkManager {
@@ -191,9 +200,15 @@ extension NetworkManager: NetworkManagerProtocol {
     
     
     func addExcursionInBase(excursion: ExcursionData) {
-        let ref = Database.database().reference(withPath: "excursions")
+        var ref = Database.database().reference(withPath: "excursions")
         
         ref.child(excursion.id).setValue(excursion.toDictionary())
+        
+        guard let currentUser = Auth.auth().currentUser else { return }
+        ref = Database.database().reference(withPath: "users")
+        let userForBase = UserBase(user: currentUser)
+        let userRef = ref.child(userForBase.uid)
+        userRef.child("my_excursions").child(excursion.id).setValue("")
     }
     
     func loadListExcursion(completion: @escaping (Result<Array<ExcursionData>, Error>) -> Void) {
@@ -268,27 +283,68 @@ extension NetworkManager: NetworkManagerProtocol {
         let userForBase = UserBase(user: currentUser)
         let userRef = ref.child(userForBase.uid)
         userRef.child("excursions").observe(.value, with: { [weak self] snapshot in
-
-            let dictionary = snapshot.value as? [String: AnyObject]
-            guard let dict = dictionary else {
-                return
-            }
-            let array = Array(dict.keys)
-            print(array)
-            var listExcursions = [ExcursionData]()
-            for id in array {
-                self?.getExcursion(with: id) { result in
-                    switch result {
-                    case .success(let excursion):
-                        listExcursions.append(excursion)
-                        if listExcursions.count == array.count {
-                            completion(.success(listExcursions))
+            
+            if snapshot.exists() {
+                let dictionary = snapshot.value as? [String: AnyObject]
+                guard let dict = dictionary else {
+                    return
+                }
+                let array = Array(dict.keys)
+                print(array)
+                var listExcursions = [ExcursionData]()
+                for id in array {
+                    self?.getExcursion(with: id) { result in
+                        switch result {
+                        case .success(let excursion):
+                            listExcursions.append(excursion)
+                            if listExcursions.count == array.count {
+                                completion(.success(listExcursions))
+                            }
+                        case .failure(let error):
+                            completion(.success([]))
                         }
-                    case .failure(let error):
-                        completion(.failure(error))
                     }
                 }
+            } else {
+                completion(.success([]))
             }
+            
+        })
+    }
+    
+    
+    func getExcursionsAddedByUser(completion: @escaping (Result<[ExcursionData], Error>) -> Void) {
+        guard let currentUser = Auth.auth().currentUser else { return }
+        let ref = Database.database().reference(withPath: "users")
+        let userForBase = UserBase(user: currentUser)
+        let userRef = ref.child(userForBase.uid)
+        userRef.child("my_excursions").observe(.value, with: { [weak self] snapshot in
+            
+            if snapshot.exists() {
+                let dictionary = snapshot.value as? [String: AnyObject]
+                guard let dict = dictionary else {
+                    return
+                }
+                let array = Array(dict.keys)
+                print(array)
+                var listExcursions = [ExcursionData]()
+                for id in array {
+                    self?.getExcursion(with: id) { result in
+                        switch result {
+                        case .success(let excursion):
+                            listExcursions.append(excursion)
+                            if listExcursions.count == array.count {
+                                completion(.success(listExcursions))
+                            }
+                        case .failure(let error):
+                            completion(.success([]))
+                        }
+                    }
+                }
+            } else {
+                completion(.success([]))
+            }
+            
         })
     }
     
@@ -319,6 +375,68 @@ extension NetworkManager: NetworkManagerProtocol {
                 }
                 
                 
+            }
+            
+        })
+    }
+    
+    func updateUserExcurions(with excursionId: String) {
+        guard let currentUser = Auth.auth().currentUser else { return }
+        let ref = Database.database().reference(withPath: "users")
+        let userForBase = UserBase(user: currentUser)
+        let userRef = ref.child(userForBase.uid)
+        userRef.child("excursions").child(excursionId).removeValue()
+    }
+    
+    func getExcursionsIdByUser(completion: @escaping (Result<[String], Error>) -> Void) {
+        guard let currentUser = Auth.auth().currentUser else { return }
+        let ref = Database.database().reference(withPath: "users")
+        let userForBase = UserBase(user: currentUser)
+        let userRef = ref.child(userForBase.uid)
+        userRef.child("excursions").observe(.value, with: { [weak self] snapshot in
+            
+            if snapshot.exists() {
+                let dictionary = snapshot.value as? [String: AnyObject]
+                guard let dict = dictionary else {
+                    return
+                }
+                let array = Array(dict.keys)
+                print(array)
+                completion(.success(array))
+            } else {
+                completion(.success([]))
+            }
+            
+        })
+    }
+    
+    func deleteExcrusion(with id: String) {
+        guard let currentUser = Auth.auth().currentUser else { return }
+        var ref = Database.database().reference(withPath: "users")
+        let userForBase = UserBase(user: currentUser)
+        let userRef = ref.child(userForBase.uid)
+        userRef.child("my_excursions").child(id).removeValue()
+        ref = Database.database().reference(withPath: "excursions")
+        ref.child(id).removeValue()
+    }
+    
+    func getAddedExcursionsIdByUser(completion: @escaping (Result<[String], Error>) -> Void) {
+        guard let currentUser = Auth.auth().currentUser else { return }
+        let ref = Database.database().reference(withPath: "users")
+        let userForBase = UserBase(user: currentUser)
+        let userRef = ref.child(userForBase.uid)
+        userRef.child("my_excursions").observe(.value, with: { [weak self] snapshot in
+            
+            if snapshot.exists() {
+                let dictionary = snapshot.value as? [String: AnyObject]
+                guard let dict = dictionary else {
+                    return
+                }
+                let array = Array(dict.keys)
+                print(array)
+                completion(.success(array))
+            } else {
+                completion(.success([]))
             }
             
         })

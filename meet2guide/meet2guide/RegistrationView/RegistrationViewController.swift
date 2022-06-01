@@ -40,7 +40,7 @@ class RegistrationViewController: UIViewController {
         
         scrollView.isUserInteractionEnabled = true
         scrollView.isScrollEnabled = true
-        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 800)
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 700)
         
         mailTextField.tag = 0
         mailTextField.delegate = self
@@ -50,8 +50,6 @@ class RegistrationViewController: UIViewController {
         nameTextField.delegate = self
         surnameTextField.tag = 3
         surnameTextField.delegate = self
-        
-        view.addSubview(scrollView)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardOnTap))
         tap.delegate = self
@@ -65,6 +63,8 @@ class RegistrationViewController: UIViewController {
                                 selector: #selector(keyboardWillHide),
                                 name: UIResponder.keyboardWillHideNotification,
                                 object: nil)
+        
+        view.addSubview(scrollView)
         
         titleLabel.text = textTitle
         titleLabel.numberOfLines = 0
@@ -114,15 +114,15 @@ class RegistrationViewController: UIViewController {
     @objc
     func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            scrollView.contentOffset = CGPoint(x: 0, y: keyboardSize.height + 100)
-            scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+            scrollView.contentOffset = CGPoint(x: 0, y: keyboardSize.height - 200)
+            //scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
         }
     }
 
     @objc
     func keyboardWillHide(notification: NSNotification) {
         scrollView.contentOffset = CGPoint.zero
-        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        //scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     func popToRoot(sender:UIBarButtonItem){

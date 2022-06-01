@@ -47,6 +47,10 @@
 		F42262B1281019E30041C2FA /* ListMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42262B0281019E30041C2FA /* ListMake.swift */; };
 		F42B86552822BCF7002D90DD /* GuideAddingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42B86542822BCF7002D90DD /* GuideAddingPresenter.swift */; };
 		F42B86572822BDB2002D90DD /* GuideAddingMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42B86562822BDB2002D90DD /* GuideAddingMake.swift */; };
+		F433B2502847648000DF1531 /* UserExcursionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433B24F2847648000DF1531 /* UserExcursionViewController.swift */; };
+		F433B2522847648B00DF1531 /* UserExcursionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433B2512847648B00DF1531 /* UserExcursionPresenter.swift */; };
+		F433B2542847649A00DF1531 /* UserExcursionMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433B2532847649A00DF1531 /* UserExcursionMake.swift */; };
+		F433B256284764A600DF1531 /* UserExcursionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433B255284764A600DF1531 /* UserExcursionCell.swift */; };
 		F43D3E5B283E276800AD4633 /* MapAddExcursionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43D3E5A283E276800AD4633 /* MapAddExcursionViewController.swift */; };
 		F43D3E5D283E277700AD4633 /* MapAddExcursionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43D3E5C283E277700AD4633 /* MapAddExcursionPresenter.swift */; };
 		F43D3E5F283E278400AD4633 /* MapAddExcursionMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43D3E5E283E278400AD4633 /* MapAddExcursionMake.swift */; };
@@ -153,6 +157,10 @@
 		F42262B0281019E30041C2FA /* ListMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMake.swift; sourceTree = "<group>"; };
 		F42B86542822BCF7002D90DD /* GuideAddingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideAddingPresenter.swift; sourceTree = "<group>"; };
 		F42B86562822BDB2002D90DD /* GuideAddingMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideAddingMake.swift; sourceTree = "<group>"; };
+		F433B24F2847648000DF1531 /* UserExcursionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserExcursionViewController.swift; sourceTree = "<group>"; };
+		F433B2512847648B00DF1531 /* UserExcursionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserExcursionPresenter.swift; sourceTree = "<group>"; };
+		F433B2532847649A00DF1531 /* UserExcursionMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserExcursionMake.swift; sourceTree = "<group>"; };
+		F433B255284764A600DF1531 /* UserExcursionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserExcursionCell.swift; sourceTree = "<group>"; };
 		F43D3E5A283E276800AD4633 /* MapAddExcursionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAddExcursionViewController.swift; sourceTree = "<group>"; };
 		F43D3E5C283E277700AD4633 /* MapAddExcursionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAddExcursionPresenter.swift; sourceTree = "<group>"; };
 		F43D3E5E283E278400AD4633 /* MapAddExcursionMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAddExcursionMake.swift; sourceTree = "<group>"; };
@@ -255,6 +263,7 @@
 		CECE356827FEEF3F004B64DC /* meet2guide */ = {
 			isa = PBXGroup;
 			children = (
+				F433B24E2847646200DF1531 /* UsersExcursionView */,
 				F4B9AA5E284268B5003C38F7 /* MapShowExcursionView */,
 				F43D3E59283E274B00AD4633 /* MapAddExcursionView */,
 				F47865DD2837E39400346AAD /* AddedExcursionsVIew */,
@@ -387,6 +396,17 @@
 				F42B86562822BDB2002D90DD /* GuideAddingMake.swift */,
 			);
 			path = GuideAddingView;
+			sourceTree = "<group>";
+		};
+		F433B24E2847646200DF1531 /* UsersExcursionView */ = {
+			isa = PBXGroup;
+			children = (
+				F433B24F2847648000DF1531 /* UserExcursionViewController.swift */,
+				F433B2512847648B00DF1531 /* UserExcursionPresenter.swift */,
+				F433B2532847649A00DF1531 /* UserExcursionMake.swift */,
+				F433B255284764A600DF1531 /* UserExcursionCell.swift */,
+			);
+			path = UsersExcursionView;
 			sourceTree = "<group>";
 		};
 		F43D3E59283E274B00AD4633 /* MapAddExcursionView */ = {
@@ -773,10 +793,12 @@
 				F41AEB44281BF68E0040DF89 /* RegistrationMake.swift in Sources */,
 				F41AEB45281BF68E0040DF89 /* RegistrationPresenter.swift in Sources */,
 				F42262A7281006140041C2FA /* MapMake.swift in Sources */,
+				F433B2542847649A00DF1531 /* UserExcursionMake.swift in Sources */,
 				F42262A8281006140041C2FA /* MapPresenter.swift in Sources */,
 				F47F8467280DD19400C51C0E /* InfoUserMake.swift in Sources */,
 				F422628E280FE5540041C2FA /* MainTabBarConroller.swift in Sources */,
 				F47F8469280DD19400C51C0E /* InfoUserViewController.swift in Sources */,
+				F433B256284764A600DF1531 /* UserExcursionCell.swift in Sources */,
 				F47865EB2838043B00346AAD /* CollectionVIewCalculate.swift in Sources */,
 				F47F846A280DD19400C51C0E /* InfoUserCell.swift in Sources */,
 				F47F846B280DD19400C51C0E /* InfoUserPresenter.swift in Sources */,
@@ -791,6 +813,7 @@
 				F4A5CD622832DF6D0063939F /* Excursion.swift in Sources */,
 				F47865E32837E49B00346AAD /* CustomFlipTransition.swift in Sources */,
 				F47F845F280DD15700C51C0E /* AccountMake.swift in Sources */,
+				F433B2522847648B00DF1531 /* UserExcursionPresenter.swift in Sources */,
 				F47865E72837EB7F00346AAD /* CardCell.swift in Sources */,
 				8B55CA9F281AE09E00C2B437 /* GuideAddingViewController.swift in Sources */,
 				F416A11C28325A3500012CE4 /* LoginMake.swift in Sources */,
@@ -814,6 +837,7 @@
 				CE92CC4728080AED00803928 /* MapViewController.swift in Sources */,
 				F42262AD281011F50041C2FA /* ListViewController.swift in Sources */,
 				F47F846E280DD3AA00C51C0E /* User.swift in Sources */,
+				F433B2502847648000DF1531 /* UserExcursionViewController.swift in Sources */,
 				8B55CAA0281AE09E00C2B437 /* GuideAddingCell.swift in Sources */,
 				F47865DF2837E3C900346AAD /* AddedExcursionsViewController.swift in Sources */,
 				F47865EF2838285000346AAD /* AddedExcursionMake.swift in Sources */,

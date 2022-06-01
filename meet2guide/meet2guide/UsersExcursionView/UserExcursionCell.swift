@@ -1,21 +1,17 @@
 //
-//  CardCell.swift
+//  UserExcursionCell.swift
 //  meet2guide
 //
-//  Created by Екатерина Григоренко on 20.05.2022.
+//  Created by Екатерина Григоренко on 01.06.2022.
 //
-
-import Foundation
 import UIKit
-import PinLayout
 
-
-class CardCell: UICollectionViewCell {
+class ExcursionCardCell: UICollectionViewCell {
     var collectionView: UICollectionView!
     var reloadBlock: (() -> Void)?
     var customCardLayout: CardLayoutAttributes?
     
-    weak var output: AddedExcursionsPresenterProtocol?
+    weak var output: UserExcursionPresenterProtocol?
     
     var originTouchY: CGFloat = 0.0
     var panGesture: UIPanGestureRecognizer?
@@ -24,7 +20,7 @@ class CardCell: UICollectionViewCell {
     
     var imageView = UIImageView()
     
-    var deleteButton = UIButton()
+    //var deleteButton = UIButton()
     
     var infoButton = UIButton()
     
@@ -79,13 +75,13 @@ class CardCell: UICollectionViewCell {
         
         contentView.addSubview(text)
         
-        deleteButton.setImage(UIImage(systemName: "trash"), for: .normal)
+        /*deleteButton.setImage(UIImage(systemName: "trash"), for: .normal)
         deleteButton.tintColor = .red
         deleteButton.backgroundColor = .systemBackground
         deleteButton.layer.cornerRadius = 20
         deleteButton.addTarget(self, action: #selector(didTapDeleteButton), for: .touchUpInside)
         
-        contentView.addSubview(deleteButton)
+        contentView.addSubview(deleteButton)*/
         
         infoButton.setImage(UIImage(systemName: "info.circle"), for: .normal)
         infoButton.tintColor = colorBlueCustom
@@ -122,11 +118,11 @@ class CardCell: UICollectionViewCell {
             .left(10)
             .sizeToFit()
         
-        deleteButton.pin
+        /*deleteButton.pin
             .left(20)
             .bottom(20)
             .height(40)
-            .width(40)
+            .width(40)*/
         
         infoButton.pin
             .right(20)
@@ -165,7 +161,7 @@ class CardCell: UICollectionViewCell {
         }
     }
     
-    func configure(with excursion: ExcursionData, output: AddedExcursionsPresenterProtocol?) {
+    func configure(with excursion: ExcursionData, output: UserExcursionPresenterProtocol?) {
         imageView.contentMode = .scaleAspectFill
         imageView.image = excursion.image
         text.text = excursion.name
@@ -174,7 +170,7 @@ class CardCell: UICollectionViewCell {
     }
 }
 
-extension CardCell: UIGestureRecognizerDelegate {
+extension ExcursionCardCell: UIGestureRecognizerDelegate {
     
     open override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         
@@ -192,36 +188,4 @@ extension CardCell: UIGestureRecognizerDelegate {
     }
 }
 
-extension UIView {
-    
-    func setShadow(offset:CGSize,radius:CGFloat,opacity:Float) {
-     
-        self.layer.masksToBounds = false
-        self.layer.cornerRadius = radius
-        self.layer.shadowOffset = offset
-        self.layer.shadowOpacity = opacity
-        self.layer.shadowColor = UIColor.black.withAlphaComponent(0.5).cgColor
-    }
-    
-}
 
-extension UIImageView {
-    var contentClippingRect: CGRect {
-        guard let image = image else { return bounds }
-        guard contentMode == .scaleAspectFit else { return bounds }
-        guard image.size.width > 0 && image.size.height > 0 else { return bounds }
-
-        let scale: CGFloat
-        if image.size.width > image.size.height {
-            scale = bounds.width / image.size.width
-        } else {
-            scale = bounds.height / image.size.height
-        }
-
-        let size = CGSize(width: image.size.width * scale, height: image.size.height * scale)
-        let x = (bounds.width - size.width) / 2.0
-        let y = (bounds.height - size.height) / 2.0
-
-        return CGRect(x: x, y: y, width: size.width, height: size.height)
-    }
-}

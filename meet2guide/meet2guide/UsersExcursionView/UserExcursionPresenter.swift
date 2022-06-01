@@ -1,14 +1,14 @@
 //
-//  AddedExcursionPresenter.swift
+//  UserExcursionPresenter.swift
 //  meet2guide
 //
-//  Created by Екатерина Григоренко on 20.05.2022.
+//  Created by Екатерина Григоренко on 01.06.2022.
 //
 
 import Foundation
 import UIKit
 
-protocol AddedExcursionsPresenterProtocol: AnyObject {
+protocol UserExcursionPresenterProtocol: AnyObject {
     func didLoadView()
     
     func didDeleteCard(with id: String)
@@ -18,19 +18,19 @@ protocol AddedExcursionsPresenterProtocol: AnyObject {
     func deleteCard(with id: String)
 }
 
-final class AddedExcursionsPresenter  {
-    weak var viewController: AddedExcursionsView?
+final class UserExcursionPresenter  {
+    weak var viewController: UserExcursionView?
     
     let networkManager = NetworkManager.shared
 
-    init(view: AddedExcursionsView) {
+    init(view: UserExcursionView) {
         viewController = view
     }
 }
 
-extension AddedExcursionsPresenter: AddedExcursionsPresenterProtocol {
+extension UserExcursionPresenter: UserExcursionPresenterProtocol {
     func didLoadView() {
-        networkManager.getExcursionsByUser { [weak self] result in
+        networkManager.getExcursionsAddedByUser { [weak self] result in
             switch result {
             case .success(let listExcursions):
                 self?.viewController?.reloadData(with: listExcursions)
@@ -72,5 +72,6 @@ extension AddedExcursionsPresenter: AddedExcursionsPresenterProtocol {
         /*if viewController?.getExcursions().count == 1 {
             didLoadView()
         }*/
+        networkManager.deleteExcrusion(with: id)
     }
 }

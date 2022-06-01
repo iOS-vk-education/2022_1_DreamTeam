@@ -33,6 +33,7 @@ extension GosistTourPresenter: GosistTourPresenterProtocol {
     
     func didAddExcursion(with id: String) {
         networkManager.addExcursionToUser(with: id)
+        viewController?.close()
     }
     
     func openMap() {

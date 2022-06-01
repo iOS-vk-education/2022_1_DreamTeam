@@ -47,12 +47,14 @@ class InfoUserViewController: UIViewController {
     private var emailTextField = UITextField()
     private var emailLabel = UILabel()
     
+    private var email: String?
+    
     
     private var userConfiguration: [UserConfig] =
     [UserConfig(title: "Имя", textIn: "", color: UIColor.systemGray5, isLoaded: false),
      UserConfig(title: "Фамилия", textIn: "", color: UIColor.systemGray5, isLoaded: false),
-     UserConfig(title: "Телефон", textIn: "", color: UIColor.systemGray5, isLoaded: false),
-     UserConfig(title: "Почта", textIn: "", color: UIColor.systemGray5, isLoaded: false)]
+     UserConfig(title: "Телефон", textIn: "", color: UIColor.systemGray5, isLoaded: false)
+     /*UserConfig(title: "Почта", textIn: "", color: UIColor.systemGray5, isLoaded: false)*/]
     
     
     private let titleView = "Информация"
@@ -134,6 +136,7 @@ class InfoUserViewController: UIViewController {
         userAvatar.backgroundColor = .systemGray5
         userAvatar.layer.backgroundColor = UIColor.systemGray.cgColor
         userAvatar.layer.masksToBounds = true
+        userAvatar.contentMode = .scaleAspectFit
         UIView.animate(withDuration: 1,
                        delay: 1,
                        options: [.repeat, .autoreverse],
@@ -236,21 +239,34 @@ class InfoUserViewController: UIViewController {
             return
         }
         
-        cell = tableViewUserConfiguration.cellForRow(at: IndexPath(row: 3, section: 0)) as! InfoUserCell
+        /*cell = tableViewUserConfiguration.cellForRow(at: IndexPath(row: 3, section: 0)) as! InfoUserCell
         
         guard let email = cell.getInfo(), !email.isEmpty else {
             return
-        }
+        }*/
         
         guard let image = userAvatar.image else {
             return
         }
         
+        var imageForBase: UIImage?
+        
+        if image == UIImage(systemName: "person") {
+            imageForBase = nil
+        } else {
+            imageForBase = image
+        }
+        
+        guard let email = email else {
+            return
+        }
+
+        
         let user = UserData(email: email,
                             name: name,
                             surname: surname,
                             phone: phone,
-                            image: image)
+                            image: imageForBase)
         loading.modalPresentationStyle = .overCurrentContext
         loading.modalTransitionStyle = .crossDissolve
         present(loading, animated: true, completion: nil)
@@ -336,7 +352,7 @@ extension InfoUserViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        4
+        userConfiguration.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -360,7 +376,8 @@ extension InfoUserViewController: InfoUserView {
         userConfiguration[0].textIn = user.name
         userConfiguration[1].textIn = user.surname
         userConfiguration[2].textIn = user.phone
-        userConfiguration[3].textIn = user.email
+        email = user.email
+        //userConfiguration[3].textIn = user.email
         for i in (0..<userConfiguration.count) {
             userConfiguration[i].isLoaded = true
             userConfiguration[i].color = UIColor.systemBackground

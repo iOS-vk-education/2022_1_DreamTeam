@@ -36,6 +36,8 @@ final class AccountPresenter: AccountPresenterProtocol {
             viewController?.openInfoUser()
         } else if indexPath.row == 1 {
             viewController?.openGuideAdding()
+        } else if indexPath.row == 2 {
+            viewController?.openMyExcursions()
         }
     }
     
